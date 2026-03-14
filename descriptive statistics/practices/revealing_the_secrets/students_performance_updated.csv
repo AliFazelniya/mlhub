@@ -1,0 +1,251 @@
+student name,reading score,math score,writing score,gender,parental level of education,free/reduced lunch
+Melanie,58,49,25,male,master's degree,no
+Gabriella,45,72,88,female,some high school,yes
+Ashley,46,27,22,male,associate's degree,no
+James,84,2,77,male,bachelor's degree,no
+William,69,35,26,male,some high school,no
+Dustin,16,61,44,female,some college,yes
+William,25,97,45,male,master's degree,yes
+Nancy,43,37,59,male,some college,no
+Frank,45,72,79,male,some high school,no
+Barry,54,55,29,female,master's degree,yes
+Richard,34,79,78,male,bachelor's degree,no
+Cody,86,61,76,male,some high school,no
+Cynthia,55,18,97,male,some college,no
+Felicia,67,51,12,male,high school,yes
+Jean,49,61,70,female,associate's degree,yes
+Ryan,17,53,56,male,some college,yes
+Rebecca,4,78,89,female,master's degree,no
+Keith,14,47,99,female,some high school,no
+Jonathan,49,15,99,female,associate's degree,no
+Tamara,26,79,53,male,some high school,yes
+Curtis,0,63,76,female,master's degree,no
+Crystal,48,3,80,male,some high school,no
+Leah,50,75,40,female,high school,no
+Christina,17,19,34,female,associate's degree,no
+Thomas,2,19,72,female,associate's degree,yes
+Carolyn,96,79,46,female,master's degree,yes
+Samantha,43,55,85,female,high school,no
+Courtney,96,37,59,female,some college,yes
+Shawn,41,52,0,female,some high school,yes
+Jennifer,15,67,80,female,bachelor's degree,no
+Melinda,97,49,25,male,some high school,no
+Donald,66,3,53,male,some high school,yes
+Jocelyn,86,32,58,female,some college,no
+Joan,1,90,58,female,some high school,yes
+Michelle,92,52,26,female,high school,no
+Karen,83,27,94,male,high school,yes
+James,14,43,35,female,associate's degree,no
+Robert,73,47,36,male,master's degree,yes
+Carrie,54,90,11,male,bachelor's degree,yes
+Connie,94,6,81,male,some high school,yes
+Jacob,20,33,42,male,some high school,no
+Richard,49,59,72,male,some college,yes
+Michele,81,49,43,female,master's degree,yes
+Jessica,58,81,23,female,high school,no
+James,58,46,12,female,bachelor's degree,no
+Melissa,8,70,37,female,associate's degree,yes
+Larry,18,42,60,female,high school,yes
+Jacqueline,55,89,86,male,master's degree,no
+Kyle,22,78,45,female,associate's degree,no
+Nina,29,57,82,female,some college,no
+Robert,83,87,2,male,some college,no
+David,5,50,84,female,some high school,no
+Andrew,14,41,97,male,master's degree,yes
+Cynthia,1,68,69,female,bachelor's degree,no
+Diana,77,26,12,male,associate's degree,yes
+Thomas,63,6,54,female,high school,yes
+Vanessa,83,84,9,female,master's degree,yes
+Mark,70,38,33,male,master's degree,no
+Margaret,7,82,95,male,some college,yes
+Donald,79,30,28,male,some high school,yes
+Daniel,17,69,67,male,some high school,no
+Melissa,5,19,17,male,associate's degree,yes
+Deanna,5,37,79,male,some college,yes
+Anthony,55,65,20,male,master's degree,no
+Mary,88,96,99,male,bachelor's degree,yes
+Joseph,3,11,71,female,some college,yes
+Jorge,90,77,98,female,associate's degree,yes
+Courtney,49,52,66,male,associate's degree,no
+Kevin,55,55,42,female,some college,no
+Sara,53,68,11,female,associate's degree,no
+Michele,24,73,31,female,some college,yes
+Michael,77,71,89,female,high school,yes
+Richard,76,69,34,male,some college,no
+Robert,23,18,29,female,some college,yes
+Michael,76,47,26,male,associate's degree,yes
+Spencer,72,38,18,female,associate's degree,no
+Mike,77,22,62,female,some high school,no
+Michael,38,1,58,female,some high school,yes
+Teresa,30,55,68,male,high school,yes
+Sonia,73,48,42,female,some high school,yes
+Edward,81,98,86,male,some college,no
+Rebecca,63,91,8,female,associate's degree,no
+Frederick,45,58,62,male,some high school,no
+Jennifer,55,15,61,female,some high school,no
+Justin,41,30,98,male,high school,yes
+Sherry,21,2,51,male,master's degree,no
+Derek,17,84,19,female,high school,no
+Cory,21,12,3,male,some college,no
+Kaitlyn,86,68,47,female,associate's degree,no
+Justin,60,64,65,female,high school,no
+Hayden,50,5,75,female,some high school,yes
+James,39,42,55,female,associate's degree,yes
+Michelle,47,79,68,female,associate's degree,no
+Richard,4,79,52,female,some high school,yes
+Michael,51,31,18,female,high school,no
+Beth,93,46,75,female,some high school,no
+Nicholas,12,16,85,female,master's degree,yes
+Matthew,44,51,90,female,associate's degree,yes
+Jose,46,30,13,female,bachelor's degree,no
+Victoria,59,80,11,male,bachelor's degree,no
+Rose,28,73,47,male,some college,no
+Dawn,67,53,82,female,some high school,yes
+Margaret,31,68,48,female,some high school,no
+Cynthia,82,12,13,female,some college,no
+Karen,67,24,33,female,some college,no
+Ana,54,90,63,female,some college,yes
+Jacqueline,26,79,13,female,associate's degree,no
+Scott,96,1,56,female,master's degree,no
+Dennis,3,48,42,female,some high school,yes
+Chad,25,61,14,male,associate's degree,no
+Kimberly,9,22,6,female,some college,no
+Dustin,17,76,64,male,some high school,yes
+Lawrence,52,14,82,female,associate's degree,no
+Thomas,51,57,25,female,master's degree,yes
+Michael,22,11,53,male,associate's degree,yes
+Christopher,94,80,48,female,master's degree,no
+Katie,55,71,31,male,some college,no
+Victoria,0,30,11,female,master's degree,no
+Joseph,53,37,63,female,some high school,no
+Juan,90,11,91,male,some college,yes
+Jeffrey,73,55,94,female,some high school,no
+Penny,17,77,38,male,bachelor's degree,yes
+April,52,41,74,female,high school,no
+Robin,86,22,52,male,master's degree,no
+Robert,55,41,42,male,high school,no
+Jennifer,64,51,77,female,high school,yes
+Jacob,86,19,20,female,master's degree,no
+Lisa,96,35,30,male,some college,no
+Ariana,47,23,54,female,bachelor's degree,no
+Zachary,22,70,22,female,some high school,no
+Hannah,95,19,92,female,associate's degree,yes
+Leslie,71,21,21,male,some high school,no
+Kevin,70,58,24,male,associate's degree,yes
+Kathryn,91,68,87,male,some high school,yes
+Lisa,72,74,26,male,master's degree,yes
+Jessica,76,93,99,male,bachelor's degree,yes
+Gabrielle,54,83,2,male,associate's degree,yes
+Debra,56,53,46,male,some college,yes
+Kathleen,20,97,11,male,some high school,no
+Jessica,6,83,88,male,some high school,yes
+Mary,47,50,37,female,associate's degree,yes
+Tony,56,36,39,male,some college,yes
+Jessica,70,18,7,female,some college,no
+John,65,13,99,female,master's degree,no
+Sarah,10,86,52,female,master's degree,yes
+Abigail,71,87,18,male,master's degree,no
+Jillian,49,97,68,male,master's degree,yes
+Zachary,54,39,24,male,master's degree,yes
+Seth,21,12,58,male,master's degree,no
+Andrew,42,64,2,female,bachelor's degree,yes
+Jeremiah,52,9,49,male,some college,no
+Cody,16,99,50,male,master's degree,no
+David,5,30,84,male,some college,yes
+Tanya,61,66,92,male,some college,yes
+Marcus,98,63,27,male,high school,no
+Scott,90,88,14,female,bachelor's degree,yes
+Joseph,80,65,91,male,master's degree,yes
+Anita,32,31,43,female,some high school,yes
+Craig,22,52,54,male,associate's degree,no
+Matthew,9,93,97,female,some high school,no
+Daniel,64,17,9,male,bachelor's degree,yes
+Andrea,64,66,89,male,associate's degree,no
+Stephanie,93,84,87,female,bachelor's degree,no
+Joan,20,14,6,female,some college,no
+Kevin,49,27,98,female,associate's degree,no
+Barbara,81,15,11,male,some college,no
+John,91,90,38,female,some high school,yes
+George,61,16,89,male,some high school,yes
+Christina,43,56,18,male,associate's degree,yes
+Susan,53,10,46,female,associate's degree,no
+Dwayne,55,23,44,female,master's degree,no
+Eric,62,31,49,male,bachelor's degree,yes
+Keith,41,69,17,male,master's degree,no
+Danielle,89,93,80,female,bachelor's degree,yes
+Shane,58,42,65,female,master's degree,yes
+Daniel,55,77,28,female,some college,yes
+Luke,64,100,62,male,associate's degree,no
+John,36,52,18,male,some high school,no
+Kirk,30,58,11,male,bachelor's degree,yes
+Jacqueline,43,29,50,male,bachelor's degree,yes
+Melanie,60,90,32,male,some high school,yes
+Emily,9,19,49,male,master's degree,yes
+Daniel,34,60,3,female,bachelor's degree,no
+Michele,30,47,96,male,some college,no
+Haley,80,73,4,male,associate's degree,yes
+Ian,50,15,70,male,some high school,yes
+Glenn,64,33,29,female,associate's degree,no
+Jeffrey,71,68,29,male,bachelor's degree,no
+Casey,39,15,62,male,bachelor's degree,yes
+Adam,16,70,80,female,some high school,yes
+Robin,31,39,88,male,some college,yes
+Samuel,26,54,74,male,high school,no
+Patrick,59,87,7,male,some high school,no
+Jared,45,13,91,male,high school,no
+Theresa,90,64,32,male,master's degree,yes
+Jimmy,31,57,3,female,high school,yes
+Peter,51,57,6,female,some college,no
+Nicole,49,55,47,female,master's degree,no
+Matthew,27,52,32,male,high school,yes
+Kelly,54,87,22,male,master's degree,no
+Adam,9,64,32,male,high school,no
+Jason,3,30,37,female,some college,yes
+Kenneth,4,9,99,male,high school,no
+Robert,20,75,13,male,high school,yes
+Cassandra,59,98,76,female,high school,yes
+Alexandria,3,86,81,male,some high school,yes
+Alex,52,47,21,female,some high school,yes
+Hannah,90,47,2,female,some high school,yes
+Isabel,18,19,68,female,some college,yes
+Frank,75,20,40,male,master's degree,yes
+James,19,59,34,male,bachelor's degree,no
+Max,98,58,33,male,high school,yes
+Joseph,60,38,16,male,high school,yes
+Cody,58,8,68,male,some college,no
+Thomas,9,12,17,male,high school,no
+Dwayne,5,57,38,male,some high school,no
+Ricky,18,75,82,female,bachelor's degree,yes
+Jonathan,23,3,94,male,associate's degree,no
+John,73,24,13,female,high school,yes
+Patricia,86,32,1,male,some high school,yes
+Kevin,51,36,60,male,associate's degree,yes
+Rachel,27,45,60,male,bachelor's degree,yes
+James,88,48,66,female,associate's degree,no
+Lisa,86,69,62,female,some high school,no
+Calvin,78,6,9,female,master's degree,yes
+Jacob,94,89,90,female,master's degree,yes
+Lisa,71,98,72,male,associate's degree,yes
+James,56,19,81,female,some college,no
+Curtis,97,32,99,male,associate's degree,yes
+Benjamin,87,10,98,male,high school,yes
+Courtney,31,77,48,female,high school,no
+James,98,91,89,female,master's degree,no
+Shelly,64,37,69,female,some college,yes
+Michael,68,74,27,female,some high school,no
+Lee,20,48,46,female,high school,no
+Laura,69,44,0,female,master's degree,yes
+Charles,2,37,57,female,bachelor's degree,no
+Hector,1,63,76,female,master's degree,yes
+Tracy,26,69,14,male,high school,no
+Abigail,7,49,74,female,high school,yes
+Megan,47,30,3,female,master's degree,yes
+Eric,100,100,15,male,some high school,yes
+Joel,15,42,28,female,associate's degree,no
+Megan,75,45,36,male,high school,yes
+Jacqueline,3,82,92,male,master's degree,no
+Jason,57,68,74,female,master's degree,yes
+Rebecca,7,70,13,male,some college,yes
+Phillip,55,74,4,male,associate's degree,no
+Michael,67,45,5,male,bachelor's degree,yes
+Michelle,75,25,21,male,some high school,yes
