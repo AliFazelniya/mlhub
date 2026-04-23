@@ -1,0 +1,11 @@
+# Practice 2
+
+A numbered hands-on practice with its own data and notebooks.
+
+## Subfolders
+
+- `traffic_shahri` — Submodule.
+
+## How to Use
+
+Use the notebooks and data in subfolders to complete this module.
