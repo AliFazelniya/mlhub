@@ -1,0 +1,567 @@
+bookID,title,average_rating,isbn,isbn13,num_pages,ratings_count,text_reviews_count,publication_date,author,lang,publisher,num_pages_grp
+1,Harry Potter and the Half-Blood Prince (Harry Potter  #6),4.57,439785960,9780440000000.0,652,2095690,27591,9/16/2006,J.K. Rowling,Scholastic Inc.,eng,500-749
+2,Harry Potter and the Order of the Phoenix (Harry Potter  #5),4.49,439358078,9780440000000.0,870,2153167,29221,9/1/2004,J.K. Rowling,Scholastic Inc.,eng,750-999
+4,Harry Potter and the Chamber of Secrets (Harry Potter  #2),4.42,439554896,9780440000000.0,352,6333,244,11/1/2003,J.K. Rowling,Scholastic Inc.,en-US,250-499
+5,Harry Potter and the Prisoner of Azkaban (Harry Potter  #3),4.56,043965548X,9780440000000.0,435,2339585,36325,5/1/2004,J.K. Rowling,Scholastic Inc.,eng,250-499
+8,Harry Potter Boxed Set  Books 1-5 (Harry Potter  #1-5),4.78,439682584,9780440000000.0,2690,41428,164,9/13/2004,J.K. Rowling,Scholastic Inc.,en-US,>=1000
+9,"Unauthorized Harry Potter Book Seven News: ""Half-Blood Prince"" Analysis and Speculation",3.74,976540606,9780980000000.0,152,19,1,4/26/2005,W. Frederick Zimmerman,Scholastic,fre,<250
+10,Harry Potter Collection (Harry Potter  #1-6),4.73,439827604,9780440000000.0,3342,28242,808,9/12/2005,J.K. Rowling,Scholastic Inc.,en-US,>=1000
+12,The Ultimate Hitchhiker's Guide: Five Complete Novels and One Story (Hitchhiker's Guide to the Galaxy  #1-5),4.38,517226952,9780520000000.0,815,3628,254,11/1/2005,Douglas Adams,Scholastic Inc.,spa,750-999
+13,The Ultimate Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1-5),4.38,345453743,9780350000000.0,815,249558,4080,4/30/2002,Douglas Adams,Scholastic Inc.,en-GB,750-999
+14,The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1),4.22,1400052920,9781400000000.0,215,4930,460,8/3/2004,Douglas Adams,Scholastic Inc.,mul,<250
+16,The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy  #1),4.22,739322206,9780740000000.0,6,1266,253,3/23/2005,Douglas Adams,Scholastic Inc.,grc,<250
+18,The Ultimate Hitchhiker's Guide (Hitchhiker's Guide to the Galaxy  #1-5),4.38,517149257,9780520000000.0,815,2877,195,1/17/1996,Douglas Adams,Scholastic Inc.,enm,750-999
+21,A Short History of Nearly Everything,4.21,076790818X,9780770000000.0,544,248558,9396,9/14/2004,Bill Bryson,Scholastic Inc.,en-CA,500-749
+22,Bill Bryson's African Diary,3.44,767915062,9780770000000.0,55,7270,499,12/3/2002,Bill Bryson,Scholastic Inc.,en-CA,<250
+23,Bryson's Dictionary of Troublesome Words: A Writer's Guide to Getting It Right,3.87,767910435,9780770000000.0,256,2088,131,9/14/2004,Bill Bryson,Scholastic Inc.,en-CA,250-499
+24,In a Sunburned Country,4.07,767903862,9780770000000.0,335,72451,4245,5/15/2001,Bill Bryson,Scholastic Inc.,en-CA,250-499
+25,I'm a Stranger Here Myself: Notes on Returning to America After Twenty Years Away,3.9,076790382X,9780770000000.0,304,49240,2211,6/28/2000,Bill Bryson,Scholastic Inc.,en-CA,250-499
+26,The Lost Continent: Travels in Small Town America,3.83,60920084,9780060000000.0,299,45712,2257,8/28/1990,Bill Bryson,Scholastic Inc.,ger,250-499
+27,Neither Here nor There: Travels in Europe,3.86,380713802,9780380000000.0,254,48701,2238,3/28/1993,Bill Bryson,Scholastic Inc.,ger,250-499
+28,Notes from a Small Island,3.91,380727501,9780380000000.0,324,80609,3301,5/28/1997,Bill Bryson,Scholastic Inc.,ger,250-499
+29,The Mother Tongue: English and How It Got That Way,3.93,380715430,9780380000000.0,270,28489,2085,9/28/1991,Bill Bryson,Scholastic Inc.,ger,250-499
+30,J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings,4.59,345538374,9780350000000.0,1728,101233,1550,9/25/2012,J.R.R. Tolkien,Scholastic Inc.,jpn,>=1000
+31,The Lord of the Rings (The Lord of the Rings  #1-3),4.5,618517650,9780620000000.0,1184,1710,91,10/21/2004,J.R.R. Tolkien,Scholastic Inc.,ara,>=1000
+34,The Fellowship of the Ring (The Lord of the Rings  #1),4.36,618346252,9780620000000.0,398,2128944,13670,9/5/2003,J.R.R. Tolkien,Scholastic Inc.,ara,250-499
+35,The Lord of the Rings (The Lord of the Rings  #1-3),4.5,618260587,9780620000000.0,1216,1618,140,10/1/2002,J.R.R. Tolkien,Scholastic,ara,>=1000
+36,The Lord of the Rings: Weapons and Warfare,4.53,618391002,9780620000000.0,218,19822,46,11/5/2003,Chris   Smith,Scholastic Inc.,ara,<250
+37,The Lord of the Rings: Complete Visual Companion,4.5,618510826,9780620000000.0,224,359,6,11/15/2004,Jude Fisher,Scholastic Inc.,ara,<250
+45,Agile Web Development with Rails: A Pragmatic Guide,3.84,097669400X,9780980000000.0,558,1430,59,7/28/2005,Dave Thomas,Scholastic Inc.,nl,500-749
+50,Hatchet (Brian's Saga  #1),3.72,689840926,9780690000000.0,208,270244,12017,4/1/2000,Gary Paulsen,Scholastic Inc.,zho,<250
+51,"Hatchet: A Guide for Using ""Hatchet"" in the Classroom",4.0,1557344493,9781560000000.0,48,36,2,8/28/1994,Donna Ickes,Scholastic Inc.,lat,<250
+53,Guts: The True Stories behind Hatchet and the Brian Books,3.88,385326505,9780390000000.0,144,2067,334,1/23/2001,Gary Paulsen,Scholastic Inc.,por,<250
+54,Molly Hatchet - 5 of the Best,4.33,1575606240,9781580000000.0,56,6,0,6/10/2003,Molly Hatchet,Scholastic Inc.,srp,<250
+55,Hatchet Jobs: Writings on Contemporary Fiction,3.45,1595580271,9781600000000.0,228,99,16,11/1/2005,Dale Peck,Scholastic,ita,<250
+57,A Changeling for All Seasons (Changeling Seasons #1),3.76,1595962808,9781600000000.0,304,167,4,11/1/2005,Angela Knight,Scholastic Inc.,rus,250-499
+58,Changeling (Changeling  #1),3.6,670059676,9780670000000.0,256,978,111,8/17/2006,Delia Sherman,Scholastic Inc.,msa,250-499
+59,The Changeling Sea,4.06,141312629,9780140000000.0,137,4454,302,4/14/2003,Patricia A. McKillip,Scholastic Inc.,glg,<250
+61,The Changeling,4.17,595321801,9780600000000.0,228,1176,96,6/8/2004,Zilpha Keatley Snyder,Scholastic Inc.,wel,<250
+63,The Changeling,3.55,1590301943,9781590000000.0,339,301,43,4/12/2005,Kate Horsley,Scholastic Inc.,swe,250-499
+66,The Changeling (Daughters of England  #15),3.98,449146979,9780450000000.0,369,345,12,8/28/1990,Philippa Carr,Scholastic Inc.,nor,250-499
+67,The Known World,3.83,61159174,9780060000000.0,388,29686,2626,8/29/2006,Edward P. Jones,Scholastic Inc.,tur,250-499
+68,The Known World,3.83,006076273X,9780060000000.0,14,55,12,6/15/2004,Edward P. Jones,Scholastic,gla,<250
+69,The Known World,3.83,60749911,9780060000000.0,576,22,3,6/15/2004,Edward P. Jones,Scholastic Inc.,ale,500-749
+119,The Lord of the Rings: The Art of the Fellowship of the Ring,4.59,618212906,9780620000000.0,192,26153,102,6/12/2002,Gary Russell,Scholastic Inc.,ara,<250
+122,The Power of One (The Power of One  #1),4.35,034541005X,9780350000000.0,544,69167,4551,9/29/1996,Bryce Courtenay,Scholastic Inc.,jpn,500-749
+132,How to Buy  Sell & Profit on eBay: Kick-Start Your Home-Based Business in Just Thirty Days,3.48,006076287X,9780060000000.0,336,76,9,5/3/2005,Adam Ginsberg,Scholastic Inc.,ger,250-499
+177,"A Wrinkle in Time: A Guide for Using ""A Wrinkle in Time"" in the Classroom",4.0,1557344035,9781560000000.0,48,17,0,9/28/1991,John Carratello,Scholastic Inc.,lat,<250
+278,The War,3.85,1565842219,9781570000000.0,192,963,65,8/1/1994,Marguerite Duras,Scholastic Inc.,ita,<250
+299,Treasure Island,3.83,517221144,9780520000000.0,272,56,4,9/3/2002,Robert Louis Stevenson,Scholastic,spa,250-499
+367,Douglas Adams's Starship Titanic,3.6,345368436,9780350000000.0,256,885,84,10/27/1998,Terry Jones,Scholastic Inc.,jpn,250-499
+481,The Collapse of the Common Good: How America's Lawsuit Culture Undermines Our Freedom,3.91,034543871X,9780350000000.0,272,62,4,1/29/2002,Philip K. Howard,Scholastic Inc.,jpn,250-499
+515,Programming Ruby: The Pragmatic Programmers' Guide,4.03,974514055,9780970000000.0,828,1577,49,10/11/2004,Dave Thomas,Scholastic,nl,750-999
+539,Lovely in Her Bones (Elizabeth MacPherson  #2),3.8,345360354,9780350000000.0,224,1371,43,5/13/1990,Sharyn McCrumb,Scholastic Inc.,jpn,<250
+642,Guidebook to Zen and the Art of Motorcycle Maintenance,3.72,688060692,9780690000000.0,408,286,10,11/19/1990,Ronald L. DiSanto,Del Rey Books,ger,250-499
+675,Sailing from Byzantium: How a Lost Empire Shaped the World,3.88,553803816,9780550000000.0,368,646,83,7/25/2006,Colin  Wells,Scholastic Inc.,por,250-499
+822,The Confusion (The Baroque Cycle  #2),4.26,60733357,9780060000000.0,815,19320,565,6/14/2005,Neal Stephenson,Scholastic,ger,750-999
+826,The Big U,3.25,380816032,9780380000000.0,308,4657,223,2/6/2001,Neal Stephenson,Scholastic,ger,250-499
+969,The Da Vinci Code,3.84,076792603X,9780770000000.0,467,1120,105,3/28/2006,Dan Brown,Scholastic Inc.,en-CA,250-499
+1014,Pragmatic Version Control: Using Subversion (The Pragmatic Starter Kit Series),3.58,977616657,9780980000000.0,256,173,14,6/7/2006,Mike   Mason,Scholastic Inc.,nl,250-499
+1032,Trump: The Art of the Deal,3.66,345479173,9780350000000.0,384,12748,948,12/28/2004,Donald J. Trump,Scholastic,jpn,250-499
+1059,Shibumi,4.21,1400098033,9781400000000.0,480,9498,637,5/10/2005,Trevanian,Scholastic Inc.,en-CA,250-499
+1117,The Power Broker: A Novel (Christian Gillette  #3),3.75,345480600,9780350000000.0,320,28,1,7/25/2006,Stephen W. Frey,Scholastic Inc.,jpn,250-499
+1206,Freakonomics: A Rogue Economist Explores the Hidden Side of Everything,3.97,61245135,9780060000000.0,496,98,5,12/8/2006,Steven D. Levitt,Scholastic,ale,250-499
+1243,A Million Little Lies,3.41,61171468,9780060000000.0,191,201,24,3/28/2006,James Pinocchio,Scholastic,ger,<250
+1276,Mars and Venus Book of Days: 365 Inspriations to Enrich Your Relationships,3.62,60192771,9780060000000.0,368,18,1,10/21/1998,John Gray,Scholastic,ale,250-499
+1281,Men Are from Mars  Women Are from Venus,3.55,006123205X,9780060000000.0,2,43,3,4/3/2007,John Gray,Scholastic Inc.,gla,<250
+1852,The Call of the Wild,3.86,439227143,9780440000000.0,172,274649,7203,1/1/2001,Jack London,Scholastic Inc.,en-US,<250
+1931,Avalanche,3.65,590422677,9780590000000.0,144,273,36,1/1/1989,Arthur J. Roth,Scholastic Inc.,en-US,<250
+1937,Little Women,4.07,517221160,9780520000000.0,389,166,9,9/3/2002,Louisa May Alcott,Scholastic Inc.,spa,250-499
+2126,The 3-Hour Diet: On the Go,3.1,60793198,9780060000000.0,192,31,2,10/18/2005,Jorge Cruise,Scholastic,ger,<250
+2127,The Last Hours of Ancient Sunlight: The Fate of the World and What We Can Do Before It's Too Late,4.23,1400051576,9781400000000.0,400,1392,136,4/27/2004,Thom Hartmann,Scholastic,en-CA,250-499
+2151,The Complete Novels,4.55,517147688,9780520000000.0,1103,300,31,9/3/1995,Jane Austen,Scholastic Inc.,spa,>=1000
+2153,Jane Austen: The Complete Novels,4.55,517118297,9780520000000.0,1103,267,24,6/1/1994,Jane Austen,Scholastic Inc.,spa,>=1000
+2283,Murder at The Washington Tribune (Capital Crimes  #21),3.58,345478207,9780350000000.0,384,585,78,10/31/2006,Margaret Truman,Scholastic Inc.,jpn,250-499
+2289,In Cold Blood,4.07,073933364X,9780740000000.0,15,563,133,1/3/2006,Truman Capote,Scholastic Inc.,grc,<250
+2333,Farmer Giles of Ham,3.85,618009361,9780620000000.0,127,5526,225,11/15/1999,J.R.R. Tolkien,Scholastic Inc.,ara,<250
+2521,Blood Done Sign My Name: A True Story,4.15,1400083117,9781400000000.0,368,2594,403,5/3/2005,Timothy B. Tyson,Scholastic Inc.,en-CA,250-499
+2661,To Kill a Mockingbird,4.27,61205699,9780060000000.0,323,271,34,10/17/2006,Harper Lee,Scholastic,ale,250-499
+2768,A People's History of the United States,4.08,1565848268,9781570000000.0,619,39,3,7/1/2003,Howard Zinn,Scholastic Inc.,ita,500-749
+2770,A People's History of the United States: The Civil War to the Present,4.0,1565847253,9781570000000.0,496,22,0,8/1/2003,Howard Zinn,Scholastic Inc.,ita,250-499
+3119,Hunting the Hunter (On the Run  #6),4.21,439651417,9780440000000.0,151,1928,85,2/1/2006,Gordon Korman,Scholastic Inc.,en-US,<250
+3120,Public Enemies (On The Run  #5),4.19,439651409,9780440000000.0,150,2050,76,12/1/2005,Gordon Korman,Scholastic Inc.,en-US,<250
+3300,Inés of My Soul,3.93,61161535,9780060000000.0,321,15345,1075,11/7/2006,Isabel Allende,Scholastic Inc.,ale,250-499
+3346,A Chosen Few: The Resurrection of European Jewry (Reader's Circle),3.87,345448146,9780350000000.0,456,51,2,3/26/2002,Mark Kurlansky,Scholastic Inc.,jpn,250-499
+3404,The Senator and the Socialite: The True Story of America's First Black Dynasty,3.95,60184124,9780060000000.0,480,138,29,6/27/2006,Lawrence Otis Graham,Scholastic Inc.,ale,250-499
+3444,Northern Lights,3.29,767904419,9780770000000.0,372,981,69,9/1/1999,Tim O'Brien,Scholastic Inc.,en-CA,250-499
+3445,If I Die in a Combat Zone  Box Me Up and Ship Me Home,3.95,767904435,9780770000000.0,225,7763,362,9/1/1999,Tim O'Brien,Scholastic Inc.,en-CA,<250
+3536,Love @ First Site,3.41,767916913,9780770000000.0,368,910,74,5/9/2006,Jane Moore,Scholastic,en-CA,250-499
+3597,The Complete Adventures and Memoirs of Sherlock Holmes,4.33,517174960,9780520000000.0,334,2184,87,7/1/2001,Arthur Conan Doyle,Scholastic Inc.,spa,250-499
+3631,Catching Alice,3.38,449005577,9780450000000.0,328,948,27,10/31/2000,Clare Naylor,Scholastic,jpn,250-499
+3640,Indian Givers: How the Indians of the Americas Transformed the World,4.11,449904962,9780450000000.0,288,1760,135,11/29/1989,Jack Weatherford,Scholastic Inc.,jpn,250-499
+3831,Time To Be In Earnest: A Fragment Of Autobiography,3.93,345442121,9780350000000.0,306,495,76,2/27/2001,P.D. James,Scholastic Inc.,jpn,250-499
+3851,Texas Heat (Texas  #2),4.18,345449606,9780350000000.0,496,2025,41,11/27/2001,Fern Michaels,Scholastic Inc.,jpn,250-499
+3858,Holy Cow: An Indian Adventure,3.53,767915747,9780770000000.0,304,15315,1101,4/13/2004,Sarah Macdonald,Scholastic Inc.,en-CA,250-499
+3870,A Short History of Nearly Everything,4.21,767923227,9780770000000.0,624,352,37,11/1/2005,Bill Bryson,Scholastic Inc.,en-CA,500-749
+3873,A History of God: The 4 000-Year Quest of Judaism  Christianity  and Islam,3.87,517223120,9780520000000.0,460,38915,1087,3/2/2004,Karen Armstrong,Scholastic Inc.,spa,250-499
+3886,The Bon Appetit Cookbook,4.07,764596861,9780760000000.0,816,1816,22,8/15/2006,Barbara Fairchild,Scholastic Inc.,ara,750-999
+4100,Behind Closed Doors: Secrets of Great Management,3.96,976694026,9780980000000.0,176,840,63,9/26/2005,Johanna Rothman,Scholastic,nl,<250
+4249,The Da Vinci Code (Robert Langdon  #2),3.84,739339788,9780740000000.0,0,91,16,3/28/2006,Dan Brown,Scholastic Inc.,grc,<250
+4338,Dispatches from the Edge: A Memoir of War  Disasters  and Survival,3.96,61132381,9780060000000.0,212,7205,825,5/23/2006,Anderson Cooper,Scholastic Inc.,ale,<250
+4579,The Far Side of Evil,3.98,142402931,9780140000000.0,324,60,9,1/13/2005,Sylvia Engdahl,Scholastic Inc.,glg,250-499
+4580,Enchantress from the Stars,3.95,142500372,9780140000000.0,304,2045,230,2/24/2003,Sylvia Engdahl,Scholastic Inc.,glg,250-499
+4595,The Genome War: How Craig Venter Tried to Capture the Code of Life and Save the World,3.83,345433742,9780350000000.0,392,272,23,6/28/2005,James Shreeve,Scholastic Inc.,jpn,250-499
+4654,The Imaginary Girlfriend,3.42,345458265,9780350000000.0,208,1841,112,12/3/2002,John Irving,Scholastic Inc.,jpn,<250
+4657,The Water-Method Man,3.35,034541800X,9780350000000.0,272,10479,251,6/23/1997,John Irving,Scholastic Inc.,jpn,250-499
+4658,Setting Free the Bears,3.3,345417984,9780350000000.0,304,8896,217,6/23/1997,John Irving,Scholastic Inc.,jpn,250-499
+4660,The 158-Pound Marriage,3.24,345417968,9780350000000.0,176,11346,280,6/23/1997,John Irving,Scholastic,jpn,<250
+4767,Star Wars Episode 1: The Phantom Menace Illustrated Screenplay,3.92,345431103,9780350000000.0,150,259,9,4/21/1999,George Lucas,Scholastic Inc.,en-GB,<250
+4963,Merry Christmas  Stinky Face,3.97,439635772,9780440000000.0,32,20,3,10/1/2004,Lisa McCourt,Scholastic Inc.,en-US,<250
+5171,Drowning Ruth,3.74,345439104,9780350000000.0,368,74161,2159,7/31/2001,Christina Schwarz,Scholastic Inc.,jpn,250-499
+5176,While I Was Gone,3.69,345443284,9780350000000.0,304,56320,1185,5/12/2000,Sue Miller,Scholastic Inc.,jpn,250-499
+5190,Open House,3.7,345435168,9780350000000.0,272,54119,1629,5/1/2001,Elizabeth Berg,Scholastic Inc.,jpn,250-499
+5207,Daughter of Fortune,3.91,006019491X,9780060000000.0,399,1005,95,10/6/1999,Isabel Allende,Scholastic Inc.,ale,250-499
+5237,The Crusader: Ronald Reagan and the Fall of Communism,4.23,61136905,9780060000000.0,432,179,14,10/17/2006,Paul Kengor,Scholastic Inc.,ale,250-499
+5319,A Christmas Story,4.08,767916220,9780770000000.0,144,3187,381,10/28/2003,Jean Shepherd,Scholastic Inc.,en-CA,<250
+5362,The Summons / The Brethren,3.99,739342770,9780740000000.0,0,241,9,10/10/2006,John Grisham,Scholastic Inc.,grc,<250
+5370,Amber Brown Is Green With Envy,3.95,439071712,9780440000000.0,160,834,42,8/1/2004,Paula Danziger,Del Rey Books,en-US,<250
+5439,Interpreter of Maladies,4.15,618101365,9780620000000.0,198,131876,8009,5/22/2000,Jhumpa Lahiri,Scholastic Inc.,ara,<250
+5472,Animal Farm / 1984,4.28,151010269,9780150000000.0,400,146659,1625,6/1/2003,George Orwell,Scholastic Inc.,ara,250-499
+5911,Poems From The Hobbit,4.3,618009345,9780620000000.0,57,169,5,12/13/1999,J.R.R. Tolkien,Scholastic Inc.,ara,<250
+6329,Roald Dahl Treasury,4.43,067003665X,9780670000000.0,448,2143,65,9/15/2003,Roald Dahl,Scholastic Inc.,msa,250-499
+6366,My Heart May Be Broken  but My Hair Still Looks Great (Domestic Equalizers #2),3.88,61134236,9780060000000.0,336,1226,120,8/29/2006,Dixie Cash,Scholastic Inc.,ger,250-499
+6542,The Patricia Cornwell CD Audio Treasury: All That Remains / Cruel & Unusual (Kay Scarpetta  #3  #4),4.16,60791217,9780060000000.0,0,202,1,7/26/2005,Patricia Cornwell,Scholastic Inc.,gla,<250
+6545,In the Dark of the Night,3.88,034548701X,9780350000000.0,324,4278,178,7/18/2006,John Saul,Scholastic Inc.,jpn,250-499
+6546,Perfect Nightmare,3.89,345467329,9780350000000.0,384,3721,236,4/25/2006,John Saul,Scholastic Inc.,jpn,250-499
+6552,Midnight Voices,3.75,449006530,9780450000000.0,384,2756,142,3/4/2003,John Saul,Scholastic Inc.,jpn,250-499
+6553,The Manhattan Hunt Club,3.98,345490649,9780350000000.0,384,4889,221,3/28/2006,John Saul,Scholastic Inc.,jpn,250-499
+6557,The Presence,3.76,449002411,9780450000000.0,432,2699,90,4/29/1998,John Saul,Scholastic Inc.,jpn,250-499
+6800,Easy Labor: Every Woman's Guide to Choosing Less Pain and More Joy During Childbirth,3.45,345476638,9780350000000.0,311,234,77,1/31/2006,William Camann,Scholastic Inc.,jpn,250-499
+6953,Like Water for Chocolate,3.95,739334190,9780740000000.0,0,121,33,5/2/2006,Laura Esquivel,Scholastic Inc.,grc,<250
+7071,My Movie Business: A Memoir,3.34,345441303,9780350000000.0,222,1113,60,10/10/2000,John Irving,Scholastic Inc.,jpn,<250
+7208,Under The Tuscan Sun - At Home In Italy,3.75,767902807,9780770000000.0,291,1036,171,8/10/1998,Frances Mayes,Scholastic,en-CA,250-499
+7340,The Maps of Tolkien's Middle-earth,4.14,061839110X,9780620000000.0,80,7649,31,10/2/2003,Brian Sibley,Scholastic Inc.,ara,<250
+7608,Lolita,3.89,739322060,9780740000000.0,12,787,239,4/26/2005,Vladimir Nabokov,Scholastic Inc.,grc,<250
+7611,sex.lies.murder.fame.,3.79,60786809,9780060000000.0,368,205,27,1/10/2006,Lolita Files,Scholastic Inc.,tur,250-499
+7661,Next,3.5,60872985,9780060000000.0,431,59354,2540,11/28/2006,Michael Crichton,Scholastic Inc.,ale,250-499
+7664,A New Collection of Three Complete Novels: Congo / Sphere / Eaters of the Dead,3.99,517101351,9780520000000.0,720,960,27,3/6/1994,Michael Crichton,Scholastic Inc.,enm,500-749
+7674,The Michael Crichton Collection: Airframe / The Lost World / Timeline,4.16,739340336,9780740000000.0,0,267,7,8/29/2006,Michael Crichton,Del Rey Books,grc,<250
+7681,Five Patients,3.48,345354648,9780350000000.0,204,4828,97,1/13/1989,Michael Crichton,Scholastic Inc.,jpn,<250
+7684,Twister,3.63,345409701,9780350000000.0,182,18,1,4/7/1999,Michael Crichton,Scholastic Inc.,jpn,<250
+7717,The Metamorphosis,3.79,1400047951,9781400000000.0,78,181,26,8/5/2003,Peter Kuper,Scholastic Inc.,mul,<250
+7718,The Metamorphosis (Graphic Novel Adaptation),3.79,1400052998,9781400000000.0,80,3192,307,7/20/2004,Peter Kuper,Scholastic Inc.,en-CA,<250
+7742,Ahab's Wife  or The Star-Gazer,4.03,60838744,9780060000000.0,704,40049,2391,8/2/2005,Sena Jeter Naslund,Scholastic Inc.,ger,500-749
+7791,Dr. Seuss Goes to War: The World War II Editorial Cartoons of Theodor Seuss Geisel,4.16,1565847040,9781570000000.0,272,1282,102,9/1/2001,Richard H. Minear,Scholastic Inc.,ita,250-499
+7926,All-of-a-Kind Family (All-of-a-Kind-Family  #1),4.22,385732953,9780390000000.0,188,21620,836,8/23/2005,Sydney Taylor,Scholastic Inc.,por,<250
+7983,Salamandastron (Redwall  #5),4.07,142501522,9780140000000.0,400,26237,240,9/15/2003,Brian Jacques,Scholastic,glg,250-499
+7987,The Legend of Luke (Redwall  #12),4.0,142501093,9780140000000.0,374,14205,144,6/2/2005,Brian Jacques,Scholastic Inc.,glg,250-499
+7997,Castaways of the Flying Dutchman (Flying Dutchman  #1),3.98,142501182,9780140000000.0,356,8025,261,3/31/2003,Brian Jacques,Scholastic Inc.,glg,250-499
+7998,Outcast of Redwall (Redwall  #8),3.92,142401420,9780140000000.0,368,17597,188,5/24/2004,Brian Jacques,Scholastic,glg,250-499
+8001,Triss (Redwall  #15),3.99,142402486,9780140000000.0,389,10830,119,9/9/2004,Brian Jacques,Scholastic Inc.,glg,250-499
+8091,The Door in the Hedge,3.68,698119606,9780700000000.0,224,7941,419,10/13/2003,Robin McKinley,Scholastic Inc.,glg,<250
+8515,The Man Who Listens to Horses,4.12,034542705X,9780350000000.0,352,9963,206,11/28/1998,Monty Roberts,Scholastic,jpn,250-499
+8745,Desert Flower,4.15,688172377,9780690000000.0,240,11981,735,3/15/2011,Waris Dirie,Scholastic Inc.,ger,<250
+8766,Feel the Fear . . . and Do It Anyway,4.03,345487427,9780350000000.0,217,506,53,12/26/2006,Susan  Jeffers,Scholastic Inc.,jpn,<250
+8787,The White Masai,3.45,61131520,9780060000000.0,320,4504,491,10/10/2006,Corinne Hofmann,Scholastic Inc.,tur,250-499
+8889,Return to the Planet of the Apes #2: Escape from Terror Lagoon,3.0,345251679,9780350000000.0,0,10,2,4/12/1976,William Arrow,Scholastic Inc.,jpn,<250
+8891,Return to the Planet of the Apes:  Visions from Nowhere,3.33,345251229,9780350000000.0,183,12,1,6/1/1976,William Arrow,Scholastic Inc.,jpn,<250
+8908,World War Z: An Oral History of the Zombie War,4.01,307346609,9780310000000.0,342,370331,20582,9/12/2006,Max Brooks,Scholastic Inc.,mul,250-499
+8915,A Short History of World War II,3.95,688085873,9780690000000.0,416,472,41,1/1/1980,James L. Stokesbury,Scholastic Inc.,ger,250-499
+9073,See No Evil: The True Story of a Ground Soldier in the CIA's War on Terrorism,3.93,140004684X,9781400000000.0,320,4040,259,1/7/2003,Robert B. Baer,Scholastic Inc.,en-CA,250-499
+9144,NYC Ballet Workout,4.01,688152023,9780690000000.0,208,238,10,1/13/1997,Peter Martins,Scholastic Inc.,ger,<250
+9253,Blubberina (Scrambled Legs  #5),3.29,590428888,9780590000000.0,135,13,0,10/1/1989,Jahnna N. Malcolm,Scholastic Inc.,en-US,<250
+9301,Rachel's Holiday (Walsh Family  #2),3.95,60090383,9780060000000.0,578,55525,1223,1/23/2007,Marian Keyes,Scholastic Inc.,ger,500-749
+9303,Lucy Sullivan Is Getting Married,3.77,60090375,9780060000000.0,640,43077,690,1/23/2007,Marian Keyes,Scholastic,ger,500-749
+9304,Essays and Stories by Marian Keyes: Bags  Trips  Make-up Tips  Charity  Glory  and the Darker Side of the Story,3.82,60787031,9780060000000.0,368,1625,42,9/6/2005,Marian Keyes,Scholastic Inc.,ger,250-499
+9350,The Virtues of Aging,3.55,345425928,9780350000000.0,160,221,36,10/13/1998,Jimmy Carter,Scholastic Inc.,jpn,<250
+9355,Until I Find You,3.63,345479726,9780350000000.0,820,22547,1371,5/30/2006,John Irving,Scholastic Inc.,jpn,750-999
+9376,Fannie Flagg's Original Whistle Stop Cafe Cookbook,4.19,449910288,9780450000000.0,224,911,42,9/11/1995,Fannie Flagg,Scholastic Inc.,jpn,<250
+9503,Saving Fish from Drowning,3.43,034546401X,9780350000000.0,472,26762,2524,9/26/2006,Amy Tan,Scholastic Inc.,jpn,250-499
+9515,Henry Adams and the Making of America,3.79,618134301,9780620000000.0,480,95,20,9/14/2005,Garry Wills,Scholastic,ara,250-499
+9538,Shadow Dance (Buchanan-Renard  #6),4.0,345453867,9780350000000.0,336,11205,431,12/26/2006,Julie Garwood,Scholastic Inc.,jpn,250-499
+9605,Cat's Cradle/God Bless You Mr. Rosewater/Breakfast of Champions,4.36,051712436X,9780520000000.0,527,914,8,5/28/1995,Kurt Vonnegut Jr.,Scholastic Inc.,enm,500-749
+9619,Bradbury Stories: 100 of His Most Celebrated Tales,4.41,60544880,9780060000000.0,912,5161,184,4/5/2005,Ray Bradbury,Scholastic Inc.,ger,750-999
+9638,The Cat's Pajamas,3.73,60777338,9780060000000.0,234,1370,122,7/26/2005,Ray Bradbury,Scholastic Inc.,ger,<250
+9742,The Audacity of Hope: Thoughts on Reclaiming the American Dream,3.75,307237699,9780310000000.0,375,127324,4496,10/17/2006,Barack Obama,Scholastic Inc.,mul,250-499
+9755,Oracle Bones: A Journey Between China's Past and Present,4.18,60826584,9780060000000.0,512,5247,491,4/25/2006,Peter Hessler,Scholastic Inc.,ale,500-749
+9789,A Walk in the Woods: Rediscovering America on the Appalachian Trail,4.06,767902521,9780770000000.0,284,4315,532,5/4/1999,Bill Bryson,Scholastic Inc.,en-CA,250-499
+10050,Youth in Revolt: The Journals of Nick Twisp,4.02,385481969,9780390000000.0,512,8257,793,1/1/2001,C.D. Payne,Scholastic Inc.,en-CA,500-749
+10055,And I Don't Want to Live This Life: A Mother's Story of Her Daughter's Murder,4.1,449911411,9780450000000.0,408,4746,298,9/29/1996,Deborah Spungen,Scholastic Inc.,jpn,250-499
+10089,Mary  Queen of Scots: Queen Without a Country,3.83,439194040,9780440000000.0,202,4825,148,5/1/2002,Kathryn Lasky,Scholastic Inc.,en-US,<250
+10106,The Children of Henry VIII,4.05,345407865,9780350000000.0,385,11134,418,7/8/1997,Alison Weir,Scholastic Inc.,jpn,250-499
+10165,Anatomy of Love: A Natural History of Mating  Marriage  and Why We Stray,3.94,449908976,9780450000000.0,432,501,36,1/3/1994,Helen Fisher,Scholastic,jpn,250-499
+10238,The Tao of Physics: An Exploration of the Parallels between Modern Physics and Eastern Mysticism,3.97,1570625190,9781570000000.0,366,14183,398,1/4/2000,Fritjof Capra,Scholastic Inc.,swe,250-499
+10382,Dreams from My Father: A Story of Race and Inheritance,3.88,307383415,9780310000000.0,442,1225,181,1/9/2007,Barack Obama,Scholastic,mul,250-499
+10534,The Art of War,3.97,1590302257,9781590000000.0,273,235924,5869,1/11/2005,Sun Tzu,Scholastic Inc.,swe,250-499
+10546,The Long-Lost Map (Ulysses Moore #2),4.0,043977439X,9780440000000.0,272,1693,76,7/1/2006,Pierdomenico Baccalario,Scholastic Inc.,eng,250-499
+10570,King Dork (King Dork  #1),3.56,385732910,9780390000000.0,344,6352,861,4/11/2006,Frank Portman,Scholastic Inc.,por,250-499
+10586,The Stephen King Collection: Stories from Night Shift,4.0,739317369,9780740000000.0,11,56,9,2/8/2005,Stephen King,Scholastic Inc.,grc,<250
+10599,Gray Matter and Other Stories from Night Shift,3.93,055347183X,9780550000000.0,0,156,9,8/1/1993,Stephen King,Scholastic Inc.,grc,<250
+10607,Black House (The Talisman  #2),4.01,034547063X,9780350000000.0,688,46428,1220,9/30/2003,Stephen King,Scholastic Inc.,jpn,500-749
+10750,Wicked: The Life and Times of the Wicked Witch of the West,3.53,60745908,9780060000000.0,409,2828,459,3/2/2004,Gregory Maguire,Scholastic,ger,250-499
+10810,Letters of E.B. White,4.13,60757086,9780060000000.0,736,694,39,11/28/2006,E.B. White,Scholastic Inc.,ale,500-749
+10846,Gatsby's Girl,3.54,618537252,9780620000000.0,312,863,121,5/1/2006,Caroline Preston,Scholastic,ara,250-499
+10880,The Proud Highway: Saga of a Desperate Southern Gentleman  1955-1967,4.14,345377966,9780350000000.0,720,2961,116,4/7/1998,Hunter S. Thompson,Scholastic Inc.,jpn,500-749
+10907,The Pursuit of Happyness,4.19,60744871,9780060000000.0,320,21292,756,10/24/2006,Chris Gardner,Scholastic Inc.,tur,250-499
+10969,Dragonfly in Amber (Outlander  #2),4.32,385302312,9780390000000.0,743,1088,118,7/1/1992,Diana Gabaldon,Scholastic Inc.,por,500-749
+10989,The Outlandish Companion: Companion to Outlander  Dragonfly in Amber  Voyager  and Drums of Autumn,4.08,385324138,9780390000000.0,577,11433,478,6/29/1999,Diana Gabaldon,Scholastic Inc.,por,500-749
+10993,The Eight,3.91,345419081,9780350000000.0,624,536,60,6/23/1997,Katherine Neville,Scholastic Inc.,jpn,500-749
+11077,The Sex Lives of Cannibals: Adrift in the Equatorial Pacific,3.87,767915305,9780770000000.0,272,19422,2077,6/8/2004,J. Maarten Troost,Scholastic Inc.,en-CA,250-499
+11247,Scandalous Risks,4.2,6496903,9780010000000.0,480,1114,43,7/22/2009,Susan Howatch,Scholastic Inc.,ale,250-499
+11366,The Guns of August,4.17,345476093,9780350000000.0,606,40927,1671,8/3/2004,Barbara W. Tuchman,Scholastic Inc.,jpn,500-749
+11502,The Gift of Asher Lev,4.16,449001156,9780450000000.0,384,6224,339,9/10/1997,Chaim Potok,Scholastic Inc.,jpn,250-499
+11503,In the Beginning,4.08,044900113X,9780450000000.0,416,2222,120,9/10/1997,Chaim Potok,Scholastic Inc.,jpn,250-499
+11663,Rabbit Novels: Rabbit  Run and Rabbit Redux,3.98,345464567,9780350000000.0,640,811,55,11/4/2003,John Updike,Scholastic Inc.,jpn,500-749
+11751,All Aunt Hagar's Children: Stories,3.78,60557567,9780060000000.0,399,1614,212,8/29/2006,Edward P. Jones,Scholastic,tur,250-499
+11933,Tamsin,4.02,451457633,9780450000000.0,288,3033,241,10/1/1999,Peter S. Beagle,Scholastic Inc.,glg,250-499
+12328,How To Draw The Legend Of Zelda    (troll),4.21,439635810,9780440000000.0,32,61,7,2/1/2004,Michael Teitelbaum,Scholastic,en-US,<250
+12417,The Poet of Tolstoy Park,3.93,345476328,9780350000000.0,304,565,118,3/28/2006,Sonny Brewer,Scholastic Inc.,jpn,250-499
+12442,The Plague Dogs,3.85,345494024,9780350000000.0,390,5875,401,11/28/2006,Richard  Adams,Scholastic Inc.,jpn,250-499
+12533,The Maytrees,3.57,61239534,9780060000000.0,216,4870,975,6/12/2007,Annie Dillard,Scholastic Inc.,ale,<250
+12555,The Bonesetter's Daughter,3.99,345457374,9780350000000.0,387,108440,2689,2/4/2003,Amy Tan,Scholastic Inc.,jpn,250-499
+12614,The Chomsky-Foucault Debate: On Human Nature,3.94,1595581340,9781600000000.0,213,1953,116,9/1/2006,Noam Chomsky,Scholastic Inc.,ita,<250
+12789,Falling Angels (Luc Actar #1),4.67,595377106,9780600000000.0,216,1,0,2/14/2006,Melissa M. Garcia,Scholastic Inc.,wel,<250
+12936,Gathering Blue (The Giver  #2),3.82,385732562,9780390000000.0,240,132584,9341,9/25/2000,Lois Lowry,Scholastic Inc.,por,<250
+13023,Alice in Wonderland,4.03,517223627,9780520000000.0,92,364782,5234,9/7/2004,Lewis Carroll,Scholastic Inc.,spa,<250
+13069,Naked Came the Manatee,3.48,449001245,9780450000000.0,208,2303,161,1/20/1998,Carl Hiaasen,Scholastic Inc.,jpn,<250
+13076,A Carl Hiaasen Collection: Stormy Weather  Tourist Season  and  Strip Tease,4.45,375410465,9780380000000.0,9,44,1,1/4/2000,Carl Hiaasen,Scholastic Inc.,grc,<250
+13504,A Clash of Kings (A Song of Ice and Fire  #2),4.41,073930870X,9780740000000.0,0,113,12,2/17/2004,George R.R. Martin,Scholastic Inc.,grc,<250
+13508,Lies My Teacher Told Me: Everything Your History Textbook Got Wrong,3.96,156584100X,9781570000000.0,384,402,55,8/4/1995,James W. Loewen,Scholastic Inc.,ita,250-499
+13521,Son of a Witch (The Wicked Years  #2),3.47,60747226,9780060000000.0,352,52323,3023,9/26/2006,Gregory Maguire,Scholastic Inc.,ger,250-499
+13577,Tsubasa: RESERVoir CHRoNiCLE  Vol. 04 (Tsubasa: RESERVoir CHRoNiCLE  #4),4.28,034547791X,9780350000000.0,192,4059,50,1/25/2005,CLAMP,Scholastic Inc.,en-GB,<250
+13625,Mistress of Mistresses: A Vision of Zimiamvia (The Zimiamvian Trilogy  #1),3.64,034527220X,9780350000000.0,405,26,6,12/12/1977,E.R. Eddison,Scholastic Inc.,en-GB,250-499
+13649,Lao Tzu: Tao Te Ching: A Book about the Way and the Power of the Way,4.3,1570623953,9781570000000.0,125,800,91,10/20/1998,Lao Tzu,Scholastic Inc.,swe,<250
+13650,The Wave in the Mind: Talks and Essays on the Writer  the Reader and the Imagination,4.3,1590300068,9781590000000.0,314,1044,164,2/17/2004,Ursula K. Le Guin,Scholastic Inc.,swe,250-499
+14069,Throne of Jade (Temeraire  #2),3.89,345481291,9780350000000.0,398,30029,1818,4/25/2006,Naomi Novik,Scholastic Inc.,en-GB,250-499
+14240,One Hundred Years of Solitude,4.07,60750766,9780060000000.0,560,130,5,2/20/2004,Gabriel García Márquez,Scholastic Inc.,ale,500-749
+14497,Neverwhere (London Below  #1),4.17,60557818,9780060000000.0,370,345122,15199,9/2/2003,Neil Gaiman,Scholastic Inc.,ger,250-499
+14567,Ecstasia,3.9,142400378,9780140000000.0,196,1543,51,1/19/2004,Francesca Lia Block,Scholastic Inc.,glg,<250
+14769,Davita's Harp,3.99,449911837,9780450000000.0,371,5005,314,8/27/1996,Chaim Potok,Scholastic Inc.,jpn,250-499
+14942,Mrs. Dalloway,3.79,151009988,9780150000000.0,194,176190,5595,10/28/2002,Virginia Woolf,Scholastic Inc.,ara,<250
+14978,Labyrinth of Evil (Star Wars: The Dark Lord Trilogy  #1),3.84,345475739,9780350000000.0,370,5701,215,9/27/2005,James Luceno,Scholastic Inc.,en-GB,250-499
+15098,Five Quarters of the Orange,3.85,61214604,9780060000000.0,336,582,74,1/2/2007,Joanne Harris,Scholastic Inc.,ger,250-499
+15100,Sleep  Pale Sister,3.28,60787112,9780060000000.0,396,2963,232,8/30/2005,Joanne Harris,Scholastic,ger,250-499
+15101,Blackberry Wine,3.8,380815923,9780380000000.0,368,10721,617,12/23/2003,Joanne Harris,Scholastic Inc.,ger,250-499
+15221,The Lord of the Rings: The Two Towers: Visual Companion,4.51,618258027,9780620000000.0,72,4524,23,11/6/2002,Jude Fisher,Scholastic Inc.,ara,<250
+15232,The Lord of the Rings: A Reader's Companion,4.35,618642676,9780620000000.0,416,4380,21,12/27/2005,Wayne G. Hammond,Scholastic Inc.,ara,250-499
+15239,The Lord of the Rings: Official Movie Guide,4.39,618154027,9780620000000.0,120,6356,21,11/6/2001,Brian Sibley,Scholastic Inc.,ara,<250
+15448,On a Pale Horse,4.13,345305183,9780350000000.0,325,156,13,9/12/1984,Piers Anthony,Scholastic Inc.,en-GB,250-499
+15546,Magic Kingdom for Sale—Sold! (Magic Kingdom of Landover #1),3.89,345317572,9780350000000.0,324,320,24,3/12/1986,Terry Brooks,Scholastic Inc.,en-GB,250-499
+15549,Armageddon's Children (Genesis of Shannara  #1),4.1,345484088,9780350000000.0,371,12609,524,9/30/2006,Terry Brooks,Scholastic Inc.,jpn,250-499
+15552,Tanequil (High Druid of Shannara  #2),3.98,034543577X,9780350000000.0,357,10750,106,8/30/2005,Terry Brooks,Scholastic Inc.,en-GB,250-499
+15555,The Heritage of Shannara (Heritage of Shannara  #1-4),4.29,345465547,9780350000000.0,1238,3613,42,8/26/2003,Terry Brooks,Scholastic Inc.,en-GB,>=1000
+15578,The Elfstones of Shannara (The Original Shannara Trilogy #2),3.97,345285549,9780350000000.0,564,1691,152,10/10/2000,Terry Brooks,Scholastic Inc.,en-GB,500-749
+15655,The Kindness of Strangers,4.02,60564784,9780060000000.0,400,11669,1418,1/2/2007,Katrina Kittle,Scholastic,ger,250-499
+15764,The Amateur Marriage,3.62,345472454,9780350000000.0,342,12986,1112,1/31/2006,Anne Tyler,Scholastic Inc.,jpn,250-499
+15819,While I Was Gone,3.69,345420748,9780350000000.0,352,239,28,11/26/2002,Sue Miller,Scholastic Inc.,jpn,250-499
+15977,The Museum of Dr. Moses: Tales of Mystery and Suspense,3.4,151015317,9780150000000.0,229,778,122,8/6/2007,Joyce Carol Oates,Scholastic,ara,<250
+16007,Last Train to Paradise: Henry Flagler and the Spectacular Rise and Fall of the Railroad that Crossed an Ocean,4.03,1400049474,9781400000000.0,288,1776,282,8/5/2003,Les Standiford,Scholastic Inc.,en-CA,250-499
+16047,A Thread of Grace,4.02,449004139,9780450000000.0,442,11782,1332,12/6/2005,Mary Doria Russell,Scholastic Inc.,jpn,250-499
+16141,Ego and Hubris: The Michael Malice Story,3.67,345479394,9780350000000.0,160,390,57,4/11/2006,Harvey Pekar,Scholastic Inc.,jpn,<250
+16267,Michael Tolliver Lives (Tales of the City  #7),3.93,60761350,9780060000000.0,277,583,82,6/12/2007,Armistead Maupin,Scholastic,ale,250-499
+16268,Back to Barbary Lane: The Tales of the City Omnibus (Tales of the City  #4-6),4.44,60166495,9780060000000.0,720,514,11,11/26/1991,Armistead Maupin,Scholastic Inc.,ale,500-749
+16307,Hallowe'en Party (Hercule Poirot  #39),3.66,7120680,9780010000000.0,336,20656,1246,9/3/2001,Agatha Christie,Scholastic Inc.,ale,250-499
+16448,Welcome to the Great Mysterious,3.78,345442741,9780350000000.0,368,2432,202,1/2/2002,Lorna Landvik,Scholastic Inc.,jpn,250-499
+16449,Oh My Stars,3.89,345468368,9780350000000.0,416,5500,514,2/28/2006,Lorna Landvik,Scholastic Inc.,jpn,250-499
+16450,Your Oasis on Flame Lake,3.59,449002985,9780450000000.0,320,2194,129,6/16/1998,Lorna Landvik,Scholastic Inc.,jpn,250-499
+16451,Patty Jane's House of Curl,3.86,804114609,9780800000000.0,304,8950,505,6/28/1999,Lorna Landvik,Scholastic Inc.,nor,250-499
+16452,The Tall Pine Polka / Your Oasis on Flame Lake,3.99,345487664,9780350000000.0,752,177,7,10/4/2005,Lorna Landvik,Scholastic Inc.,jpn,750-999
+16528,My Invented Country: A Nostalgic Journey Through Chile,3.85,006054564X,9780060000000.0,199,4844,359,5/27/2003,Isabel Allende,Scholastic,ale,<250
+16562,Ines of My Soul,3.93,61161578,9780060000000.0,528,62,13,11/7/2006,Isabel Allende,Scholastic Inc.,ale,500-749
+16692,Roverandom,3.87,395957990,9780400000000.0,128,471,70,6/30/1999,J.R.R. Tolkien,Scholastic Inc.,ara,<250
+16779,The Case of the Terrified Typist (Perry Mason #49),3.75,034591483X,9780350000000.0,154,591,31,7/1/1999,Erle Stanley Gardner,Scholastic Inc.,jpn,<250
+16887,How to Write: Advice and Reflections,3.87,688149480,9780690000000.0,240,162,19,10/16/1996,Richard Rhodes,Scholastic Inc.,ger,<250
+16948,Children of God (The Sparrow  #2),4.06,044900483X,9780450000000.0,451,15158,1417,2/2/1999,Mary Doria Russell,Scholastic Inc.,jpn,250-499
+17007,The Devilish Pleasures of a Duke (Boscastle  #6),3.99,345487621,9780350000000.0,345,938,46,7/31/2007,Jillian Hunter,Scholastic Inc.,jpn,250-499
+17061,Coraline,4.06,61139378,9780060000000.0,162,403622,13096,8/29/2006,Neil Gaiman,Scholastic Inc.,ger,<250
+17179,The Sound and the Fury,3.86,739325353,9780740000000.0,9,138,37,7/6/2005,William Faulkner,Scholastic Inc.,grc,<250
+17206,Lady Friday (The Keys to the Kingdom  #5),3.92,439700884,9780440000000.0,320,19436,267,3/1/2007,Garth Nix,Scholastic Inc.,en-US,250-499
+17349,The Demon-Haunted World: Science as a Candle in the Dark,4.27,345409469,9780350000000.0,459,50343,2084,2/25/1997,Carl Sagan,Scholastic Inc.,jpn,250-499
+17518,The Trolley Car Family,4.14,590407325,9780590000000.0,256,314,46,7/1/1987,Eleanor Clymer,Scholastic Inc.,en-US,250-499
+17639,The Guardship (Thomas Marlowe  #1),4.01,380804522,9780380000000.0,384,313,28,1/5/2000,James L. Nelson,Scholastic Inc.,ger,250-499
+17766,Master and Commander (Aubrey/Maturin Book 1),4.1,073931565X,9780740000000.0,0,1,0,3/9/2004,Patrick O'Brian,Scholastic Inc.,grc,<250
+18348,"Incest: From ""A Journal of Love"": The Unexpurgated Diary of Anaïs Nin  1932-1934",3.99,151443661,9780150000000.0,418,908,54,10/1/1992,Anaïs Nin,Scholastic Inc.,ara,250-499
+18361,Fire: From A Journal of Love - The Unexpurgated Diary of Anaïs Nin (1934-1937),4.13,151000883,9780150000000.0,448,196,6,5/15/1995,Anaïs Nin,Scholastic Inc.,ara,250-499
+18878,The Belgariad  Vol. 1: Pawn of Prophecy / Queen of Sorcery / Magician's Gambit (The Belgariad  #1-3),4.28,345456327,9780350000000.0,644,14418,385,8/27/2002,David Eddings,Scholastic Inc.,en-GB,500-749
+18884,Polgara the Sorceress,4.09,345422554,9780350000000.0,754,25145,291,12/26/1998,David Eddings,Scholastic Inc.,en-GB,750-999
+18937,In the Beginning...Was the Command Line,3.8,380815931,9780380000000.0,151,6638,329,11/9/1999,Neal Stephenson,Scholastic,ger,<250
+18943,Confessions of an Ugly Stepsister,3.53,60987529,9780060000000.0,372,53782,3344,10/3/2000,Gregory Maguire,Scholastic,ger,250-499
+18957,The Corner: A Year in the Life of an Inner-City Neighborhood,4.43,767900316,9780770000000.0,576,4404,434,6/15/1998,David Simon,Scholastic Inc.,en-CA,500-749
+18963,Morgoth's Ring (The History of Middle-Earth  #10),4.13,395680921,9780400000000.0,478,1619,44,12/14/1993,J.R.R. Tolkien,Scholastic Inc.,ara,250-499
+18964,The War of the Jewels (The History of Middle-Earth  #11),3.93,395710413,9780400000000.0,470,3329,15,12/6/1994,J.R.R. Tolkien,Scholastic Inc.,ara,250-499
+19295,Ten Days to Self-Esteem,3.96,688094554,9780690000000.0,336,436,19,3/17/1999,David D. Burns,Scholastic Inc.,ger,250-499
+19432,Angels Don't Know Karate (The Adventures Of The Bailey School Kids  #23),3.8,590849026,9780590000000.0,67,741,26,11/1/1996,Debbie Dadey,Scholastic,en-US,<250
+19445,A Guide to the Words of My Perfect Teacher,4.61,1590300734,9781590000000.0,336,79,0,6/22/2004,Ngawang Pelzang,Scholastic Inc.,swe,250-499
+19469,The Face on the Milk Carton (Janie Johnson  #1),3.73,038532328X,9780390000000.0,192,49975,2360,4/13/1996,Caroline B. Cooney,Scholastic Inc.,por,<250
+19578,Lost Boy Lost Girl,3.48,449149919,9780450000000.0,368,4017,296,9/28/2004,Peter Straub,Scholastic Inc.,jpn,250-499
+19818,Moon-Flash (Kyreol  #1-2),3.74,142403016,9780140000000.0,304,348,13,3/17/2005,Patricia A. McKillip,Scholastic Inc.,glg,250-499
+20059,Confessions of a Pagan Nun,3.87,1570629137,9781570000000.0,191,1768,266,9/10/2002,Kate Horsley,Scholastic Inc.,swe,<250
+20075,Dragon's Fire (Pern  #19),3.98,345480287,9780350000000.0,366,7923,171,8/1/2006,Anne McCaffrey,Scholastic Inc.,en-GB,250-499
+20076,Maelstrom,3.88,345470044,9780350000000.0,237,1088,37,1/31/2007,Anne McCaffrey,Scholastic Inc.,en-GB,<250
+20086,The Mark of the Crown (Star Wars: Jedi Apprentice  #4),3.73,590519344,9780590000000.0,131,2319,63,10/1/1999,Jude Watson,Scholastic Inc.,eng,<250
+20097,The Sea,3.51,739333771,9780740000000.0,0,42,12,8/15/2006,John Banville,Scholastic Inc.,grc,<250
+20127,Persuasive Writing: Mini-Lessons  Strategies  Activities,3.2,590209345,9780590000000.0,64,5,1,8/1/1998,Tara MacCarthy,Scholastic Inc.,en-US,<250
+20525,William James: In the Maelstrom of American Modernism,4.25,618433252,9780620000000.0,622,353,42,11/9/2006,Robert D. Richardson Jr.,Scholastic Inc.,ara,500-749
+20972,There's a Spiritual Solution to Every Problem,4.27,60192305,9780060000000.0,288,5738,129,8/21/2001,Wayne W. Dyer,Scholastic Inc.,ale,250-499
+21060,Crown Duel (Crown & Court #1-2),4.19,142301515,9780140000000.0,471,22971,896,6/10/2002,Sherwood Smith,Scholastic Inc.,glg,250-499
+21125,A Transatlantic Love Affair: Letters to Nelson Algren,4.01,1565845609,9781570000000.0,560,235,16,9/1/1999,Simone de Beauvoir,Scholastic Inc.,ita,500-749
+21194,The Stranger,3.53,590456806,9780590000000.0,198,55,11,11/1/1993,Caroline B. Cooney,Scholastic Inc.,en-US,<250
+21200,More Classic Italian Cooking,4.48,345314034,9780350000000.0,465,64,3,7/12/1984,Marcella Hazan,Scholastic Inc.,jpn,250-499
+21276,A Dangerous Man (Hank Thompson  #3),4.07,034548133X,9780350000000.0,286,2735,162,9/19/2006,Charlie Huston,Scholastic Inc.,jpn,250-499
+21278,Caught Stealing (Hank Thompson  #1),4.04,345464788,9780350000000.0,240,4797,431,5/31/2005,Charlie Huston,Scholastic Inc.,jpn,<250
+21342,Math Fables,4.03,043945400X,9780440000000.0,40,0,0,1/1/1949,Greg Tang,Scholastic Inc.,eng,<250
+21352,Icebound,3.76,739341413,9780740000000.0,0,46,12,3/6/2007,David Axton,Scholastic Inc.,grc,<250
+21402,Pompeii,3.82,739341774,9780740000000.0,0,7,1,9/5/2006,Robert   Harris,Scholastic Inc.,grc,<250
+21550,Hundred-Dollar Baby (Spenser  #34),3.82,739318659,9780740000000.0,0,57,11,10/24/2006,Robert B. Parker,Scholastic Inc.,grc,<250
+21671,Mystic River,4.18,60584750,9780060000000.0,416,109447,2859,2/1/2001,Dennis Lehane,Scholastic Inc.,ger,250-499
+21717,Triptych (Will Trent  #1),4.13,385339461,9780390000000.0,393,42325,2011,8/15/2006,Karin Slaughter,Scholastic Inc.,por,250-499
+21720,Beyond Reach (Grant County  #6),4.19,038533947X,9780390000000.0,404,19136,979,7/31/2007,Karin Slaughter,Scholastic Inc.,por,250-499
+21721,A Faint Cold Fear (Grant County  #3),4.08,60534052,9780060000000.0,422,25119,900,7/27/2004,Karin Slaughter,Scholastic Inc.,ale,250-499
+21723,Like A Charm,3.48,60583312,9780060000000.0,384,22,4,5/26/2015,Karin Slaughter,Scholastic,ger,250-499
+21749,Bad Luck and Trouble (Jack Reacher  #11),4.18,739340670,9780740000000.0,13,53,15,5/15/2007,Lee Child,Scholastic Inc.,grc,<250
+21787,The Princess Bride,4.26,345418263,9780350000000.0,456,703676,13878,7/15/2003,William Goldman,Scholastic Inc.,jpn,250-499
+21806,Boys and Girls Together,3.67,345439732,9780350000000.0,768,753,59,7/31/2001,William Goldman,Scholastic Inc.,jpn,750-999
+21874,The Last Kingdom (The Saxon Stories  #1),4.25,61126578,9780060000000.0,6,16,1,7/25/2006,Bernard Cornwell,Scholastic Inc.,gla,<250
+21906,The Last Kingdom (The Saxon Stories  #1),4.25,60759259,9780060000000.0,6,39,9,1/25/2005,Bernard Cornwell,Scholastic Inc.,gla,<250
+21928,Time To Hunt (Bob Lee Swagger  #3),4.26,055345580X,9780550000000.0,0,11,1,5/18/1998,Stephen Hunter,Scholastic Inc.,grc,<250
+21931,The Day Before Midnight,4.01,553452118,9780550000000.0,0,1,0,12/1/1989,Stephen Hunter,Scholastic Inc.,grc,<250
+21991,Waterworks,3.44,679433724,9780680000000.0,0,16,2,5/31/1994,E.L. Doctorow,Scholastic Inc.,grc,<250
+22026,The Sicilian,3.97,345441702,9780350000000.0,416,16557,502,5/1/2001,Mario Puzo,Scholastic Inc.,jpn,250-499
+22027,The Dark Arena,3.35,345441699,9780350000000.0,288,1554,54,5/1/2001,Mario Puzo,Scholastic Inc.,jpn,250-499
+22028,Omerta,3.71,345432401,9780350000000.0,369,12374,330,5/1/2001,Mario Puzo,Scholastic Inc.,jpn,250-499
+22037,The Fortunate Pilgrim,3.83,345476727,9780350000000.0,304,3232,222,9/28/2004,Mario Puzo,Scholastic Inc.,jpn,250-499
+22077,The Michael Crichton Collection: Jurassic Park / The Lost World / The Andromeda Strain,4.29,375415807,9780380000000.0,0,107,3,6/9/2000,Michael Crichton,Scholastic Inc.,grc,<250
+22082,Jurassic Park,4.02,345418956,9780350000000.0,400,27,5,6/23/1997,Michael Crichton,Scholastic,jpn,250-499
+22195,The Zero,3.51,60898658,9780060000000.0,336,1976,297,8/29/2006,Jess Walter,Scholastic Inc.,ale,250-499
+22198,The Hunt for Zero Point: Inside the Classified World of Antigravity Technology,4.12,767906284,9780770000000.0,320,323,37,12/18/2007,Nick Cook,Scholastic,en-CA,250-499
+22201,Triple Zero  (Star Wars: Republic Commando  #2),4.24,345490096,9780350000000.0,393,5130,163,2/28/2006,Karen Traviss,Scholastic Inc.,en-GB,250-499
+22208,Hush! A Thai Lullaby,4.03,531071669,9780530000000.0,32,1315,197,3/1/2000,Minfong Ho,Scholastic Inc.,eng,<250
+22239,For the Sins of My Father: A Mafia Killer  His Son  and the Legacy of a Mob Life,4.05,767906896,9780770000000.0,288,966,108,9/9/2003,Albert Demeo,Scholastic Inc.,en-CA,250-499
+22292,Haunted,3.59,739302868,9780740000000.0,14,57,23,5/10/2005,Chuck Palahniuk,Scholastic Inc.,grc,<250
+22460,Red Herrings and White Elephants: The Origins of the Phrases We Use Every Day,3.73,60843373,9780060000000.0,272,71,5,11/1/2005,Albert Jack,Scholastic,ale,250-499
+22649,Bookends,3.72,767907817,9780770000000.0,368,37153,822,5/27/2003,Jane Green,Scholastic Inc.,en-CA,250-499
+22898,The Probable Future,3.83,345455916,9780350000000.0,352,11910,965,6/1/2004,Alice Hoffman,Scholastic Inc.,jpn,250-499
+22915,The Complete Brothers Grimm Fairy Tales,4.3,517229250,9780520000000.0,680,4420,165,10/3/2006,Jacob Grimm,Scholastic,spa,500-749
+23217,Size 14 Is Not Fat Either (Heather Wells  #2),3.83,60525126,9780060000000.0,344,27424,1038,11/28/2006,Meg Cabot,Scholastic Inc.,ger,250-499
+23220,Size 12 Is Not Fat (Heather Wells  #1),3.74,60525118,9780060000000.0,345,75856,2408,12/27/2005,Meg Cabot,Scholastic Inc.,ger,250-499
+23233,Ten Things I Hate about You,4.11,439087309,9780440000000.0,170,1435,65,6/1/1999,David Levithan,Scholastic Inc.,en-US,<250
+23300,The Door to Time (Ulysses Moore  #1),3.93,439774381,9780440000000.0,239,3099,241,1/1/2006,Pierdomenico Baccalario,Scholastic Inc.,eng,<250
+23391,Running from the Deity (Pip & Flinx #11),3.81,345461614,9780350000000.0,280,1045,26,11/28/2006,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+23392,Lost and Found,3.68,345461274,9780350000000.0,256,722,65,5/31/2005,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+23503,The Alchemist's Daughter,3.25,307335852,9780310000000.0,346,3565,451,10/24/2006,Katharine McMahon,Scholastic Inc.,en-CA,250-499
+23526,Classic Myths to Read Aloud: The Great Stories of Greek and Roman Mythology  Specially Arranged for Children Five and Up by an Educational Expert,4.12,517588374,9780520000000.0,272,249,44,4/28/1992,William F. Russell,Scholastic Inc.,en-CA,250-499
+23549,The Journal of Scott Pendleton Collins: A World War 2 Soldier,3.96,439050138,9780440000000.0,140,1132,181,6/1/1999,Walter Dean Myers,Scholastic Inc.,eng,<250
+23589,The J.R.R. Tolkien Companion and Guide,4.64,618391134,9780620000000.0,2264,45,0,11/2/2006,Christina Scull,Scholastic Inc.,ara,>=1000
+23591,The Children of Húrin,3.97,618894640,9780620000000.0,313,2681,225,4/17/2007,J.R.R. Tolkien,Scholastic Inc.,ara,250-499
+23598,The J.R.R. Tolkien Companion and Guide  Volume 1: Chronology,4.51,618391029,9780620000000.0,1002,40,2,11/2/2006,Christina Scull,Scholastic Inc.,ara,>=1000
+23600,Sauron Defeated: The History of The Lord of the Rings  Part Four (The History of Middle-Earth  #9),4.01,395606497,9780400000000.0,496,2572,41,10/27/1992,J.R.R. Tolkien,Scholastic Inc.,ara,250-499
+23601,The J.R.R. Tolkien Companion and Guide  Volume 2: Reader's Guide,4.46,618391010,9780620000000.0,1262,31,2,11/2/2006,Wayne G. Hammond,Scholastic Inc.,ara,>=1000
+23700,The Mermaids Singing,3.77,380815591,9780380000000.0,288,1859,231,11/6/2001,Lisa Carey,Scholastic,ger,250-499
+24037,The Deep (Dive  #2),3.78,439507235,9780440000000.0,148,1436,55,7/1/2003,Gordon Korman,Scholastic Inc.,en-US,<250
+24047,The Stowaway Solution (On The Run  #4),4.11,439651395,9780440000000.0,160,2041,82,10/1/2005,Gordon Korman,Scholastic Inc.,en-US,<250
+24050,The Fugitive Factor (On The Run  #2),4.13,439651379,9780440000000.0,160,2499,151,6/1/2005,Gordon Korman,Scholastic Inc.,en-US,<250
+24058,The Zucchini Warriors (Macdonald Hall  #5),4.01,590441744,9780590000000.0,208,1160,42,6/1/1991,Gordon Korman,Scholastic Inc.,en-US,<250
+24093,Street Magic (The Circle Opens  #2),4.15,590396439,9780590000000.0,300,21070,286,11/15/2006,Tamora Pierce,Scholastic Inc.,en-US,250-499
+24223,The Art of Warfare,3.97,034536239X,9780350000000.0,336,824,55,3/2/1993,Sun Tzu,Scholastic Inc.,jpn,250-499
+24283,Les Misérables,4.3,449300021,9780450000000.0,400,4917,352,12/12/1982,Victor Hugo,Scholastic Inc.,jpn,250-499
+24300,Poppy,3.96,689837186,9780690000000.0,163,6894,501,5/3/2005,Avi,Scholastic Inc.,en-US,<250
+24674,Isolde  Queen of the Western Isle (Tristan and Isolde  #1),3.64,1400047862,9781400000000.0,360,2260,151,6/24/2003,Rosalind Miles,Scholastic Inc.,en-CA,250-499
+24804,A Parchment of Leaves,4.18,345464974,9780350000000.0,304,3192,357,8/26/2003,Silas House,Scholastic Inc.,jpn,250-499
+24887,Parasite Pig (Interstellar Pig #2),3.64,142400866,9780140000000.0,224,355,31,2/9/2004,William Sleator,Scholastic,glg,<250
+24929,Lost,2.82,60988649,9780060000000.0,340,13152,904,9/17/2002,Gregory Maguire,Scholastic Inc.,ger,250-499
+25041,The Case of the Snowboarding Superstar (Jigsaw Jones  #29),3.98,439793955,9780440000000.0,80,123,13,1/1/2006,James Preller,Scholastic,en-US,<250
+25044,The Case Of The Kidnapped Candy (Jigsaw Jones Mystery #30),3.75,439896185,9780440000000.0,80,104,6,1/1/2007,James Preller,Scholastic Inc.,en-US,<250
+25321,King of the Middle March,3.82,439266017,9780440000000.0,432,1334,47,3/1/2006,Kevin Crossley-Holland,Scholastic Inc.,eng,250-499
+25347,Out of Egypt (Christ the Lord  #1),3.58,345436830,9780350000000.0,350,11519,981,10/31/2006,Anne Rice,Scholastic Inc.,jpn,250-499
+25352,Coming Out,3.51,385338325,9780390000000.0,210,4160,241,6/27/2006,Danielle Steel,Scholastic Inc.,por,<250
+25457,The Little Baby Snoogle-Fleejer,3.17,812927311,9780810000000.0,24,42,11,11/21/1995,Jimmy Carter,Scholastic Inc.,mul,<250
+25652,The Best Recipes in the World: More Than 1 000 International Dishes to Cook at Home,3.98,767906721,9780770000000.0,757,1813,40,10/11/2005,Mark Bittman,Scholastic Inc.,en-CA,750-999
+25653,The Minimalist Cooks at Home: Recipes That Give You More Flavor from Fewer Ingredients in Less Time,3.9,767909267,9780770000000.0,240,261,20,9/10/2002,Mark Bittman,Scholastic Inc.,en-CA,<250
+25752,Blind Flight,3.63,590321145,9780590000000.0,122,25,5,12/1/1982,Hilary H. Milton,Scholastic,en-US,<250
+25788,The Book of Five Rings,4.07,1570627487,9781570000000.0,144,192,10,4/13/1993,Miyamoto Musashi,Scholastic Inc.,swe,<250
+25789,The Book of Five Rings,4.07,1590302486,9781590000000.0,166,926,74,1/11/2005,Miyamoto Musashi,Scholastic Inc.,swe,<250
+25790,The Lord of the Rings Sketchbook,4.27,618640142,9780620000000.0,192,9853,72,10/19/2005,Alan  Lee,Scholastic Inc.,ara,<250
+25812,The Ruby Ring,3.7,1400051738,9781400000000.0,371,1070,70,4/5/2005,Diane Haeger,Scholastic Inc.,en-CA,250-499
+26093,Identity,3.68,60175648,9780060000000.0,176,266,31,4/21/1998,Milan Kundera,Scholastic Inc.,ale,<250
+26175,To the Last Man: A Novel of the First World War,4.22,345461363,9780350000000.0,636,4809,315,8/30/2005,Jeff Shaara,Scholastic Inc.,jpn,500-749
+26184,African Nights,3.8,60954833,9780060000000.0,336,313,19,3/22/2000,Kuki Gallmann,Scholastic Inc.,ger,250-499
+26210,Bras & Broomsticks (Magic in Manhattan  #1),3.73,385731841,9780390000000.0,310,8709,534,6/13/2006,Sarah Mlynowski,Del Rey Books,por,250-499
+26212,Frogs & French Kisses (Magic in Manhattan  #2),3.97,385731825,9780390000000.0,288,4863,221,6/13/2006,Sarah Mlynowski,Scholastic Inc.,por,250-499
+26274,The Cultural Cold War: The CIA and the World of Arts and Letters,4.01,1565846648,9781570000000.0,509,13,1,4/1/2001,Frances Stonor Saunders,Scholastic Inc.,ita,500-749
+26330,Healing Emotions: Conversations with the Dalai Lama on Mindfulness  Emotions  and Health,4.04,1590300106,9781590000000.0,288,302,8,1/14/2003,Daniel Goleman,Scholastic Inc.,swe,250-499
+26506,Sisters,3.85,385340222,9780390000000.0,341,15495,1037,2/13/2007,Danielle Steel,Scholastic Inc.,por,250-499
+26653,The Coal Tattoo,4.04,345480058,9780350000000.0,368,1789,144,8/30/2005,Silas House,Scholastic Inc.,jpn,250-499
+26654,Clay's Quilt,3.95,345450698,9780350000000.0,320,2685,235,2/26/2002,Silas House,Scholastic Inc.,jpn,250-499
+27243,Dancing in the Flames: The Dark Goddess in the Transformation of Consciousness,4.24,1570623139,9781570000000.0,256,375,24,5/6/1997,Marion Woodman,Scholastic Inc.,swe,250-499
+27303,A History of God: The 4 000-Year Quest of Judaism  Christianity  and Islam,3.87,345384563,9780350000000.0,496,1343,144,8/9/1994,Karen Armstrong,Scholastic Inc.,jpn,250-499
+27309,The Battle for God: A History of Fundamentalism,3.93,345391691,9780350000000.0,480,5677,254,1/30/2001,Karen Armstrong,Scholastic Inc.,jpn,250-499
+27313,The Analects of Confucius: A Philosophical Translation,3.83,345434072,9780350000000.0,352,180,16,9/7/1999,Confucius,Scholastic Inc.,jpn,250-499
+27485,Mating in Captivity: Reconciling the Erotic and the Domestic,4.15,60753633,9780060000000.0,272,10138,994,9/5/2006,Esther Perel,Scholastic Inc.,ale,250-499
+27520,Katy and the Big Snow (Book & Cassette),4.24,395959918,9780400000000.0,40,0,0,8/30/1999,Virginia Lee Burton,Scholastic Inc.,ara,<250
+27877,Savage Stone Age Sticker Book (Horrible Histories),4.0,439959047,9780440000000.0,20,9,0,8/19/2005,Terry Deary,Scholastic Inc.,en-US,<250
+27943,Crimes Against Nature: How George W. Bush and His Corporate Pals Are Plundering the Country and Hijacking Our Democracy,4.08,60746874,9780060000000.0,256,72,14,8/3/2004,Robert F. Kennedy Jr.,Scholastic Inc.,ale,250-499
+27988,Citizen X: Killer Department,4.01,804111642,9780800000000.0,258,94,10,10/4/1993,Robert Cullen,Scholastic Inc.,nor,250-499
+28356,I'm the One That I Want,3.69,345440145,9780350000000.0,228,1459,132,4/30/2002,Margaret Cho,Scholastic Inc.,jpn,<250
+28585,Judge Dredd (Audio Cassette),2.96,553476793,9780550000000.0,0,6,0,7/1/1995,Neal Barrett Jr.,Scholastic Inc.,grc,<250
+28636,The Curtain: An Essay in Seven Parts,3.96,60841869,9780060000000.0,176,1388,109,1/30/2007,Milan Kundera,Scholastic Inc.,ale,<250
+28808,The Waterborn (Children of the Changeling  #1),3.81,345396707,9780350000000.0,384,76,5,3/2/1997,Greg Keyes,Scholastic,en-GB,250-499
+28867,The Princes of Ireland (The Dublin Saga  #1),3.86,345472357,9780350000000.0,778,10514,865,3/1/2005,Edward Rutherfurd,Scholastic Inc.,jpn,750-999
+29129,The Last Unicorn,4.17,345254848,9780350000000.0,248,41,5,1/1/1969,Peter S. Beagle,Scholastic Inc.,jpn,<250
+29248,Kevin Trudeau's Mega Memory: How to Release Your Superpower Memory in 30 Minutes Or Less a Day,3.54,688153879,9780690000000.0,368,128,15,8/16/2005,Kevin Trudeau,Scholastic Inc.,ger,250-499
+29395,Sharpe's Fury (Sharpe  #11),4.1,60530480,9780060000000.0,352,6057,136,8/22/2006,Bernard Cornwell,Scholastic Inc.,ale,250-499
+29478,Remind Me Again Why I Need A Man,3.3,61140538,9780060000000.0,384,689,128,5/1/2007,Claudia Carroll,Scholastic Inc.,ale,250-499
+29488,Candy,4.09,345423879,9780350000000.0,304,5838,301,6/16/1998,Luke Davies,Scholastic,jpn,250-499
+29519,Conspiracy of Fools,4.23,767911792,9780770000000.0,784,4511,309,12/27/2005,Kurt Eichenwald,Scholastic Inc.,en-CA,750-999
+29917,The Rising Tide (World War II: 1939-1945  #1),4.11,034546141X,9780350000000.0,576,5709,390,11/7/2006,Jeff Shaara,Scholastic Inc.,jpn,500-749
+29919,Jeff Shaara's Civil War Battlefields: Discovering America's Hallowed Ground,4.11,345464885,9780350000000.0,288,584,59,4/25/2006,Jeff Shaara,Scholastic Inc.,jpn,250-499
+29920,Rise to Rebellion,4.18,345427548,9780350000000.0,492,5745,383,6/29/2004,Jeff Shaara,Scholastic Inc.,jpn,250-499
+29922,Gone for Soldiers: A Novel of the Mexican War,4.14,345427513,9780350000000.0,424,191,18,7/3/2001,Jeff Shaara,Scholastic Inc.,jpn,250-499
+29923,The Last Full Measure (The Civil War Trilogy  #3),4.24,345434811,9780350000000.0,640,13438,314,5/2/2000,Jeff Shaara,Scholastic Inc.,jpn,500-749
+30067,Drop Dead Gorgeous (Blair Mallory  #2),3.93,345486587,9780350000000.0,347,7227,301,11/28/2006,Linda Howard,Scholastic Inc.,jpn,250-499
+30224,Mistral's Kiss (Merry Gentry  #5),4.04,345443586,9780350000000.0,212,27026,421,12/12/2006,Laurell K. Hamilton,Scholastic,jpn,<250
+30226,A Stroke of Midnight (Merry Gentry  #4),4.07,345443608,9780350000000.0,385,28551,442,11/28/2006,Laurell K. Hamilton,Scholastic,jpn,250-499
+30240,A Caress of Twilight (Merry Gentry  #2),4.06,345478169,9780350000000.0,348,32029,596,3/15/2005,Laurell K. Hamilton,Scholastic,jpn,250-499
+30518,Tête-à-Tête: Simone de Beauvoir and Jean-Paul Sartre,4.11,60520590,9780060000000.0,432,108,16,10/4/2005,Hazel Rowley,Scholastic Inc.,ale,250-499
+30681,Thumbsucker,3.44,385497091,9780390000000.0,300,1203,111,10/19/1999,Walter Kirn,Scholastic Inc.,en-CA,250-499
+30705,Making a Change for Good: A Guide to Compassionate Self-Discipline,3.93,1590302087,9781590000000.0,128,304,36,3/13/2007,Cheri Huber,Scholastic Inc.,swe,<250
+30855,A Woman in Jerusalem,3.43,151012261,9780150000000.0,256,851,132,8/14/2006,A.B. Yehoshua,Scholastic,ara,250-499
+30889,The Crazyladies of Pearl Street,3.77,1400080371,9781400000000.0,384,1063,157,6/6/2006,Trevanian,Scholastic Inc.,en-CA,250-499
+30891,The Summer of Katya,3.99,1400098041,9781400000000.0,288,2257,116,6/28/2005,Trevanian,Scholastic Inc.,en-CA,250-499
+30892,The Main,3.86,1400098238,9781400000000.0,352,920,32,7/26/2005,Trevanian,Scholastic Inc.,en-CA,250-499
+30893,The Eiger Sanction (Jonathan Hemlock  #1),4.06,1400098025,9781400000000.0,336,10385,152,5/10/2005,Trevanian,Scholastic Inc.,en-CA,250-499
+31050,A Three Dog Life,3.74,151012113,9780150000000.0,182,191,47,9/5/2006,Abigail Thomas,Scholastic,ara,<250
+31054,For the Love of a Dog: Understanding Emotion in You and Your Best Friend,4.33,345477146,9780350000000.0,382,2132,132,8/29/2006,Patricia B. McConnell,Scholastic,jpn,250-499
+31087,The Last Boleyn,4.05,307237907,9780310000000.0,592,9097,205,2/28/2006,Karen Harper,Scholastic Inc.,en-CA,500-749
+31099,Babyville,3.62,767912241,9780770000000.0,464,30815,544,3/23/2004,Jane Green,Scholastic,en-CA,250-499
+31100,To Have and to Hold,3.63,767912276,9780770000000.0,352,22864,445,3/1/2005,Jane Green,Scholastic Inc.,en-CA,250-499
+31101,Mr. Maybe,3.45,767905202,9780770000000.0,368,87217,832,6/11/2002,Jane Green,Scholastic Inc.,en-CA,250-499
+31104,Babyville,3.62,767912233,9780770000000.0,438,153,8,5/27/2003,Jane Green,Scholastic,en-CA,250-499
+31107,Bookends,3.72,767907809,9780770000000.0,358,226,31,6/11/2002,Jane Green,Scholastic Inc.,en-CA,250-499
+31177,Morgan's Passing,3.78,449911721,9780450000000.0,346,4035,108,8/27/1996,Anne Tyler,Scholastic Inc.,jpn,250-499
+31178,Back When We Were Grownups,3.52,345477243,9780350000000.0,336,15040,1239,10/26/2004,Anne Tyler,Scholastic Inc.,jpn,250-499
+31180,Celestial Navigation,3.79,449911802,9780450000000.0,288,3403,159,8/27/1996,Anne Tyler,Scholastic Inc.,jpn,250-499
+31181,Breathing Lessons,3.66,345485599,9780350000000.0,350,20474,1140,9/26/2006,Anne Tyler,Scholastic Inc.,jpn,250-499
+31182,The Tin Can Tree,3.6,449911896,9780450000000.0,264,2384,91,8/27/1996,Anne Tyler,Scholastic Inc.,jpn,250-499
+31222,The Purpose of Your Life: Finding Your Place In The World Using Synchronicity  Intuition  And Uncommon Sense,3.76,688166253,9780690000000.0,320,218,27,3/17/1999,Carol Adrienne,Scholastic Inc.,ger,250-499
+31316,The Dance of Intimacy: A Woman's Guide to Courageous Acts of Change in Key Relationships,4.07,006091646X,9780060000000.0,255,7368,185,1/1/1989,Harriet Lerner,Scholastic Inc.,ger,250-499
+31318,4:50 from Paddington / A Pocket Full of Rye (BBC Presents: Two Miss Marple Dramas),3.94,553525638,9780550000000.0,3,34,3,5/4/1999,Agatha Christie,Scholastic Inc.,grc,<250
+31332,The Vampire Armand (The Vampire Chronicles  #6),3.76,345434803,9780350000000.0,457,59191,710,10/3/2000,Anne Rice,Scholastic Inc.,jpn,250-499
+31335,Cry to Heaven,3.85,345396936,9780350000000.0,566,18067,558,4/1/1995,Anne Rice,Scholastic Inc.,jpn,500-749
+31351,Treasure Box,3.33,006109398X,9780060000000.0,384,3646,189,10/1/1997,Orson Scott Card,Scholastic Inc.,ale,250-499
+31364,What Came Before He Shot Her (Inspector Lynley  #14),3.56,60545623,9780060000000.0,560,6669,668,10/17/2006,Elizabeth  George,Scholastic Inc.,ale,500-749
+31365,With No One as Witness (Inspector Lynley  #13),4.04,60545615,9780060000000.0,784,9952,529,2/28/2006,Elizabeth  George,Scholastic Inc.,ale,750-999
+31437,Black Boy,4.05,60834005,9780060000000.0,432,88,12,11/29/2005,Richard Wright,Scholastic,ale,250-499
+31441,Angry Black White Boy,3.55,1400054877,9781400000000.0,352,614,77,3/8/2005,Adam Mansbach,Scholastic Inc.,en-CA,250-499
+31486,Ruby the Red Fairy (Rainbow Magic  #1),3.84,043973861X,9780440000000.0,65,4334,319,5/1/2005,Daisy Meadows,Scholastic,eng,<250
+31493,Standing in the Rainbow (Elmwood Springs  #2),4.04,345452887,9780350000000.0,560,13592,897,8/3/2004,Fannie Flagg,Scholastic Inc.,jpn,500-749
+31555,Phantoms in the Brain: Probing the Mysteries of the Human Mind,4.26,688172172,9780690000000.0,352,15190,532,8/18/1999,V.S. Ramachandran,Scholastic Inc.,ger,250-499
+31968,Walking the Bible: A Journey by Land Through the Five Books of Moses,3.87,60838639,9780060000000.0,451,2539,331,8/2/2005,Bruce Feiler,Scholastic Inc.,ger,250-499
+32096,The All-True Travels and Adventures of Lidie Newton,3.57,449910830,9780450000000.0,452,2149,256,12/29/1998,Jane Smiley,Scholastic Inc.,jpn,250-499
+32226,Horse Heaven,3.88,804119430,9780800000000.0,640,4583,328,8/26/2003,Jane Smiley,Scholastic Inc.,jpn,500-749
+32254,The Mephisto Club (Rizzoli & Isles  #6),4.02,345476999,9780350000000.0,355,27697,1190,9/12/2006,Tess Gerritsen,Scholastic Inc.,jpn,250-499
+32255,Vanish (Rizzoli & Isles  #5),4.12,345476980,9780350000000.0,401,46863,1157,8/29/2006,Tess Gerritsen,Scholastic Inc.,jpn,250-499
+32258,Body Double (Rizzoli & Isles  #4),4.17,034545894X,9780350000000.0,432,36595,1205,7/26/2005,Tess Gerritsen,Scholastic,jpn,250-499
+32276,Dragons of Eden: Speculations on the Evolution of Human Intelligence,4.18,345346297,9780350000000.0,271,15444,475,12/12/1986,Carl Sagan,Scholastic Inc.,jpn,250-499
+32498,John Grisham Value Collection: A Time to Kill  The Firm  The Client,4.5,739312642,9780740000000.0,0,476,9,6/1/2004,John Grisham,Scholastic Inc.,grc,<250
+32664,The Stephen King Collection: Stories from Night Shift,4.0,553527401,9780550000000.0,9,662,23,5/2/2000,Stephen King,Scholastic Inc.,grc,<250
+32714,The Monkey,3.77,394299035,9780390000000.0,2,801,44,10/28/1989,Stephen King,Scholastic Inc.,grc,<250
+32769,At the Mountains of Madness and Other Tales of Terror,4.25,345329457,9780350000000.0,184,21719,491,9/13/1991,H.P. Lovecraft,Scholastic Inc.,en-GB,<250
+32942,Does Anybody Have a Problem With That? The Best of Politically Incorrect,3.51,345412818,9780350000000.0,288,189,9,5/20/1997,Bill Maher,Scholastic Inc.,jpn,250-499
+32961,The House on Mango Street,3.63,739322796,9780740000000.0,2,108,21,8/30/2005,Sandra Cisneros,Scholastic,grc,<250
+33026,The Dream and the Underworld,4.22,60906820,9780060000000.0,256,746,34,7/25/1979,James Hillman,Scholastic,ger,250-499
+33032,Queen of the Underworld,2.89,345483197,9780350000000.0,368,541,100,1/30/2007,Gail Godwin,Scholastic Inc.,jpn,250-499
+33441,Fluke: Or  I Know Why the Winged Whale Sings,3.75,006056668X,9780060000000.0,321,35450,1953,6/15/2004,Christopher Moore,Scholastic Inc.,ale,250-499
+33458,The Lust Lizard of Melancholy Cove (Pine Cove  #2),3.87,60735457,9780060000000.0,304,29113,1203,5/25/2004,Christopher Moore,Scholastic,ger,250-499
+33541,A Short History of World War I,3.95,688001297,9780690000000.0,352,353,43,2/1/1981,James L. Stokesbury,Scholastic Inc.,ger,250-499
+33768,Behaving Like Adults,3.54,60096683,9780060000000.0,400,2729,105,8/3/2004,Anna Maxted,Scholastic Inc.,ger,250-499
+33774,Running in Heels,3.53,60988258,9780060000000.0,432,5826,207,5/28/2002,Anna Maxted,Scholastic Inc.,ger,250-499
+34053,Just So Stories,4.09,517266555,9780520000000.0,210,39365,824,8/5/2003,Rudyard Kipling,Scholastic Inc.,spa,<250
+34251,The Girl in the Glass,3.72,60936193,9780060000000.0,304,785,126,8/16/2005,Jeffrey Ford,Scholastic Inc.,ger,250-499
+34307,Aches & Pains,3.53,385335105,9780390000000.0,99,356,30,6/13/2000,Maeve Binchy,Scholastic,por,<250
+34497,The Color of Magic (Discworld  #1; Rincewind  #1),4.0,60855924,9780060000000.0,228,239617,4478,9/13/2005,Terry Pratchett,Scholastic Inc.,ale,<250
+34539,Going Postal (Discworld  #33),4.38,60013133,9780060000000.0,377,969,114,9/28/2004,Terry Pratchett,Scholastic,ale,250-499
+34646,The Centurions (The Centurions  #1),4.14,345296915,9780350000000.0,384,44,7,11/12/1981,Damion Hunter,Scholastic Inc.,jpn,250-499
+34706,13th Directorate,2.62,804104557,9780800000000.0,0,8,1,2/28/1989,Barry Chubin,Scholastic Inc.,nor,<250
+34760,All I Really Need to Know I Learned in Kindergarten,4.03,034546639X,9780350000000.0,240,17354,650,5/4/2004,Robert Fulghum,Scholastic Inc.,jpn,<250
+34762,Legends  Lies  Cherished Myths of World History,3.47,60922559,9780060000000.0,320,222,16,11/29/2011,Richard Shenkman,Scholastic Inc.,ger,250-499
+34909,The Dragon Doesn't Live Here Anymore: Living Fully  Loving Freely,4.27,449908402,9780450000000.0,416,179,16,8/3/1993,Alan Cohen,Scholastic Inc.,jpn,250-499
+34921,The Black Unicorn (Magic Kingdom of Landover #2),3.77,345335287,9780350000000.0,307,630,14,8/12/1988,Terry Brooks,Scholastic Inc.,en-GB,250-499
+35106,The Straight Dope,4.19,345422910,9780350000000.0,432,596,24,2/24/1998,Cecil Adams,Scholastic Inc.,jpn,250-499
+35115,Sliding Scales (Pip & Flinx #10),3.88,345461584,9780350000000.0,257,1167,28,9/27/2005,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35116,Star Trek: Logs Seven and Eight (Star Trek: Log  #7-8),3.68,345495845,9780350000000.0,358,35,0,9/5/2006,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35120,Star Trek: Logs One and Two (Star Trek: Log  #1-2),3.46,345495810,9780350000000.0,370,58,4,9/5/2006,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35124,Mid-Flinx (Pip & Flinx #7),3.94,345406443,9780350000000.0,352,2327,36,9/1/1996,Alan Dean Foster,Scholastic,en-GB,250-499
+35126,The Chronicles of Riddick,3.95,345468392,9780350000000.0,342,1389,47,12/18/2007,Alan Dean Foster,Scholastic,en-GB,250-499
+35149,Star Wars: The Approaching Storm,3.51,345443004,9780350000000.0,344,3947,100,12/1/2002,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35163,Star Trek: Logs Five and Six (Star Trek: Log  #5-6),3.65,345495837,9780350000000.0,388,35,0,9/5/2006,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35183,Phylogenesis (Founding of the Commonwealth  #1),3.82,345418611,9780350000000.0,304,1246,21,7/5/2000,Alan Dean Foster,Scholastic Inc.,en-GB,250-499
+35412,The Swarm War (Star Wars: Dark Nest  #3),3.49,345463056,9780350000000.0,357,3852,55,12/27/2005,Troy Denning,Scholastic Inc.,en-GB,250-499
+35655,Two of Us: The Story of a Father  a Son  and the Beatles,3.53,618251456,9780620000000.0,206,51,12,2/4/2004,Peter J. Smith,Scholastic,ara,<250
+35735,The Silmarillion  Volume 3,4.19,553525026,9780550000000.0,0,60,4,9/1/1998,J.R.R. Tolkien,Scholastic Inc.,grc,<250
+35815,Sunstorm (A Time Odyssey  #2),3.83,345452518,9780350000000.0,356,4049,154,2/28/2006,Arthur C. Clarke,Scholastic Inc.,en-GB,250-499
+36315,The Best of H.P. Lovecraft: Bloodcurdling Tales of Horror and the Macabre,4.31,345350804,9780350000000.0,406,26857,545,10/29/2002,H.P. Lovecraft,Scholastic Inc.,jpn,250-499
+37083,Going on Being: Buddhism and the Way of Change,3.99,767904613,9780770000000.0,240,576,48,2/12/2002,Mark Epstein,Scholastic Inc.,en-CA,<250
+37095,The Shell Seekers,4.15,051722285X,9780520000000.0,530,84085,2230,4/6/2004,Rosamunde Pilcher,Scholastic Inc.,spa,500-749
+37415,Their Eyes Were Watching God,3.91,61120065,9780060000000.0,219,220309,9536,5/30/2006,Zora Neale Hurston,Scholastic Inc.,tur,<250
+37566,Trapped in the Mirror: Adult Children of Narcissists in Their Struggle for Self,3.82,688140718,9780690000000.0,272,779,82,3/28/1995,Elan Golomb,Scholastic,ger,250-499
+37572,A Distant Mirror: The Calamitous 14th Century,4.08,345910907,9780350000000.0,704,143,26,7/12/1987,Barbara W. Tuchman,Scholastic Inc.,jpn,500-749
+37594,The Eternity Code (Artemis Fowl  #3),4.04,439573882,9780440000000.0,309,221,13,10/1/2003,Eoin Colfer,Scholastic Inc.,eng,250-499
+37716,A Christmas Carol and The Night Before Christmas,4.35,517229277,9780520000000.0,156,91,15,10/3/2006,Charles Dickens,Scholastic Inc.,spa,<250
+37780,Anatomy of a Boyfriend (Anatomy  #1),3.41,385733208,9780390000000.0,259,4470,485,1/9/2007,Daria Snadowsky,Scholastic Inc.,por,250-499
+37811,The Assassination of Julius Caesar: A People's History of Ancient Rome,4.17,1565849426,9781570000000.0,276,685,73,8/30/2004,Michael Parenti,Scholastic Inc.,ita,250-499
+37909,Go Jump in the Pool! (Macdonald Hall  #2),4.16,590442090,9780590000000.0,192,1419,38,1/1/1991,Gordon Korman,Scholastic Inc.,en-US,<250
+38066,Jonah's Gourd Vine,3.99,60916516,9780060000000.0,229,1679,82,1/22/1990,Zora Neale Hurston,Scholastic Inc.,tur,<250
+38068,The Complete Stories,4.25,60921714,9780060000000.0,336,756,45,1/5/1996,Zora Neale Hurston,Scholastic Inc.,tur,250-499
+38215,Lovingkindness: The Revolutionary Art of Happiness,4.24,1590301870,9781590000000.0,256,4373,144,12/28/2004,Sharon Salzberg,Scholastic Inc.,swe,250-499
+38476,Every Tongue Got to Confess: Negro Folk-tales from the Gulf States,3.97,60934549,9780060000000.0,320,317,47,10/1/2002,Zora Neale Hurston,Scholastic Inc.,tur,250-499
+38633,The Secret Garden,4.13,590240773,9780590000000.0,298,254,24,6/1/1999,Frances Hodgson Burnett,Scholastic Inc.,en-US,250-499
+38709,Holes (Holes  #1),3.96,439244196,9780440000000.0,233,887554,17547,9/2/2000,Louis Sachar,Scholastic Inc.,en-US,<250
+38737,The Real James Herriot: A Memoir of My Father,4.2,345434900,9780350000000.0,371,4247,153,5/1/2001,Jim Wight,Scholastic,jpn,250-499
+39081,The Cake Book,4.19,471469335,9780470000000.0,384,100,12,4/14/2006,Tish Boyle,Scholastic Inc.,ara,250-499
+39097,The Bride Finder (St. Leger  #1),3.84,449003884,9780450000000.0,416,1242,96,1/30/1999,Susan Carroll,Scholastic Inc.,nor,250-499
+39099,The Courtesan (The Dark Queen Saga  #2),3.9,345437977,9780350000000.0,560,2218,104,7/26/2005,Susan Carroll,Scholastic Inc.,jpn,500-749
+39315,Katie's Big Move (Junior Gymnasts  #2),3.75,590859986,9780590000000.0,77,12,0,12/31/1996,Teddy Slater,Scholastic Inc.,en-US,<250
+39792,The Man Who Smiled (Kurt Wallander #4),3.93,1565849930,9781570000000.0,325,14322,521,9/19/2006,Henning Mankell,Scholastic Inc.,ita,250-499
+39855,Ten Kids  No Pets,3.91,590422448,9780590000000.0,174,88,11,4/1/1989,Ann M. Martin,Scholastic Inc.,en-US,<250
+39872,Encyclopedia of an Ordinary Life,3.92,1400080460,9781400000000.0,240,5067,897,12/6/2005,Amy Krouse Rosenthal,Scholastic Inc.,en-CA,<250
+39959,The Carl Hiaasen Collection: Lucky You and Sick Puppy,4.32,739340824,9780740000000.0,0,90,5,6/6/2006,Carl Hiaasen,Scholastic,grc,<250
+39993,The Full Matilda,4.0,767915690,9780770000000.0,384,46,5,5/11/2004,David Haynes,Scholastic Inc.,en-CA,250-499
+40020,A Patchwork Planet,3.79,080411918X,9780800000000.0,320,11355,571,5/1/2001,Anne Tyler,Scholastic Inc.,jpn,250-499
+40021,A Slipping-Down Life,3.61,345478959,9780350000000.0,192,3335,142,5/4/2004,Anne Tyler,Scholastic Inc.,jpn,<250
+40160,Firebirds: An Anthology of Original Fantasy and Science Fiction,3.96,142403202,9780140000000.0,432,3464,153,5/5/2005,Sharyn November,Scholastic Inc.,glg,250-499
+40180,Vesco,4.0,595272096,9780600000000.0,408,6,3,3/11/2003,Arthur Herzog III,Scholastic Inc.,wel,250-499
+40312,The Rocky Road to Romance (Elsie Hawkins #4),3.67,60598891,9780060000000.0,249,9669,315,11/29/2011,Janet Evanovich,Scholastic Inc.,ale,<250
+40318,Back to the Bedroom (Elsie Hawkins #1),3.68,60598859,9780060000000.0,234,10077,486,2/25/2014,Janet Evanovich,Scholastic Inc.,ale,<250
+40338,Love Overboard,3.65,006073695X,9780060000000.0,5,95,22,1/25/2005,Janet Evanovich,Scholastic Inc.,gla,<250
+40339,The Rocky Road to Romance (Elsie Hawkins  #4),3.67,60738251,9780060000000.0,5,93,26,8/31/2004,Janet Evanovich,Scholastic Inc.,gla,<250
+40360,Metro Girl (Alex Barnaby  #1),3.62,61126527,9780060000000.0,6,79,29,7/25/2006,Janet Evanovich,Scholastic Inc.,gla,<250
+40385,The Master Mind of Mars (Barsoom #6),3.85,345334248,9780350000000.0,160,3949,80,4/12/1979,Edgar Rice Burroughs,Scholastic Inc.,jpn,<250
+40450,Market Forces,3.59,345457749,9780350000000.0,464,5593,264,3/1/2005,Richard K. Morgan,Scholastic Inc.,jpn,250-499
+40483,Story of O (Story of O #1),3.32,345301110,9780350000000.0,199,12840,997,5/12/1981,Pauline Réage,Scholastic Inc.,jpn,<250
+41334,The Adversary (Saga of Pliocene Exile  #4),4.22,345352440,9780350000000.0,472,4404,54,9/12/1987,Julian May,Scholastic Inc.,en-GB,250-499
+41336,The Sagittarius Whorl (Rampart Worlds #3),3.75,345395182,9780350000000.0,384,339,4,1/2/2001,Julian May,Scholastic Inc.,en-GB,250-499
+41468,Dewdrops on a Lotus Leaf: Zen Poems of Ryokan,4.58,1590301080,9781590000000.0,120,183,19,4/13/2004,Ryōkan,Scholastic Inc.,swe,<250
+41502,Lord John and the Brotherhood of the Blade  (Lord John Grey  #2),3.91,385337493,9780390000000.0,494,17271,776,8/28/2007,Diana Gabaldon,Scholastic Inc.,por,250-499
+41592,The Economics of Innocent Fraud: Truth for Our Time,3.6,618013245,9780620000000.0,62,225,28,4/26/2004,John Kenneth Galbraith,Scholastic,ara,<250
+42882,The Life and Times of the Thunderbolt Kid: A Memoir,3.94,767919378,9780770000000.0,268,1329,250,9/25/2007,Bill Bryson,Scholastic,en-CA,250-499
+43089,Industry and Empire: The Birth of the Industrial Revolution,3.92,1565845617,9781570000000.0,411,301,14,9/1/1999,Eric Hobsbawm,Scholastic Inc.,ita,250-499
+43273,Kids Are Worth It!: Giving Your Child the Gift of Inner Discipline,4.19,60014318,9780060000000.0,352,1215,129,8/20/2002,Barbara Coloroso,Scholastic,ger,250-499
+43278,Creating a Life Worth Living,4.02,60952431,9780060000000.0,336,353,24,8/2/1997,Carol Lloyd,Scholastic Inc.,ger,250-499
+43409,How to Be Lost,3.54,345483170,9780350000000.0,290,6176,675,8/30/2005,Amanda Eyre Ward,Scholastic,jpn,250-499
+43675,First Deadly Sin,4.04,871881780,9780870000000.0,17,2,0,7/1/1989,Lawrence Sanders,Scholastic Inc.,grc,<250
+43758,The Queen of the Damned (The Vampire Chronicles  #3),3.89,345419626,9780350000000.0,448,121794,1667,11/29/1997,Anne Rice,Scholastic Inc.,jpn,250-499
+43763,Interview with the Vampire (The Vampire Chronicles  #1),3.99,345476875,9780350000000.0,342,433413,7368,8/31/2004,Anne Rice,Scholastic Inc.,jpn,250-499
+43780,Vampire Chronicles: Interview with the Vampire  The Vampire Lestat  The Queen of the Damned (Anne Rice),4.27,679410503,9780680000000.0,9,10350,120,11/17/1992,Anne Rice,Scholastic Inc.,grc,<250
+43781,Merrick (The Vampire Chronicles #7),3.73,345422406,9780350000000.0,370,35529,478,10/2/2001,Anne Rice,Scholastic Inc.,jpn,250-499
+43796,The Vampire Companion,3.94,345397398,9780350000000.0,608,4829,25,8/1/1995,Katherine Ramsland,Scholastic,jpn,500-749
+43798,The Feast of All Saints,3.85,345376048,9780350000000.0,570,16178,337,1/28/1992,Anne Rice,Scholastic,jpn,500-749
+43808,Anne Rice's The Vampire Lestat: A Graphic Novel,4.2,345373944,9780350000000.0,404,70039,138,11/30/1991,Faye Perozich,Scholastic Inc.,jpn,250-499
+43814,The Vampire Lestat (The Vampire Chronicles  #2),4.07,345476883,9780350000000.0,481,156354,2720,8/31/2004,Anne Rice,Scholastic Inc.,jpn,250-499
+43841,When Christ and His Saints Slept  (Henry II and Eleanor of Aquitaine  #1),4.27,345396685,9780350000000.0,784,12022,648,2/6/1996,Sharon Kay Penman,Scholastic Inc.,jpn,750-999
+44012,Shield of Thunder (Troy  #2),4.36,345477014,9780350000000.0,512,102,16,3/27/2007,David Gemmell,Harper,jpn,500-749
+44184,Monster,3.72,64407314,9780060000000.0,281,56171,5341,3/5/2019,Walter Dean Myers,Scholastic Inc.,tur,250-499
+44300,Smart Discipline: Fast  Lasting Solutions for Your Child's Self-Esteem and Your Peace of Mind,3.99,60936665,9780060000000.0,208,13,2,3/2/2004,Larry J. Koenig,Scholastic,ger,<250
+44312,Alphabet Weekends,3.59,61122181,9780060000000.0,448,5796,386,1/23/2007,Elizabeth Noble,Scholastic,ger,250-499
+44328,Firebirds Rising: An Anthology of Original Science Fiction and Fantasy,3.92,142405493,9780140000000.0,530,2819,127,4/6/2006,Sharyn November,Scholastic Inc.,glg,500-749
+44535,Landing,3.41,151012970,9780150000000.0,336,3032,309,5/7/2007,Emma Donoghue,Scholastic Inc.,ara,250-499
+44737,The Elements of Visual Style: The Basics of Print Design for Every PC and Mac User,3.21,618772456,9780620000000.0,177,14,3,5/1/2007,Robert W. Harris,Scholastic,ara,<250
+44748,The Mask of the Enchantress,3.85,449210847,9780450000000.0,0,21,1,10/12/1981,Victoria Holt,Scholastic Inc.,nor,<250
+44749,Secret for a Nightingale,3.82,449212963,9780450000000.0,396,1873,34,10/12/1987,Victoria Holt,Scholastic Inc.,nor,250-499
+44758,The Silk Vendetta,3.82,449215482,9780450000000.0,373,2261,47,11/27/1988,Victoria Holt,Scholastic Inc.,nor,250-499
+44881,Code Orange,3.63,385732597,9780390000000.0,200,5889,693,9/27/2005,Caroline B. Cooney,Scholastic Inc.,por,<250
+44898,The Unpublished David Ogilvy,4.16,517566095,9780520000000.0,178,255,19,10/21/1987,David Ogilvy,Scholastic Inc.,mul,<250
+44982,Three Complete Novels: Howards End  A Room with a View  Where Angels Fear to Tread,4.22,517091267,9780520000000.0,503,389,31,2/20/1993,E.M. Forster,Scholastic Inc.,spa,500-749
+45378,Wartime Lies,3.71,449001172,9780450000000.0,240,524,54,10/15/1997,Louis Begley,Scholastic Inc.,jpn,<250
+45382,Schmidt Delivered (Schmidt  #2),3.61,345440838,9780350000000.0,320,107,12,10/30/2001,Louis Begley,Scholastic,jpn,250-499
+45436,The Wish List,3.77,439443369,9780440000000.0,252,13988,589,7/1/2004,Eoin Colfer,Scholastic Inc.,eng,250-499
+45516,The Die Broke Financial Problem Solver,2.33,66619912,9780070000000.0,272,3,0,12/26/2000,Stephen M. Pollan,Scholastic,ger,250-499
