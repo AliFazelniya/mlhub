@@ -1,0 +1,5 @@
+Neicharan-s-Dooz-with-Minimax-algorithm
+The goal of this project is to design and implement the game "Dooz Nichran" using the Python programming language. The Minimax algorithm has been employed to create an AI opponent for this game. The board size is variable, ranging from 3x3 to 10x10.  
+This game follows a unique scoring system that differs from traditional tic-tac-toe. According to the scoring rule, for every sequence of *n* consecutive marks in a row, column, main diagonal, secondary diagonal, or any parallel diagonals, if *n* is greater than or equal to 3, a score of *2n - 5* is awarded. The game continues until the board is completely filled, after which the scores are calculated, and the winner is determined.  
+To enhance user experience, a graphical user interface (GUI) has been designed using the *pygame* framework. Additionally, the project utilizes the *numpy* and *pandas* frameworks.  
+For the AI opponent, the Minimax algorithm is used, along with enhancements such as Alpha-Beta Pruning, *Transposition Table* (stored as a file for use in future games), and several heuristic techniques to improve gameplay efficiency.
