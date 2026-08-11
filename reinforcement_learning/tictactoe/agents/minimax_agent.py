@@ -3,17 +3,16 @@ from copy import deepcopy
 from game import rules, environment
 
 
-def Minimax(board, depth, maxamim, alpha=float('-inf'), beta=float('inf')):
+def Minimax(board, depth, maximizing_player, alpha=float('-inf'), beta=float('inf')):
     if rules.check_game_over(board) or depth == 0:
-        # reset live counters inside rules.score
         return rules.score(board), None
 
-    if maxamim:
+    if maximizing_player:
         best_value = float('-inf')
         best_move = None
         board_copy = deepcopy(board)
         for move in rules.possible_moves(board):
-            board_copy.loc[move[0], move[1]] = "O"
+            board_copy.loc[move[0], move[1]] = environment.AGENT_MARKER
             value, _ = Minimax(board_copy, depth - 1, False, alpha, beta)
             board_copy.loc[move[0], move[1]] = "_"
             if value > best_value:
@@ -28,7 +27,7 @@ def Minimax(board, depth, maxamim, alpha=float('-inf'), beta=float('inf')):
         best_move = None
         board_copy = deepcopy(board)
         for move in rules.possible_moves(board):
-            board_copy.loc[move[0], move[1]] = "X"
+            board_copy.loc[move[0], move[1]] = environment.USER_MARKER
             value, _ = Minimax(board_copy, depth - 1, True, alpha, beta)
             board_copy.loc[move[0], move[1]] = "_"
             if value < best_value:
@@ -44,6 +43,6 @@ def com_choice(board):
     board_copy = board.copy()
     _, best_move = Minimax(board_copy, environment.board_size + 3, True)
     if best_move:
-        board.loc[best_move[0], best_move[1]] = "O"
+        board.loc[best_move[0], best_move[1]] = environment.AGENT_MARKER
     else:
         print("No possible moves for agent!")

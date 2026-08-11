@@ -13,7 +13,7 @@ def user_counter(arr):
     user_points_local = 0
     user_points_counter = 0
     for i in arr:
-        if i == "X":
+        if i == environment.USER_MARKER:
             user_points_counter += 1
         else:
             if user_points_counter >= 3:
@@ -28,7 +28,7 @@ def agent_counter(arr):
     agent_points_local = 0
     agent_points_counter = 0
     for i in arr:
-        if i == "O":
+        if i == environment.AGENT_MARKER:
             agent_points_counter += 1
         else:
             if agent_points_counter >= 3:
