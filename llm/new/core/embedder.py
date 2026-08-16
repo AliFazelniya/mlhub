@@ -9,7 +9,7 @@ class EmbedderWrapper:
     Alternatively replace with remote embedding API (OpenRouter/OpenAI) if preferred.
     """
 
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name: str = "/app/all-MiniLM-L6-v2"):
         self.model = SentenceTransformer(model_name)
 
     def embed_texts(self, texts: List[str]) -> List[List[float]]:
