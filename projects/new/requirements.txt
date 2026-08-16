@@ -8,3 +8,4 @@ langchain-text-splitters>=0.0.1  # این خط اضافه شد
 chromadb>=0.4.20
 sentence-transformers>=2.5.0
 python-dotenv>=1.0.1
+drf-spectacular
