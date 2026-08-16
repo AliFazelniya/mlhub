@@ -7,17 +7,19 @@ from django.shortcuts import render
 class AskQuestionView(APIView):
     def post(self, request):
         question = request.data.get('question')
-        
         if not question:
-            return Response({"error": "لطفا یک سوال (question) ارسال کنید."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Please provide a question."}, status=status.HTTP_400_BAD_REQUEST)
         
         try:
+            result = generate_answer(question)
+            return Response({
+                "question": question,
+                "answer": result["answer"],
+                "sources": result["sources"]
+            }, status=status.HTTP_200_OK)
             
-            answer = generate_answer(question)
-            return Response({"question": question, "answer": answer}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 
 def chat_interface(request):

@@ -22,37 +22,33 @@ def get_robust_llm():
     robust_llm = primary_llm.with_fallbacks([fallback_1, fallback_2, fallback_3])
     return robust_llm
 
-def generate_answer(question: str) -> str:
+def generate_answer(question: str) -> dict:
     logger.info(f"Received new request for processing. Question: {question}")
     
     prompt = PromptTemplate(
-        template = "Answer the following question based on the provided context:\n\nContext:\n{context}\n\nQuestion: {question}",
-        input_variables = ["context", "question"]
+        template="Answer the following question based on the provided context:\n\nContext:\n{context}\n\nQuestion: {question}",
+        input_variables=["context", "question"]
     )
     
     try:
         llm = get_robust_llm()
         chain = prompt | llm
         
-        logger.info("Searching for relevant chunks in ChromaDB...")
         relevant_chunks = search_similar_chunks(question, k=3)
         context = "\n\n---\n\n".join([chunk.page_content for chunk in relevant_chunks])
         
-        logger.info(f"Context length extracted: {len(context)}")
-    
+        sources = list(set([chunk.metadata.get("source", "Unknown Document") for chunk in relevant_chunks]))
+        
         if not context.strip():
             answer = "There is no relevant information in the documents to answer your question."
-            logger.info("No relevant context found. Returning default fallback answer.")
+            sources = []
         else:
-            logger.info("Sending request to OpenRouter (with fallback support)...")
             response = chain.invoke({"context": context, "question": question})
             answer = response.content
-            logger.info("Successfully received response from the model.")
 
-        logger.info("Saving QA interaction to database.")
         QAHistory.objects.create(question=question, answer=answer)
         
-        return answer
+        return {"answer": answer, "sources": sources}
         
     except Exception as e:
         logger.error(f"Critical error communicating with LLM API: {str(e)}")

@@ -14,7 +14,7 @@ vector_store = Chroma(
     persist_directory=CHROMA_PERSIST_DIR
 )
 
-def process_and_store_document(doc_id, text):
+def process_and_store_document(doc_id: int, text: str, title: str):
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=200,
@@ -22,7 +22,7 @@ def process_and_store_document(doc_id, text):
     )
     chunks = text_splitter.split_text(text)
     
-    metadatas = [{"document_id": doc_id} for _ in chunks]
+    metadatas = [{"doc_id": doc_id, "source": title} for _ in chunks]
     
     vector_store.add_texts(texts=chunks, metadatas=metadatas)
 
