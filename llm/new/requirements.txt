@@ -1,33 +1,20 @@
 Django>=4.2,<5.0
 djangorestframework>=3.14.0
 drf-spectacular>=0.25.0
-python-dotenv>=1.0.1
-python-docx>=1.1.0
 
 langchain>=0.1.0
 langchain-openai>=0.1.0
 langchain-community>=0.0.29
 langchain-text-splitters>=0.0.1
 
+numpy>=1.26.0
+nltk>=3.8.1
+python-docx>=1.1.0
 pytesseract>=0.3.10
 pdf2image>=1.16.0
 Pillow>=9.5.0
-unstructured>=0.6.7
-
 sentence-transformers>=2.2.2
 transformers>=4.31.0
-torch==2.2.0+cu121
-torchvision==0.17.1+cu121
-
+torch>=2.2.0
 chromadb>=0.4.0
-faiss-cpu>=1.7.4           # optional: useful if you want CPU FAISS; for GPU FAISS, install faiss-gpu separately
 rank_bm25>=0.2.2
-
-# Utilities
-tqdm>=4.65.0
-nltk>=3.8.1
-
-# Optional / helpful
-gunicorn>=20.1.0
-uvicorn>=0.22.0
-psycopg2-binary>=2.9.6
