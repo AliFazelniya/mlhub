@@ -2,7 +2,7 @@ import time
 import logging
 from typing import Dict, Any
 import os 
-from langchain import LLMChain, PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from .retrieval import HybridRetriever, CrossEncoderReranker, ChromaIndexer
 from .embedder import EmbedderWrapper
 from .llm_wrappers import LLMFactory
@@ -30,7 +30,7 @@ Answer:
 
 # Build the runtime components (singletons). In production, wire these in better (Django AppConfig.ready)
 CHROMA_PERSIST_DIR = os.environ.get("CHROMA_PERSIST_DIR", os.path.join(os.path.dirname(__file__), "..", "chroma_db"))
-_embedder = EmbedderWrapper(model_name="all-MiniLM-L6-v2")
+_embedder = EmbedderWrapper(model_name="/app/all-MiniLM-L6-v2") # تنظیم شده روی پوشه لوکال شما
 _chroma_indexer = ChromaIndexer(chroma_persist_dir=CHROMA_PERSIST_DIR)
 _bm25 = BM25Index(persist_path=os.environ.get("BM25_PERSIST_PATH", "/tmp/bm25_index.pkl"))
 _reranker = CrossEncoderReranker(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2")
@@ -45,12 +45,17 @@ def generate_answer(question: str) -> Dict[str, Any]:
     """
     service = LLMService(_retriever, _reranker, _llm_factory)
     result = service.answer(question)
+    
     # For compatibility with previous API: return {"answer": ..., "sources": [...]}
     sources = []
     for chunk_id, meta in (result.get("citations") or {}).items():
         sources.append(meta.get("filename") or meta.get("title") or "Unknown")
-    # Save QAHistory already done inside LLMService.answer
-    return {"answer": result.get("answer_text", ""), "sources": sources, "telemetry": result.get("telemetry", {})}
+        
+    return {
+        "answer": result.get("answer_text", ""), 
+        "sources": list(set(sources)), # حذف منابع تکراری
+        "telemetry": result.get("telemetry", {})
+    }
 
 class LLMService:
     def __init__(self, retriever: HybridRetriever, reranker: CrossEncoderReranker, llm_factory: LLMFactory, chunk_context_window: int = 3):
@@ -61,10 +66,15 @@ class LLMService:
 
     def answer(self, query: str, user_meta: dict = None, metadata_filter: dict = None) -> Dict[str, Any]:
         user_meta = user_meta or {}
-        qa = QAHistory.objects.create(query_text=query, status="success")
+        # ایجاد رکورد اولیه در دیتابیس (اطمینان حاصل کنید فیلدهای مدل QAHistory شما با این نام‌ها تطابق دارند)
+        qa = QAHistory.objects.create(question=query, status="processing")
+        
         try:
+            # 1. Hybrid Retrieval (Vector + Keyword)
             candidates, retrieval_latency_ms = self.retriever.retrieve(query, top_k_vector=10, top_k_bm25=10, metadata_filter=metadata_filter)
             top_candidates_raw = candidates[:10]
+            
+            # 2. Re-ranking using CrossEncoder
             reranked = self.reranker.rerank(query, top_candidates_raw, top_n=self.chunk_context_window * 2)
 
             final_k = min(self.chunk_context_window, len(reranked))
@@ -75,47 +85,59 @@ class LLMService:
             context_parts = []
             chunk_map = {}
             for (chunk, rscore) in selected:
-                context_parts.append(f\"[{chunk.id}]\\n{chunk.text}\\n\")
+                # حذف بک‌اسلش‌های غیرمجاز از فرمت رشته
+                context_parts.append(f"[{chunk.id}]\n{chunk.text}\n")
                 chunk_map[chunk.id] = {
                     "filename": chunk.metadata.get("filename") or chunk.metadata.get("title"),
                     "source_offset": chunk.metadata.get("source_offset"),
                     "score": getattr(chunk, "score", None),
-                    "rerank_score": rscore,
+                    "rerank_score": float(rscore), # تبدیل به float برای سازگاری با JSON
                 }
             context = "\n\n---\n\n".join(context_parts)
 
+            # 3. Prompt Setup
             prompt_template = PromptTemplate(input_variables=["context", "question"], template=STRICT_PROMPT_TEMPLATE)
             llm_models_to_try = self.llm_factory.get_candidate_model_names()
             llm_exception = None
             answer_text = None
             used_model_name = None
 
+            # 4. LLM Execution with Fallbacks
             for model_name in llm_models_to_try:
                 try:
                     llm = self.llm_factory.get_llm(model_name)
-                    chain = LLMChain(llm=llm, prompt=prompt_template)
+                    # اتصال Prompt به LLM با سینتکس مدرن LCEL
+                    chain = prompt_template | llm
+                    
                     t0 = time.time()
-                    response = chain.run({"context": context, "question": query})
-                    answer_text = response.strip()
+                    response = chain.invoke({
+                        "context": context, 
+                        "question": query,
+                    })
+                    
+                    answer_text = response.content
                     used_model_name = model_name
-                    break
+                    break # موفقیت آمیز بود، خروج از حلقه
                 except Exception as exc:
                     logger.exception("LLM model %s failed: %s", model_name, exc)
                     llm_exception = exc
                     continue
 
+            # 5. Handle All Models Failed
             if not answer_text:
                 qa.status = "failed"
-                qa.error_text = str(llm_exception) if llm_exception else "No model produced an answer"
+                qa.answer = str(llm_exception) if llm_exception else "No model produced an answer"
                 qa.save()
-                return {"answer_text": "", "citations": {}, "telemetry": {"status": "failed", "error": qa.error_text}}
+                return {"answer_text": "", "citations": {}, "telemetry": {"status": "failed", "error": qa.answer}}
 
+            # 6. Anti-Hallucination Check
             if answer_text.strip() == "Insufficient information in the provided documents.":
                 qa.status = "insufficient_info"
             else:
                 qa.status = "success"
 
-            qa.response_text = answer_text
+            # 7. Update Telemetry & Save
+            qa.answer = answer_text
             qa.retrieval_latency_ms = retrieval_latency_ms
             qa.selected_chunk_ids = selected_ids
             qa.chunk_score_map = chunk_map
@@ -136,6 +158,6 @@ class LLMService:
         except Exception as exc:
             logger.exception("LLMService.answer failed: %s", exc)
             qa.status = "failed"
-            qa.error_text = str(exc)
+            qa.answer = str(exc)
             qa.save()
             return {"answer_text": "", "citations": {}, "telemetry": {"status": "failed", "error": str(exc)}}

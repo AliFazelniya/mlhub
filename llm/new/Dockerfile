@@ -25,12 +25,11 @@ RUN python -m pip install --upgrade pip setuptools wheel && \
     python -c "import nltk; nltk.download('punkt')"
 
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
+RUN mkdir -p /app/chroma_db && chown -R appuser:appuser /app/chroma_db
+
 USER appuser
 
 COPY --chown=appuser:appuser . /app
-
-RUN mkdir -p /app/chroma_db /tmp && \
-    chown -R appuser:appuser /app/chroma_db /tmp
 
 EXPOSE 8000
 
