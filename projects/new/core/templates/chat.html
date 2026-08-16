@@ -1,101 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Document Assistant</title>
-    <!-- Using Bootstrap for clean UI -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body { background-color: #f8f9fa; }
-        .chat-container { max-width: 800px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 80vh; }
-        .chat-header { padding: 20px; border-bottom: 1px solid #e9ecef; background-color: #ffffff; border-radius: 12px 12px 0 0; }
-        .chat-messages { flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .message { max-width: 85%; padding: 12px 18px; border-radius: 15px; line-height: 1.5; font-size: 0.95rem; }
-        .user-message { background-color: #0d6efd; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
-        .bot-message { background-color: #f1f3f5; color: #212529; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .input-area { padding: 20px; border-top: 1px solid #e9ecef; background-color: #ffffff; border-radius: 0 0 12px 12px; }
-        .loading { display: none; align-self: flex-start; color: #6c757d; font-style: italic; font-size: 0.85em; margin-left: 10px; }
+      body {
+        background-color: #f8f9fa;
+      }
+      .chat-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+      }
+      .chat-header {
+        padding: 20px;
+        border-bottom: 1px solid #e9ecef;
+        background-color: #ffffff;
+        border-radius: 12px 12px 0 0;
+      }
+      .chat-messages {
+        flex-grow: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .message {
+        max-width: 85%;
+        padding: 12px 18px;
+        border-radius: 15px;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+      .user-message {
+        background-color: #0d6efd;
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+      }
+      .bot-message {
+        background-color: #f1f3f5;
+        color: #212529;
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+      }
+      .input-area {
+        padding: 20px;
+        border-top: 1px solid #e9ecef;
+        background-color: #ffffff;
+        border-radius: 0 0 12px 12px;
+      }
+      .loading {
+        display: none;
+        align-self: flex-start;
+        color: #6c757d;
+        font-style: italic;
+        font-size: 0.85em;
+        margin-left: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="chat-container">
+      <!-- Django CSRF Token Generator -->
+      {% csrf_token %}
 
-<div class="chat-container">
-    <div class="chat-header">
+      <div class="chat-header">
         <h5 class="m-0 fw-bold">AI Document Assistant</h5>
-        <small class="text-muted">Ask questions about your uploaded documents.</small>
-    </div>
-    
-    <div class="chat-messages" id="chatbox">
+        <small class="text-muted"
+          >Ask questions about your uploaded documents.</small
+        >
+      </div>
+
+      <div class="chat-messages" id="chatbox">
         <div class="message bot-message">
-            Hello! I am ready to answer your questions based on the knowledge base. How can I help you today?
+          Hello! I am ready to answer your questions based on the knowledge
+          base. How can I help you today?
         </div>
         <div class="loading" id="loadingIndicator">Generating response...</div>
+      </div>
+
+      <div class="input-area d-flex gap-2">
+        <input
+          type="text"
+          id="userInput"
+          class="form-control"
+          placeholder="Type your question here..."
+          onkeypress="handleKeyPress(event)"
+          autocomplete="off"
+        />
+        <button class="btn btn-primary px-4" onclick="sendMessage()">
+          Send
+        </button>
+      </div>
     </div>
 
-    <div class="input-area d-flex gap-2">
-        <input type="text" id="userInput" class="form-control" placeholder="Type your question here..." onkeypress="handleKeyPress(event)" autocomplete="off">
-        <button class="btn btn-primary px-4" onclick="sendMessage()">Send</button>
-    </div>
-</div>
+    <script>
+      // Helper function to get CSRF token from cookies
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1),
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
 
-<script>
-    async function sendMessage() {
+      async function sendMessage() {
         const inputField = document.getElementById("userInput");
         const chatbox = document.getElementById("chatbox");
         const loadingIndicator = document.getElementById("loadingIndicator");
-        
+
         const question = inputField.value.trim();
         if (!question) return;
 
-        // Display user message
         appendMessage(question, "user-message");
         inputField.value = "";
-        
-        // Show loading indicator
+
         chatbox.appendChild(loadingIndicator);
         loadingIndicator.style.display = "block";
         chatbox.scrollTop = chatbox.scrollHeight;
 
+        const csrftoken = getCookie("csrftoken");
+
         try {
-            // Call our existing Django API
-            const response = await fetch('/api/ask/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question: question })
-            });
+          const response = await fetch("/api/ask/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrftoken, // Injecting the security token
+            },
+            body: JSON.stringify({ question: question }),
+          });
 
-            const data = await response.json();
-            loadingIndicator.style.display = "none";
+          const data = await response.json();
+          loadingIndicator.style.display = "none";
 
-            if (response.ok) {
-                appendMessage(data.answer, "bot-message");
-            } else {
-                appendMessage("Error: " + (data.error || "An unexpected error occurred."), "bot-message text-danger");
-            }
+          if (response.ok) {
+            appendMessage(data.answer, "bot-message");
+          } else {
+            appendMessage(
+              "Error: " + (data.error || "An unexpected error occurred."),
+              "bot-message text-danger",
+            );
+          }
         } catch (error) {
-            loadingIndicator.style.display = "none";
-            appendMessage("Connection error. Please check your network.", "bot-message text-danger");
-            console.error("API Request Failed:", error);
+          loadingIndicator.style.display = "none";
+          appendMessage(
+            "Connection error. Please check your network.",
+            "bot-message text-danger",
+          );
+          console.error("API Request Failed:", error);
         }
-    }
+      }
 
-    function appendMessage(text, className) {
+      function appendMessage(text, className) {
         const chatbox = document.getElementById("chatbox");
         const div = document.createElement("div");
         div.className = "message " + className;
-        div.textContent = text; // Prevents XSS attacks
+        div.textContent = text;
         chatbox.insertBefore(div, document.getElementById("loadingIndicator"));
         chatbox.scrollTop = chatbox.scrollHeight;
-    }
+      }
 
-    function handleKeyPress(event) {
+      function handleKeyPress(event) {
         if (event.key === "Enter") {
-            sendMessage();
+          sendMessage();
         }
-    }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
