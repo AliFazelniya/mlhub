@@ -169,13 +169,19 @@ class DocumentIngestor:
         self.indexer = indexer
         self.bm25_index = bm25_index
 
-    def ingest(self, file_bytes: bytes, filename: str, metadata: Dict[str, Any] = None) -> List[Chunk]:
-        metadata = metadata or {}
-        
+    def ingest(self, file_bytes: bytes, filename: str, metadata: Dict[str, Any] = None, progress_callback=None) -> List[Chunk]:
+        def log_progress(msg):
+            if progress_callback:
+                progress_callback(msg)
+            logger.info(msg)
 
+        metadata = metadata or {}
+
+        log_progress("Extracting text from the file...")
         raw_text = self.extractor.extract(file_bytes, filename)
-        
-    
+
+
+        log_progress("Cleaning and normalizing text...")
         normalized = self.normalizer.normalize(raw_text)
         
         if not normalized:
@@ -184,12 +190,18 @@ class DocumentIngestor:
             
         file_meta = metadata.copy()
         file_meta.update({"filename": filename})
-        
+
+        log_progress("Chunking the text...")
         chunks = self.chunker.chunk_text(normalized, metadata=file_meta)
         texts = [c.text for c in chunks]
-        
+
+        log_progress(f"Generating AI vectors for {len(chunks)} chunks. (This step is time-consuming)...")
         embeddings = self.embedder.embed_texts(texts)
+
+        log_progress("Saving chunks to the vector database (ChromaDB)...")
         self.indexer.add_chunks(chunks, embeddings)
+
+        log_progress("Updating the keyword search engine (BM25)...")
         self.bm25_index.add_documents(chunks)
         
         logger.info("Successfully ingested %d chunks for file %s", len(chunks), filename)

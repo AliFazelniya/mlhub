@@ -1,52 +1,76 @@
 import os
 import uuid
+import threading
 from django.db import models
 from django.utils import timezone
 
-# Keep existing Document model but use pipeline ingestion for extraction + indexing
 class Document(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'In the Waiting list'),
+        ('processing', 'Processing (please wait)'),
+        ('completed', "Processing completed successfully."),
+        ('failed', 'Processing error'),
+    ]
+
     title = models.CharField(max_length=255, verbose_name="Title")
     file = models.FileField(upload_to='documents/', verbose_name="Document File")
     content = models.TextField(blank=True, null=True, verbose_name="Extracted Content")
     uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Uploaded At")
+    
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending', verbose_name="وضعیت نهایی")
+    progress_message = models.CharField(max_length=255, blank=True, null=True, verbose_name="مرحله فعلی")
 
     def save(self, *args, **kwargs):
-        # Save file first so storage path is available
+        is_new = self.pk is None 
         super().save(*args, **kwargs)
 
-        # Defer heavy extraction/indexing to the document pipeline
+        if is_new and self.file:
+            self.status = 'processing'
+            self.progress_message = 'Starting processing operations...'
+            super().save(update_fields=['status', 'progress_message'])
+            
+            thread = threading.Thread(target=self.process_document_background)
+            thread.daemon = True
+            thread.start()
+
+    def process_document_background(self):
         try:
-            # Import here to avoid circular import problems during Django startup
             from .document_pipeline import default_ingestor
-            if self.file and default_ingestor:
-                # Read file bytes
-                try:
-                    file_path = self.file.path
-                    with open(file_path, 'rb') as fh:
-                        file_bytes = fh.read()
-                except Exception:
-                    # If storage backend doesn't provide path, try .read()
-                    file_bytes = self.file.read()
+            if not default_ingestor:
+                return
 
-                chunks = default_ingestor.ingest(
-                    file_bytes=file_bytes,
-                    filename=os.path.basename(self.file.name),
-                    metadata={"document_id": self.pk, "title": self.title}
-                )
+            def update_progress(msg):
+                self.progress_message = msg
+                self.save(update_fields=['progress_message'])
 
-                # Optionally keep a short preview in the Document.content field
-                if chunks and not self.content:
-                    preview = "\n\n".join([c.text[:1000] for c in chunks[:3]])
-                    self.content = preview
-                    super().save(update_fields=['content'])
-        except Exception as e:
-            # Do not raise on save failure due to ingestion; log instead
             try:
-                import logging
-                logger = logging.getLogger(__name__)
-                logger.exception("Document.save ingestion failed: %s", e)
+                file_path = self.file.path
+                with open(file_path, 'rb') as fh:
+                    file_bytes = fh.read()
             except Exception:
-                pass
+                file_bytes = self.file.read()
+
+            chunks = default_ingestor.ingest(
+                file_bytes=file_bytes,
+                filename=os.path.basename(self.file.name),
+                metadata={"document_id": self.pk, "title": self.title},
+                progress_callback=update_progress
+            )
+
+            if chunks and not self.content:
+                self.content = "\n\n".join([c.text[:1000] for c in chunks[:3]])
+            
+            self.status = 'completed'
+            self.progress_message = '✅ The file was successfully processed and added to the AI ​​knowledge base.'
+            self.save(update_fields=['content', 'status', 'progress_message'])
+
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.exception("Document ingestion failed: %s", e)
+            self.status = 'failed'
+            self.progress_message = f"❌ خطا: {str(e)}"
+            self.save(update_fields=['status', 'progress_message'])
 
     def __str__(self):
         return self.title
