@@ -17,14 +17,14 @@ The project is designed as a practical, inspectable RAG baseline: documents are 
 
 ## Technology stack
 
-| Area | Technology |
-| --- | --- |
-| Web framework and API | Django, Django REST Framework |
-| Retrieval | ChromaDB, BM25 (`rank_bm25`), LangChain |
-| Document extraction | PyMuPDF, `docx2txt` |
-| Embeddings | Sentence Transformers (`all-MiniLM-L6-v2`) |
-| LLM provider | OpenRouter |
-| Runtime and build | Docker, Docker Compose, BuildKit cache mounts |
+| Area                  | Technology                                    |
+| --------------------- | --------------------------------------------- |
+| Web framework and API | Django, Django REST Framework                 |
+| Retrieval             | ChromaDB, BM25 (`rank_bm25`), LangChain       |
+| Document extraction   | PyMuPDF, `docx2txt`                           |
+| Embeddings            | Sentence Transformers (`all-MiniLM-L6-v2`)    |
+| LLM provider          | OpenRouter                                    |
+| Runtime and build     | Docker, Docker Compose, BuildKit cache mounts |
 
 ## Prerequisites
 
@@ -43,8 +43,8 @@ docker compose version
 1. Clone the repository and enter the project directory.
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/AliFazelniya/mlhub.git
+   cd mlhub/llm/hybrid-rag-engine
    ```
 
 2. Create `.env` beside `docker-compose.yml`.
@@ -78,7 +78,6 @@ docker compose version
    ```
 
 5. Open the application.
-
    - Chat interface: [http://localhost:8000/](http://localhost:8000/)
    - Django Admin: [http://localhost:8000/admin/](http://localhost:8000/admin/)
    - OpenAPI documentation: [http://localhost:8000/api/docs/](http://localhost:8000/api/docs/)
@@ -103,9 +102,7 @@ Example successful response:
 {
   "question": "What are the main conclusions in the uploaded documents?",
   "answer": "...",
-  "sources": [
-    "example.pdf"
-  ]
+  "sources": ["example.pdf"]
 }
 ```
 
@@ -121,12 +118,12 @@ If `question` is omitted or empty, the API returns `400 Bad Request`:
 
 Create a request with the following configuration:
 
-| Setting | Value |
-| --- | --- |
-| Method | `POST` |
-| URL | `http://localhost:8000/api/ask/` |
-| Header | `Content-Type: application/json` |
-| Body | Raw JSON: `{ "question": "Your question" }` |
+| Setting | Value                                       |
+| ------- | ------------------------------------------- |
+| Method  | `POST`                                      |
+| URL     | `http://localhost:8000/api/ask/`            |
+| Header  | `Content-Type: application/json`            |
+| Body    | Raw JSON: `{ "question": "Your question" }` |
 
 ## Operations
 
