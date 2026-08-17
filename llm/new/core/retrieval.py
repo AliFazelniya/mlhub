@@ -2,15 +2,14 @@ import time
 import logging
 from typing import List, Dict, Any, Tuple
 from dataclasses import dataclass
-
-from chromadb import Client as ChromaClient
-from chromadb.config import Settings
-
-logger = logging.getLogger(__name__)
-
+import chromadb
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import numpy as np
+
+logger = logging.getLogger(__name__)
+
+
 
 @dataclass
 class DocumentChunk:
@@ -26,13 +25,13 @@ class ChromaIndexer:
     """
 
     def __init__(self, chroma_persist_dir: str = None):
-        settings = Settings(chroma_db_impl="duckdb+parquet", persist_directory=chroma_persist_dir) if chroma_persist_dir else Settings()
-        self.client = ChromaClient(settings=settings)
-        self.collection_name = "documents"
-        if self.collection_name not in [c.name for c in self.client.list_collections()]:
-            self.collection = self.client.create_collection(name=self.collection_name)
+        if chroma_persist_dir:
+            self.client = chromadb.PersistentClient(path=chroma_persist_dir)
         else:
-            self.collection = self.client.get_collection(self.collection_name)
+            self.client = chromadb.Client()
+            
+        self.collection_name = "documents"
+        self.collection = self.client.get_or_create_collection(name=self.collection_name)
 
     def add_chunks(self, chunks: List, embeddings: List[List[float]]):
         ids = [c.id for c in chunks]

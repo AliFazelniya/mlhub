@@ -66,8 +66,7 @@ class LLMService:
 
     def answer(self, query: str, user_meta: dict = None, metadata_filter: dict = None) -> Dict[str, Any]:
         user_meta = user_meta or {}
-        # ایجاد رکورد اولیه در دیتابیس (اطمینان حاصل کنید فیلدهای مدل QAHistory شما با این نام‌ها تطابق دارند)
-        qa = QAHistory.objects.create(question=query, status="processing")
+        qa = QAHistory.objects.create(query_text=query, status="processing")
         
         try:
             # 1. Hybrid Retrieval (Vector + Keyword)
@@ -106,7 +105,6 @@ class LLMService:
             for model_name in llm_models_to_try:
                 try:
                     llm = self.llm_factory.get_llm(model_name)
-                    # اتصال Prompt به LLM با سینتکس مدرن LCEL
                     chain = prompt_template | llm
                     
                     t0 = time.time()

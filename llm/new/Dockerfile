@@ -2,7 +2,6 @@ FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    TESSERACT_CMD=/usr/bin/tesseract \
     CHROMA_PERSIST_DIR=/app/chroma_db \
     BM25_PERSIST_PATH=/tmp/bm25_index.pkl \
     LANG=C.UTF-8 \
@@ -10,13 +9,6 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     DJANGO_SETTINGS_MODULE=config.settings
 
 WORKDIR /app
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-      poppler-utils \
-      tesseract-ocr \
-      libtesseract-dev \
-      && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /app/requirements.txt
 

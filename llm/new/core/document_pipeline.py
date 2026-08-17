@@ -4,10 +4,10 @@ import uuid
 import logging
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Iterable
+import tempfile
 
-from PIL import Image
-import pytesseract
-from pdf2image import convert_from_bytes
+# ایمپورت‌های مدرن برای لنگ‌چین و استخراج متن
+from langchain_community.document_loaders import PyMuPDFLoader, Docx2txtLoader
 import docx
 
 logger = logging.getLogger(__name__)
@@ -19,38 +19,40 @@ class Chunk:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 class TextExtractor:
-    """Extract text for different file types. PDF uses OCR (pytesseract + pdf2image) to support scanned PDFs."""
+    """Extract text using fast, modern LangChain loaders optimized for Persian."""
 
     def extract(self, file_bytes: bytes, filename: str, content_type: str = None) -> str:
         ext = (filename.split(".")[-1] or "").lower()
+        
         if ext in ("txt", "text"):
             return file_bytes.decode("utf-8", errors="ignore")
-        if ext in ("docx",):
-            return self._extract_docx(file_bytes)
-        if ext in ("pdf",):
-            return self._extract_pdf_ocr(file_bytes)
-        # fallback: try decode
+            
+        with tempfile.NamedTemporaryFile(delete=False, suffix=f".{ext}") as temp_file:
+            temp_file.write(file_bytes)
+            temp_file_path = temp_file.name
+
+        try:
+            if ext in ("docx",):
+                return self._extract_docx(temp_file_path)
+            if ext in ("pdf",):
+                return self._extract_pdf(temp_file_path)
+        finally:
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+                
+        # fallback
         return file_bytes.decode("utf-8", errors="ignore")
 
-    def _extract_docx(self, file_bytes: bytes) -> str:
-        doc = docx.Document(io.BytesIO(file_bytes))
-        paragraphs = [p.text for p in doc.paragraphs if p.text.strip()]
-        return "\n\n".join(paragraphs)
+    def _extract_docx(self, file_path: str) -> str:
+        loader = Docx2txtLoader(file_path)
+        docs = loader.load()
+        return "\n\n".join([doc.page_content for doc in docs])
 
-    def _extract_pdf_ocr(self, file_bytes: bytes, dpi: int = 300) -> str:
-        """
-        Convert PDF pages to images then run pytesseract OCR.
-        Returns combined text.
-        """
-        pages = convert_from_bytes(file_bytes, dpi=dpi)
-        ocr_texts = []
-        for i, page in enumerate(pages):
-            if page.mode != "RGB":
-                page = page.convert("RGB")
-            text = pytesseract.image_to_string(page)
-            logger.debug("OCR page %d length=%d", i, len(text))
-            ocr_texts.append(text)
-        return "\n\n".join(ocr_texts)
+    def _extract_pdf(self, file_path: str) -> str:
+        loader = PyMuPDFLoader(file_path)
+        docs = loader.load()
+        return "\n\n".join([doc.page_content for doc in docs])
+
 
 class TextNormalizer:
     """Basic normalization (whitespace, remove excessive blank lines)"""
@@ -66,7 +68,7 @@ class TextNormalizer:
 
 class Chunker:
     """
-    Character-based chunker with overlap. Replace with token-based chunker for better alignment with LLM tokens.
+    Character-based chunker with overlap. 
     """
 
     def __init__(self, chunk_size: int = 1000, overlap: int = 200):
@@ -89,7 +91,7 @@ class Chunker:
             start = end - self.overlap
         return chunks
 
-# Lightweight BM25 persistence using rank_bm25 (suitable for small/medium corpora)
+# Lightweight BM25 persistence using rank_bm25 
 import pickle
 from rank_bm25 import BM25Okapi
 
@@ -147,16 +149,6 @@ class BM25Index:
         return results
 
 class DocumentIngestor:
-    """
-    High-level ingestion pipeline:
-    - extract (OCR for PDF)
-    - normalize
-    - chunk (overlap)
-    - embed
-    - index into vector DB
-    - update BM25 index
-    """
-
     def __init__(self, embedder, indexer, bm25_index: BM25Index, chunk_size=1000, chunk_overlap=200):
         self.extractor = TextExtractor()
         self.normalizer = TextNormalizer()
@@ -167,19 +159,28 @@ class DocumentIngestor:
 
     def ingest(self, file_bytes: bytes, filename: str, metadata: Dict[str, Any] = None) -> List[Chunk]:
         metadata = metadata or {}
+        
+
         raw_text = self.extractor.extract(file_bytes, filename)
+        
+    
         normalized = self.normalizer.normalize(raw_text)
+        
         if not normalized:
-            logger.warning("No text extracted for file %s", filename)
+            logger.warning("No text extracted for file %s. It might be an image-only PDF.", filename)
             return []
+            
         file_meta = metadata.copy()
         file_meta.update({"filename": filename})
+        
         chunks = self.chunker.chunk_text(normalized, metadata=file_meta)
         texts = [c.text for c in chunks]
+        
         embeddings = self.embedder.embed_texts(texts)
         self.indexer.add_chunks(chunks, embeddings)
         self.bm25_index.add_documents(chunks)
+        
+        logger.info("Successfully ingested %d chunks for file %s", len(chunks), filename)
         return chunks
 
-# application should set default_ingestor at startup with real embedder/indexer instances
 default_ingestor = None
