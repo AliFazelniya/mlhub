@@ -13,8 +13,9 @@ WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 
 RUN python -m pip install --upgrade pip setuptools wheel && \
-    pip --no-cache-dir install -r /app/requirements.txt && \
-    python -c "import nltk; nltk.download('punkt')"
+    pip --no-cache-dir install -r /app/requirements.txt
+
+    RUN python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab')"
 
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
 RUN mkdir -p /app/chroma_db && chown -R appuser:appuser /app/chroma_db

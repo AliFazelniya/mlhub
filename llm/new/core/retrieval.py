@@ -9,8 +9,6 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-
-
 @dataclass
 class DocumentChunk:
     id: str
@@ -40,20 +38,26 @@ class ChromaIndexer:
         self.collection.add(ids=ids, metadatas=metadatas, documents=documents, embeddings=embeddings)
 
     def query_vector(self, query_embedding: List[float], top_k: int = 10, metadata_filter: dict = None):
-        results = self.collection.query(
-            query_embeddings=[query_embedding],
-            n_results=top_k,
-            where=metadata_filter or {}
-        )
+    
+        query_kwargs = {
+            "query_embeddings": [query_embedding],
+            "n_results": top_k,
+        }
+        
+        if metadata_filter:
+            query_kwargs["where"] = metadata_filter
+
+        results = self.collection.query(**query_kwargs)
+        
         res = []
-        if results and results.get("ids"):
+        if results and results.get("ids") and len(results["ids"]) > 0:
             for idx, chid in enumerate(results["ids"][0]):
                 res.append(
                     DocumentChunk(
                         id=chid,
                         text=results["documents"][0][idx],
-                        metadata=results["metadatas"][0][idx],
-                        score=float(results["distances"][0][idx]) if results["distances"][0][idx] is not None else 0.0
+                        metadata=results["metadatas"][0][idx] if results.get("metadatas") else {},
+                        score=float(results["distances"][0][idx]) if results.get("distances") and results["distances"][0][idx] is not None else 0.0
                     )
                 )
         return res
@@ -79,15 +83,16 @@ class HybridRetriever:
         bm25_docs = []
         if bm25_ids:
             docs = self.chroma.collection.get(ids=bm25_ids)
-            for idx, cid in enumerate(docs["ids"]):
-                bm25_docs.append(
-                    DocumentChunk(
-                        id=cid,
-                        text=docs["documents"][idx],
-                        metadata=docs["metadatas"][idx],
-                        score=float(bm25_hits[idx][1]) if idx < len(bm25_hits) else 0.0
+            if docs and docs.get("ids"):
+                for idx, cid in enumerate(docs["ids"]):
+                    bm25_docs.append(
+                        DocumentChunk(
+                            id=cid,
+                            text=docs["documents"][idx],
+                            metadata=docs["metadatas"][idx] if docs.get("metadatas") else {},
+                            score=float(bm25_hits[idx][1]) if idx < len(bm25_hits) else 0.0
+                        )
                     )
-                )
 
         merged = {}
         for d in vector_results + bm25_docs:
@@ -113,6 +118,9 @@ class CrossEncoderReranker:
         self.model.eval()
 
     def rerank(self, query: str, candidates: List[DocumentChunk], top_n: int = 5) -> List[tuple]:
+        if not candidates:
+            return []
+            
         pairs = [(query, c.text) for c in candidates]
         scores = []
         batch_size = 16
