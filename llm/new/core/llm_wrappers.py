@@ -35,10 +35,11 @@ class LLMFactory:
         return list(self.ordered_models)
 
     def get_llm(self, model_name: str):
-        """
-        Return a LangChain-compatible LLM instance.
-        Must have either .__call__ or .generate interface that LLMChain accepts.
-        """
-        if ChatOpenAI is None:
-            raise RuntimeError("ChatOpenAI wrapper not available - implement your own LLMFactory.get_llm")
-        return ChatOpenAI(model=model_name, api_key=self.api_key, temperature=0.0)
+            if ChatOpenAI is None:
+                raise RuntimeError("ChatOpenAI wrapper not available - implement your own LLMFactory.get_llm")
+            return ChatOpenAI(
+                model=model_name, 
+                api_key=self.api_key, 
+                temperature=0.0,
+                base_url="https://openrouter.ai/api/v1"
+            )

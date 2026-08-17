@@ -12,12 +12,13 @@ from .models import QAHistory
 logger = logging.getLogger(__name__)
 
 STRICT_PROMPT_TEMPLATE = """
-You are an information retrieval assistant. You MUST answer strictly using ONLY the provided context chunks below. Do NOT use any external knowledge, do NOT speculate, and do NOT invent facts.
+You are a highly precise information retrieval assistant. 
+You MUST answer strictly using ONLY the provided context chunks below. Do NOT use any external knowledge, do NOT speculate, and do NOT invent facts.
+
+CRITICAL INSTRUCTION: You MUST answer in the EXACT SAME LANGUAGE as the user's question (e.g., if the user asks in Persian, you MUST reply in natural and fluent Persian).
 
 If the answer cannot be fully derived from the provided context, respond exactly and only with:
-Insufficient information in the provided documents.
-
-Otherwise, answer concisely and include inline citations after each sentence referencing chunk ids in the form [chunk_id]. At the end, provide a citations mapping in JSON with keys being chunk ids and values being the source metadata (filename and source_offset).
+اطلاعات کافی در مستندات شما برای پاسخ به این سوال پیدا نشد.
 
 Context:
 {context}
@@ -25,7 +26,7 @@ Context:
 Question:
 {question}
 
-Answer:
+Answer (Clear, concise, and in the user's language, without any raw JSON or metadata attached):
 """
 
 # Build the runtime components (singletons). In production, wire these in better (Django AppConfig.ready)
@@ -123,7 +124,7 @@ class LLMService:
             # 5. Handle All Models Failed
             if not answer_text:
                 qa.status = "failed"
-                qa.answer = str(llm_exception) if llm_exception else "No model produced an answer"
+                qa.error_text = str(llm_exception) if llm_exception else "No model produced an answer"
                 qa.save()
                 return {"answer_text": "", "citations": {}, "telemetry": {"status": "failed", "error": qa.answer}}
 
@@ -134,7 +135,7 @@ class LLMService:
                 qa.status = "success"
 
             # 7. Update Telemetry & Save
-            qa.answer = answer_text
+            qa.response_text = answer_text
             qa.retrieval_latency_ms = retrieval_latency_ms
             qa.selected_chunk_ids = selected_ids
             qa.chunk_score_map = chunk_map
@@ -155,6 +156,6 @@ class LLMService:
         except Exception as exc:
             logger.exception("LLMService.answer failed: %s", exc)
             qa.status = "failed"
-            qa.answer = str(exc)
+            qa.error_text = str(exc)
             qa.save()
             return {"answer_text": "", "citations": {}, "telemetry": {"status": "failed", "error": str(exc)}}
