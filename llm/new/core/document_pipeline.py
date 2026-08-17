@@ -6,7 +6,6 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Any, Iterable
 import tempfile
 
-# ایمپورت‌های مدرن برای لنگ‌چین و استخراج متن
 from langchain_community.document_loaders import PyMuPDFLoader, Docx2txtLoader
 import docx
 
@@ -92,6 +91,7 @@ class Chunker:
         return chunks
 
 # Lightweight BM25 persistence using rank_bm25 
+# Lightweight BM25 persistence using rank_bm25 
 import pickle
 from rank_bm25 import BM25Okapi
 
@@ -122,27 +122,39 @@ class BM25Index:
             pickle.dump({"corpus": self.corpus, "raw_texts": self.raw_texts, "ids": self.ids}, fh)
 
     def add_documents(self, chunks: Iterable[Chunk]):
-        import nltk
         try:
+            import nltk
             nltk.data.find("tokenizers/punkt")
+            nltk.data.find("tokenizers/punkt_tab")
+            from nltk.tokenize import word_tokenize
+            tokenize_fn = lambda t: word_tokenize(t.lower())
         except Exception:
-            nltk.download("punkt")
-        from nltk.tokenize import word_tokenize
+            logger.warning("NLTK packages missing! Falling back to fast whitespace tokenization.")
+            tokenize_fn = lambda t: t.lower().split()
 
         for c in chunks:
-            tokens = word_tokenize(c.text.lower())
+            tokens = tokenize_fn(c.text)
             self.corpus.append(tokens)
             self.raw_texts.append(c.text)
             self.ids.append(c.id)
+            
         if self.corpus:
             self.bm25 = BM25Okapi(self.corpus)
         self._save()
 
     def query(self, query_text: str, top_k: int = 10):
-        from nltk.tokenize import word_tokenize
         if self.bm25 is None:
             return []
-        q_tokens = word_tokenize(query_text.lower())
+            
+        try:
+            import nltk
+            nltk.data.find("tokenizers/punkt")
+            nltk.data.find("tokenizers/punkt_tab")
+            from nltk.tokenize import word_tokenize
+            q_tokens = word_tokenize(query_text.lower())
+        except Exception:
+            q_tokens = query_text.lower().split()
+            
         scores = self.bm25.get_scores(q_tokens)
         top_idx = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
         results = [(self.ids[i], float(scores[i])) for i in top_idx if scores[i] > 0]

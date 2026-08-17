@@ -53,7 +53,7 @@ def generate_answer(question: str) -> Dict[str, Any]:
         
     return {
         "answer": result.get("answer_text", ""), 
-        "sources": list(set(sources)), # حذف منابع تکراری
+        "sources": list(set(sources)),
         "telemetry": result.get("telemetry", {})
     }
 
@@ -84,7 +84,6 @@ class LLMService:
             context_parts = []
             chunk_map = {}
             for (chunk, rscore) in selected:
-                # حذف بک‌اسلش‌های غیرمجاز از فرمت رشته
                 context_parts.append(f"[{chunk.id}]\n{chunk.text}\n")
                 chunk_map[chunk.id] = {
                     "filename": chunk.metadata.get("filename") or chunk.metadata.get("title"),
@@ -115,7 +114,7 @@ class LLMService:
                     
                     answer_text = response.content
                     used_model_name = model_name
-                    break # موفقیت آمیز بود، خروج از حلقه
+                    break
                 except Exception as exc:
                     logger.exception("LLM model %s failed: %s", model_name, exc)
                     llm_exception = exc
