@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 
 class Document(models.Model):
+    """Store an uploaded knowledge-base document and its ingestion state."""
     STATUS_CHOICES = [
         ('pending', 'In the Waiting list'),
         ('processing', 'Processing (please wait)'),
@@ -21,9 +22,16 @@ class Document(models.Model):
     progress_message = models.CharField(max_length=255, blank=True, null=True, verbose_name="Current Step")
 
     def save(self, *args, **kwargs):
+        """Save the document and start ingestion for new uploaded files.
+
+        Args:
+            *args: Positional arguments forwarded to Django's model save method.
+            **kwargs: Keyword arguments forwarded to Django's model save method.
+        """
         is_new = self.pk is None 
         super().save(*args, **kwargs)
 
+        # Start the costly ingestion process only after the new record exists.
         if is_new and self.file:
             self.status = 'processing'
             self.progress_message = 'Starting processing operations...'
@@ -34,15 +42,26 @@ class Document(models.Model):
             thread.start()
 
     def process_document_background(self):
+        """Extract, index, and persist document content in a background thread.
+
+        Returns:
+            None.
+        """
         try:
             from .document_pipeline import default_ingestor
             if not default_ingestor:
                 return
 
             def update_progress(msg):
+                """Persist the current ingestion progress message.
+
+                Args:
+                    msg: Human-readable status text from the ingestion pipeline.
+                """
                 self.progress_message = msg
                 self.save(update_fields=['progress_message'])
 
+            # Prefer the storage path, while preserving support for alternate storage backends.
             try:
                 file_path = self.file.path
                 with open(file_path, 'rb') as fh:
@@ -73,6 +92,12 @@ class Document(models.Model):
             self.save(update_fields=['status', 'progress_message'])
 
     def delete(self, *args, **kwargs):
+        """Remove the physical file and associated retrieval data before deletion.
+
+        Args:
+            *args: Positional arguments forwarded to Django's model delete method.
+            **kwargs: Keyword arguments forwarded to Django's model delete method.
+        """
         if self.file:
             import os
             if os.path.isfile(self.file.path):
@@ -91,14 +116,21 @@ class Document(models.Model):
         super().delete(*args, **kwargs)
 
     def __str__(self):
+        """Return the document title for Django administrative displays.
+
+        Returns:
+            The document title.
+        """
         return self.title
 
     class Meta:
+        """Configure Django metadata for the document model."""
         verbose_name = "Document"
         verbose_name_plural = "Documents"
 
 
 class QAHistory(models.Model):
+    """Store request, response, and retrieval telemetry for a RAG interaction."""
     STATUS_CHOICES = [
         ("success", "Success"),
         ("failed", "Failed"),
@@ -120,10 +152,16 @@ class QAHistory(models.Model):
     error_text = models.TextField(null=True, blank=True)
 
     class Meta:
+        """Configure indexes for common Q&A history queries."""
         indexes = [
             models.Index(fields=["created_at"]),
             models.Index(fields=["status"]),
         ]
 
     def __str__(self):
+        """Return a concise representation of the recorded question.
+
+        Returns:
+            The history identifier and a question preview.
+        """
         return f"QAHistory {self.id} - {self.query_text[:80]}"

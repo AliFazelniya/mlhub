@@ -11,6 +11,14 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class DocumentChunk:
+    """Represent a retrieved document chunk and its relevance score.
+
+    Args:
+        id: Unique chunk identifier.
+        text: Chunk text.
+        metadata: Source metadata.
+        score: Retrieval score.
+    """
     id: str
     text: str
     metadata: Dict[str, Any]
@@ -23,6 +31,11 @@ class ChromaIndexer:
     """
 
     def __init__(self, chroma_persist_dir: str = None):
+        """Initialize the Chroma client and documents collection.
+
+        Args:
+            chroma_persist_dir: Optional path for persistent Chroma storage.
+        """
         if chroma_persist_dir:
             self.client = chromadb.PersistentClient(path=chroma_persist_dir)
         else:
@@ -32,12 +45,28 @@ class ChromaIndexer:
         self.collection = self.client.get_or_create_collection(name=self.collection_name)
 
     def add_chunks(self, chunks: List, embeddings: List[List[float]]):
+        """Add chunks and their embeddings to the Chroma collection.
+
+        Args:
+            chunks: Chunks to store.
+            embeddings: Embedding vectors aligned with chunks.
+        """
         ids = [c.id for c in chunks]
         metadatas = [c.metadata for c in chunks]
         documents = [c.text for c in chunks]
         self.collection.add(ids=ids, metadatas=metadatas, documents=documents, embeddings=embeddings)
 
     def query_vector(self, query_embedding: List[float], top_k: int = 10, metadata_filter: dict = None):
+        """Query Chroma for chunks nearest to an embedding.
+
+        Args:
+            query_embedding: Vector representation of the query.
+            top_k: Maximum number of matches.
+            metadata_filter: Optional Chroma metadata filter.
+
+        Returns:
+            Retrieved document chunks.
+        """
     
         query_kwargs = {
             "query_embeddings": [query_embedding],
@@ -68,11 +97,29 @@ class HybridRetriever:
     """
 
     def __init__(self, chroma_indexer: ChromaIndexer, bm25_index, embedder):
+        """Initialize vector and keyword retrieval dependencies.
+
+        Args:
+            chroma_indexer: Vector index interface.
+            bm25_index: Keyword index interface.
+            embedder: Component that embeds query text.
+        """
         self.chroma = chroma_indexer
         self.bm25 = bm25_index
         self.embedder = embedder
 
     def retrieve(self, query: str, top_k_vector: int = 10, top_k_bm25: int = 10, metadata_filter: dict = None) -> Tuple[List[DocumentChunk], int]:
+        """Retrieve and merge vector and BM25 candidates.
+
+        Args:
+            query: User query text.
+            top_k_vector: Vector candidates to retrieve.
+            top_k_bm25: Keyword candidates to retrieve.
+            metadata_filter: Optional vector-search metadata filter.
+
+        Returns:
+            Merged chunks and elapsed retrieval time in milliseconds.
+        """
         t0 = time.time()
         q_emb = self.embedder.embed_texts([query])[0]
         vector_results = self.chroma.query_vector(q_emb, top_k=top_k_vector, metadata_filter=metadata_filter)
@@ -94,6 +141,7 @@ class HybridRetriever:
                         )
                     )
 
+        # Deduplicate chunks while retaining the highest score per identifier.
         merged = {}
         for d in vector_results + bm25_docs:
             if d.id not in merged or d.score > merged[d.id].score:
@@ -111,6 +159,12 @@ class CrossEncoderReranker:
     """
 
     def __init__(self, model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2", device: str = None):
+        """Load the cross-encoder model on the selected device.
+
+        Args:
+            model_name: HuggingFace model identifier.
+            device: Optional Torch device override.
+        """
         self.model_name = model_name
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -118,6 +172,16 @@ class CrossEncoderReranker:
         self.model.eval()
 
     def rerank(self, query: str, candidates: List[DocumentChunk], top_n: int = 5) -> List[tuple]:
+        """Score candidate chunks against a query and return the top results.
+
+        Args:
+            query: User query text.
+            candidates: Candidate chunks to score.
+            top_n: Maximum number of reranked candidates to return.
+
+        Returns:
+            Candidate and score tuples ordered by descending relevance.
+        """
         if not candidates:
             return []
             

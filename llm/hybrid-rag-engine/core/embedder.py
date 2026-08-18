@@ -1,19 +1,35 @@
+"""Local embedding utilities."""
 
 from typing import List
-from sentence_transformers import SentenceTransformer
+
 import numpy as np
+from sentence_transformers import SentenceTransformer
+
 
 class EmbedderWrapper:
-    """
-    Thin wrapper over sentence-transformers for local embeddings.
-    Alternatively replace with remote embedding API (OpenRouter/OpenAI) if preferred.
+    """Wrap a SentenceTransformer model for local text embedding.
+
+    Args:
+        model_name: The local path or model identifier to load.
     """
 
     def __init__(self, model_name: str = "/app/all-MiniLM-L6-v2"):
+        """Initialize the sentence-transformer model.
+
+        Args:
+            model_name: The local path or model identifier to load.
+        """
         self.model = SentenceTransformer(model_name)
 
     def embed_texts(self, texts: List[str]) -> List[List[float]]:
-        # returns list of vectors (floats)
+        """Generate floating-point embedding vectors for text inputs.
+
+        Args:
+            texts: Text strings to encode.
+
+        Returns:
+            A list containing one vector for each input text.
+        """
+        # Convert NumPy output to plain floats for downstream serialization.
         embs = self.model.encode(texts, show_progress_bar=False, convert_to_numpy=True)
-        # ensure list-of-lists
         return [list(map(float, vec)) for vec in embs]

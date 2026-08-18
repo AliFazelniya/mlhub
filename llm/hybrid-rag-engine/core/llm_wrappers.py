@@ -1,45 +1,73 @@
+"""Language-model client factory utilities."""
 
-import os
 import logging
+import os
 
-# NOTE: This example uses the existing ChatOpenAI wrapper used in the repo.
-# If you have a different LangChain LLM wrapper for OpenRouter, replace accordingly.
 try:
     from langchain_openai import ChatOpenAI
 except Exception:
-    # If langchain-openai is not available, user should replace with their own LLM factory implementation.
+    # Preserve deferred failure so Django can start when the optional wrapper is absent.
     ChatOpenAI = None
+
 
 logger = logging.getLogger(__name__)
 
+
 class LLMFactory:
-    """
-    Returns LangChain-compatible LLM objects in primary->fallback order.
-    Each LLM instance will be configured with low temperature and deterministic settings.
-    Adapt this to your OpenRouter integration if you have a custom LLM wrapper.
+    """Create LangChain-compatible LLM instances in fallback order.
+
+    Args:
+        config: Optional configuration containing an ordered_models list.
     """
 
     def __init__(self, config: dict = None):
-        # config["ordered_models"] is a list of model ids/names
-        # e.g. ["google/gemma-4-31b-it:free", "meta-llama/llama-3.1-8b-instruct:free", ...]
+        """Initialize the factory with optional model configuration.
+
+        Args:
+            config: Optional configuration containing an ordered_models list.
+        """
         self.config = config or {}
-        self.api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY")
-        self.ordered_models = self.config.get("ordered_models", [
-            "google/gemma-4-26b-a4b-it:free",
-            "openai/gpt-oss-20b:free",
-            "nvidia/nemotron-3-ultra-550b-a55b:free",
-            "dots-studio/dots-3-note-preview:free",
-        ])
+        self.api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get(
+            "OPENAI_API_KEY"
+        )
+        self.ordered_models = self.config.get(
+            "ordered_models",
+            [
+                "google/gemma-4-26b-a4b-it:free",
+                "openai/gpt-oss-20b:free",
+                "nvidia/nemotron-3-ultra-550b-a55b:free",
+                "dots-studio/dots-3-note-preview:free",
+            ],
+        )
 
     def get_candidate_model_names(self):
+        """Return a copy of model identifiers in their fallback order.
+
+        Returns:
+            A list of configured model identifiers.
+        """
         return list(self.ordered_models)
 
     def get_llm(self, model_name: str):
-            if ChatOpenAI is None:
-                raise RuntimeError("ChatOpenAI wrapper not available - implement your own LLMFactory.get_llm")
-            return ChatOpenAI(
-                model=model_name, 
-                api_key=self.api_key, 
-                temperature=0.0,
-                base_url="https://openrouter.ai/api/v1"
+        """Create a configured LLM client for a specific model.
+
+        Args:
+            model_name: The OpenRouter model identifier to use.
+
+        Returns:
+            A configured ChatOpenAI instance.
+
+        Raises:
+            RuntimeError: If the LangChain OpenAI wrapper is unavailable.
+        """
+        if ChatOpenAI is None:
+            raise RuntimeError(
+                "ChatOpenAI wrapper not available - implement your own "
+                "LLMFactory.get_llm"
             )
+        return ChatOpenAI(
+            model=model_name,
+            api_key=self.api_key,
+            temperature=0.0,
+            base_url="https://openrouter.ai/api/v1",
+        )

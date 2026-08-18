@@ -13,14 +13,31 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Chunk:
+    """Represent a text fragment and the metadata required to retrieve it.
+
+    Args:
+        id: Unique chunk identifier.
+        text: Chunk content.
+        metadata: Source metadata for the chunk.
+    """
     id: str
     text: str
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 class TextExtractor:
-    """Extract text using fast, modern LangChain loaders optimized for Persian."""
+    """Extract text from supported uploaded document formats."""
 
     def extract(self, file_bytes: bytes, filename: str, content_type: str = None) -> str:
+        """Extract text from an uploaded file.
+
+        Args:
+            file_bytes: Raw file contents.
+            filename: Original uploaded filename.
+            content_type: Optional MIME type supplied by the caller.
+
+        Returns:
+            Extracted text or a decoded fallback representation.
+        """
         ext = (filename.split(".")[-1] or "").lower()
         
         if ext in ("txt", "text"):
@@ -43,11 +60,27 @@ class TextExtractor:
         return file_bytes.decode("utf-8", errors="ignore")
 
     def _extract_docx(self, file_path: str) -> str:
+        """Extract all text from a DOCX file path.
+
+        Args:
+            file_path: Path to the temporary DOCX file.
+
+        Returns:
+            Concatenated document text.
+        """
         loader = Docx2txtLoader(file_path)
         docs = loader.load()
         return "\n\n".join([doc.page_content for doc in docs])
 
     def _extract_pdf(self, file_path: str) -> str:
+        """Extract all text from a PDF file path.
+
+        Args:
+            file_path: Path to the temporary PDF file.
+
+        Returns:
+            Concatenated document text.
+        """
         loader = PyMuPDFLoader(file_path)
         docs = loader.load()
         return "\n\n".join([doc.page_content for doc in docs])
@@ -57,6 +90,14 @@ class TextNormalizer:
     """Basic normalization (whitespace, remove excessive blank lines)"""
 
     def normalize(self, text: str) -> str:
+        """Normalize line endings, whitespace, and excessive blank lines.
+
+        Args:
+            text: Raw extracted text.
+
+        Returns:
+            Normalized text.
+        """
         import re
         text = text.replace("\r\n", "\n").replace("\r", "\n")
         text = re.sub(r"\n{3,}", "\n\n", text)
@@ -71,10 +112,25 @@ class Chunker:
     """
 
     def __init__(self, chunk_size: int = 1000, overlap: int = 200):
+        """Initialize chunk boundaries.
+
+        Args:
+            chunk_size: Maximum number of characters in a chunk.
+            overlap: Number of trailing characters carried into the next chunk.
+        """
         self.chunk_size = chunk_size
         self.overlap = overlap
 
     def chunk_text(self, text: str, metadata: Dict[str, Any]) -> List[Chunk]:
+        """Split normalized text into overlapping chunks.
+
+        Args:
+            text: Text to split.
+            metadata: Metadata copied onto each generated chunk.
+
+        Returns:
+            Ordered text chunks.
+        """
         chunks = []
         start = 0
         text_len = len(text)
@@ -97,6 +153,11 @@ from rank_bm25 import BM25Okapi
 
 class BM25Index:
     def __init__(self, persist_path: str = "/tmp/bm25_index.pkl"):
+        """Initialize and load a persisted BM25 index.
+
+        Args:
+            persist_path: Filesystem location of the persisted index.
+        """
         self.persist_path = persist_path
         self.corpus = []
         self.raw_texts = []
@@ -105,6 +166,7 @@ class BM25Index:
         self._load()
 
     def _load(self):
+        """Load the persisted BM25 corpus when available."""
         if os.path.exists(self.persist_path):
             try:
                 with open(self.persist_path, "rb") as fh:
@@ -118,10 +180,16 @@ class BM25Index:
                 logger.exception("Failed to load BM25 index, starting fresh.")
 
     def _save(self):
+        """Persist the current BM25 corpus and lookup data."""
         with open(self.persist_path, "wb") as fh:
             pickle.dump({"corpus": self.corpus, "raw_texts": self.raw_texts, "ids": self.ids}, fh)
 
     def add_documents(self, chunks: Iterable[Chunk]):
+        """Tokenize and add chunks to the BM25 corpus.
+
+        Args:
+            chunks: Chunks to index.
+        """
         try:
             import nltk
             nltk.data.find("tokenizers/punkt")
@@ -143,6 +211,15 @@ class BM25Index:
         self._save()
 
     def query(self, query_text: str, top_k: int = 10):
+        """Return the highest-scoring BM25 chunk identifiers.
+
+        Args:
+            query_text: Text to search for.
+            top_k: Maximum number of matches to return.
+
+        Returns:
+            Chunk identifier and score tuples.
+        """
         if self.bm25 is None:
             return []
             
@@ -162,6 +239,15 @@ class BM25Index:
 
 class DocumentIngestor:
     def __init__(self, embedder, indexer, bm25_index: BM25Index, chunk_size=1000, chunk_overlap=200):
+        """Initialize document-processing dependencies.
+
+        Args:
+            embedder: Component that creates embeddings.
+            indexer: Component that stores vector embeddings.
+            bm25_index: Keyword retrieval index.
+            chunk_size: Maximum characters per chunk.
+            chunk_overlap: Character overlap between chunks.
+        """
         self.extractor = TextExtractor()
         self.normalizer = TextNormalizer()
         self.chunker = Chunker(chunk_size, chunk_overlap)
@@ -170,7 +256,23 @@ class DocumentIngestor:
         self.bm25_index = bm25_index
 
     def ingest(self, file_bytes: bytes, filename: str, metadata: Dict[str, Any] = None, progress_callback=None) -> List[Chunk]:
+        """Extract, normalize, chunk, embed, and index one document.
+
+        Args:
+            file_bytes: Raw uploaded file contents.
+            filename: Original uploaded filename.
+            metadata: Optional document metadata.
+            progress_callback: Optional callback receiving progress messages.
+
+        Returns:
+            The indexed chunks, or an empty list when no text is extracted.
+        """
         def log_progress(msg):
+            """Report ingestion progress to the caller and application log.
+
+            Args:
+                msg: Progress message to report.
+            """
             if progress_callback:
                 progress_callback(msg)
             logger.info(msg)
@@ -208,6 +310,11 @@ class DocumentIngestor:
         return chunks
 
     def delete_document(self, document_id: int):
+        """Remove retrieval data associated with a document.
+
+        Args:
+            document_id: Identifier of the document to remove.
+        """
         import logging
         logger = logging.getLogger(__name__)
         logger.info(f"Clearing AI knowledge for document #{document_id}...")
