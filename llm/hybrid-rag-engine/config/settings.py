@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'drf_spectacular',
     'rest_framework',
+    'rest_framework_api_key',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,5 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"

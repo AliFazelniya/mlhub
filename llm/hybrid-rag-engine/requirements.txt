@@ -19,3 +19,4 @@ transformers>=4.31.0
 torch>=2.2.0
 chromadb>=0.4.0
 rank_bm25>=0.2.2
+djangorestframework-api-key==3.0.0

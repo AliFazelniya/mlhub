@@ -1,10 +1,14 @@
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .llm_service import generate_answer
 from django.shortcuts import render
+from rest_framework_api_key.permissions import HasAPIKey
 
 class AskQuestionView(APIView):
+    permission_classes = [HasAPIKey] 
+
     def post(self, request):
         question = request.data.get('question')
         if not question:
