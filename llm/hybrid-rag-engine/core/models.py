@@ -17,8 +17,8 @@ class Document(models.Model):
     content = models.TextField(blank=True, null=True, verbose_name="Extracted Content")
     uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Uploaded At")
     
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending', verbose_name="وضعیت نهایی")
-    progress_message = models.CharField(max_length=255, blank=True, null=True, verbose_name="مرحله فعلی")
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending', verbose_name="Final status")
+    progress_message = models.CharField(max_length=255, blank=True, null=True, verbose_name="Current Step")
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None 
@@ -69,8 +69,15 @@ class Document(models.Model):
             logger = logging.getLogger(__name__)
             logger.exception("Document ingestion failed: %s", e)
             self.status = 'failed'
-            self.progress_message = f"❌ خطا: {str(e)}"
+            self.progress_message = f"❌ Error: {str(e)}"
             self.save(update_fields=['status', 'progress_message'])
+
+    def delete(self, *args, **kwargs):
+        if self.file:
+            if os.path.isfile(self.file.path):
+                os.remove(self.file.path)
+                
+        super().delete(*args, **kwargs)
 
     def __str__(self):
         return self.title
