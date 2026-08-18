@@ -1,102 +1,115 @@
-# Django Docker RAG System
+# Hybrid RAG Engine
 
-A containerized Retrieval-Augmented Generation (RAG) application for asking grounded questions over uploaded documents. The system combines Django's administration and API capabilities with local semantic retrieval, BM25 keyword retrieval, and OpenRouter-hosted language models.
+> 🧠 A secure, Django-powered Retrieval-Augmented Generation (RAG) service for asking grounded questions over an administratively managed document knowledge base.
 
-The project is designed as a practical, inspectable RAG baseline: documents are ingested asynchronously, indexed locally, retrieved through a hybrid strategy, and supplied as context for answer generation.
+Hybrid RAG Engine combines semantic retrieval from **ChromaDB** with lexical retrieval from **BM25**, then reranks the combined candidates before sending focused context to an OpenRouter-hosted language model. Documents, API keys, users, and Q&A telemetry are managed through Django Admin.
 
-## Architecture and capabilities
+## Features
 
-- **Fully Dockerized development environment** — Docker Compose provides a consistent application runtime, while the Dockerfile uses a BuildKit cache mount for pip downloads to speed up repeat builds.
-- **Hybrid retrieval** — ChromaDB vector search is merged with BM25 keyword search, improving recall for both semantic queries and exact terminology.
-- **Local embeddings and persistent indexes** — the local `all-MiniLM-L6-v2` model generates embeddings; ChromaDB and the BM25 index persist under `chroma_db/`.
-- **Resilient tokenization** — BM25 uses NLTK tokenization when its resources are available and falls back to whitespace tokenization if they are not, avoiding ingestion and query failures in constrained environments.
-- **Non-blocking ingestion** — document extraction, chunking, embedding, and indexing run in a daemon background thread after upload, keeping Django Admin responsive for large documents.
-- **Operational visibility in Admin** — document status and the active ingestion stage are shown in the custom Admin view. Processing records automatically refresh every three seconds until completion or failure.
-- **Dark chat interface** — a browser-based chatbot is available at the application root.
-- **Supported inputs** — PDF (via PyMuPDF), DOCX, and plain-text documents.
+| Area | Capability |
+| --- | --- |
+| 🔎 Hybrid retrieval | Combines ChromaDB vector similarity search with BM25 keyword search for strong semantic and exact-term recall. |
+| 🧩 Reranking | Uses a cross-encoder to rank retrieved candidates before answer generation. |
+| 📄 Document ingestion | Supports PDF, DOCX, and TXT; extracts, normalizes, chunks, embeds, and indexes uploads in the background. |
+| 🔐 API protection | RAG API endpoints require an API key supplied through the custom `X-API-Key` header. |
+| 🛡️ Browser request security | The built-in chat UI sends both `X-API-Key` and Django's `X-CSRFToken` with its fetch request. |
+| 🧹 No ghost documents | Deleting a document in Django Admin removes its uploaded file and purges its ChromaDB vectors and BM25 entries. |
+| 📊 Traceability | Django Admin records Q&A history, request status, retrieval latency, selected chunks, and model metadata. |
+| 🐳 Docker-ready | Docker Compose provides a consistent local runtime with persistent project-local data. |
+
+## Architecture
+
+```text
+Document upload → extraction → normalization → chunking → embeddings → ChromaDB
+                                                     └──────────────→ BM25
+
+Question + X-API-Key → hybrid retrieval → cross-encoder reranking → LLM → answer + sources
+```
+
+The embedding model (`all-MiniLM-L6-v2`) and the retrieval indexes run locally. OpenRouter is used only for answer generation.
 
 ## Technology stack
 
-| Area                  | Technology                                    |
-| --------------------- | --------------------------------------------- |
-| Web framework and API | Django, Django REST Framework                 |
-| Retrieval             | ChromaDB, BM25 (`rank_bm25`), LangChain       |
-| Document extraction   | PyMuPDF, `docx2txt`                           |
-| Embeddings            | Sentence Transformers (`all-MiniLM-L6-v2`)    |
-| LLM provider          | OpenRouter                                    |
-| Runtime and build     | Docker, Docker Compose, BuildKit cache mounts |
+| Layer | Technology |
+| --- | --- |
+| Application | Django, Django REST Framework |
+| Access control | `djangorestframework-api-key` |
+| Retrieval | ChromaDB, BM25 (`rank_bm25`), LangChain |
+| Embeddings / reranking | Sentence Transformers, CrossEncoder |
+| Extraction | PyMuPDF, `docx2txt` |
+| Generation | OpenRouter |
+| Runtime | Docker, Docker Compose |
 
-## Prerequisites
+## Getting started
 
-- Docker Engine 20.10+ with Docker Compose v2 (`docker compose`)
+### Prerequisites
+
+- Docker Engine 20.10+ and Docker Compose v2
 - An [OpenRouter API key](https://openrouter.ai/keys)
+- Linux for the supplied host-network Docker configuration
 
-Verify the local installation:
+### 1. Clone and configure
 
 ```bash
-docker --version
-docker compose version
+git clone https://github.com/AliFazelniya/mlhub.git
+cd mlhub/llm/hybrid-rag-engine
+cp .env.example .env
 ```
 
-## Installation and setup
+Set your OpenRouter credential in `.env`:
 
-1. Clone the repository and enter the project directory.
+```env
+OPENROUTER_API_KEY=your_openrouter_api_key
+TOKENIZERS_PARALLELISM=false
+```
 
-   ```bash
-   git clone https://github.com/AliFazelniya/mlhub.git
-   cd mlhub/llm/hybrid-rag-engine
-   ```
+> 🔒 Keep `.env` out of version control. The OpenRouter key is needed to generate answers; embeddings are generated locally.
 
-2. Create `.env` beside `docker-compose.yml`.
+### 2. Build and start the service
 
-   ```bash
-   cp .env.example .env
-   ```
+```bash
+docker compose up -d --build
+```
 
-   If an example file is not present, create it manually:
+The Compose service intentionally uses `network_mode: "host"`; it does **not** publish a `8000:8000` port mapping. On Linux, this lets the container use the host network directly, which avoids DNS/VPN restrictions that can interrupt the HuggingFace cross-encoder model download.
 
-   ```env
-   OPENROUTER_API_KEY=your_openrouter_api_key
-   TOKENIZERS_PARALLELISM=false
-   ```
+> ⚠️ `network_mode: "host"` is designed for Linux Docker hosts. The Django development server remains available at `http://localhost:8000` because it binds to `0.0.0.0:8000` on the host network.
 
-   Keep `.env` out of source control. `OPENROUTER_API_KEY` is required for generating answers; the local embedding model does not require a separate API key.
+### 3. Initialize Django
 
-3. Build and start the application in the background.
+```bash
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py createsuperuser
+```
 
-   ```bash
-   docker compose up -d --build
-   ```
+### 4. Create an API key and add knowledge
 
-   The Dockerfile's `RUN --mount=type=cache` instruction is automatically used by current Docker installations with BuildKit, caching pip artifacts between builds.
+1. Visit [http://localhost:8000/admin/](http://localhost:8000/admin/) and sign in.
+2. Create an API key in the **API Keys** section. Copy it immediately and store it securely; use it as the value of `X-API-Key`.
+3. Upload PDF, DOCX, or TXT files in **Documents**.
+4. Wait until a document shows `completed` before querying it.
 
-4. Apply database migrations and create an administrator account.
+Available endpoints:
 
-   ```bash
-   docker compose exec web python manage.py migrate
-   docker compose exec web python manage.py createsuperuser
-   ```
+| Surface | URL |
+| --- | --- |
+| Chat UI | [http://localhost:8000/](http://localhost:8000/) |
+| Django Admin | [http://localhost:8000/admin/](http://localhost:8000/admin/) |
+| OpenAPI docs | [http://localhost:8000/api/docs/](http://localhost:8000/api/docs/) |
+| Ask API | `POST http://localhost:8000/api/ask/` |
 
-5. Open the application.
-   - Chat interface: [http://localhost:8000/](http://localhost:8000/)
-   - Django Admin: [http://localhost:8000/admin/](http://localhost:8000/admin/)
-   - OpenAPI documentation: [http://localhost:8000/api/docs/](http://localhost:8000/api/docs/)
+## Secure API usage
 
-Upload documents through the **Documents** section of Django Admin. Once the file is saved, track its status and progress message from its change page; wait for the status to become `completed` before relying on its contents in answers.
-
-## API testing
-
-### Ask a question
-
-Send a `POST` request to `/api/ask/` with a JSON `question` field.
+Every RAG request must include `X-API-Key`. A missing or invalid key is rejected before the question reaches the retrieval or generation pipeline.
 
 ```bash
 curl --request POST 'http://localhost:8000/api/ask/' \
   --header 'Content-Type: application/json' \
+  --header 'X-API-Key: YOUR_API_KEY' \
   --data '{"question":"What are the main conclusions in the uploaded documents?"}'
 ```
 
-Example successful response:
+Example response:
 
 ```json
 {
@@ -106,41 +119,91 @@ Example successful response:
 }
 ```
 
-If `question` is omitted or empty, the API returns `400 Bad Request`:
+The browser chat interface is configured to submit both headers below, allowing secure same-origin fetch requests:
 
-```json
-{
-  "error": "Please provide a question."
-}
+```text
+X-API-Key: <API key>
+X-CSRFToken: <Django CSRF token>
 ```
 
-### Postman
+> 💡 Do not expose a long-lived API key in a public frontend. For production, deliver credentials through an authenticated backend or issue restricted, revocable keys.
 
-Create a request with the following configuration:
+## System administration & security
 
-| Setting | Value                                       |
-| ------- | ------------------------------------------- |
-| Method  | `POST`                                      |
-| URL     | `http://localhost:8000/api/ask/`            |
-| Header  | `Content-Type: application/json`            |
-| Body    | Raw JSON: `{ "question": "Your question" }` |
+The Django Admin dashboard centralizes operational control: user administration, API-key lifecycle management, document uploads, and request history.
+
+### Main administration dashboard
+
+![Main Admin Dashboard](images/admin_panel.png)
+
+### API-key management
+
+![API Keys List](images/api_keys_panel.png)
+
+![Creating a new API Key](images/add_api_key_panel.png)
+
+### User management
+
+![User Management](images/user_panel.png)
+
+## Knowledge base management
+
+Upload supported files from Django Admin. Ingestion runs in a background thread and exposes progress and final status in the document record.
+
+![List of uploaded files](images/document_management_panel.png)
+
+![Single document view](images/document_panel.png)
+
+### Deletion behavior
+
+Deleting a `Document` through Django Admin invokes the model's overridden `delete()` method. It removes the physical uploaded file, deletes matching embeddings from ChromaDB, and clears the document's BM25 data. This keeps the knowledge base synchronized and prevents deleted content from resurfacing as a ghost document.
+
+## Q&A history & analytics
+
+Each request can be inspected in Admin, including its question, generated answer, status, latency, selected chunks, score metadata, and model information.
+
+![List of past queries](images/qa_panel.png)
+
+![Detailed view of a specific Q&A](images/one_qa_panel.png)
+
+## API usage & chat interface
+
+### Secure web chat
+
+![The Web UI chat interface](images/chat_test.png)
+
+### Postman request
+
+Configure a `POST` request to `http://localhost:8000/api/ask/` with these values:
+
+| Setting | Value |
+| --- | --- |
+| Headers | `Content-Type: application/json` and `X-API-Key: YOUR_API_KEY` |
+| Body | Raw JSON: `{ "question": "Your question" }` |
+
+![Testing secure endpoints via Postman](images/postman_test.png)
+
+### Terminal request
+
+![Testing via terminal curl](images/curl_test.png)
 
 ## Operations
 
-View running containers and application output:
-
 ```bash
+# Inspect service state
 docker compose ps
+
+# Follow application logs
 docker compose logs -f web
-```
 
-Stop the environment while retaining the SQLite database, uploaded documents, and retrieval indexes in the project directory:
-
-```bash
+# Stop containers while retaining project-local data
 docker compose down
 ```
 
-## Development notes
+## Production considerations
 
-- This repository is configured for local development. Before deploying to production, externalize the Django secret key, disable `DEBUG`, configure `ALLOWED_HOSTS`, use a production WSGI/ASGI server, and move SQLite and local index storage to appropriately managed services or durable volumes.
-- Background threading is intentionally lightweight for local deployments. For production workloads, use a durable task queue and worker process (for example, Celery) to provide retries, observability, and horizontal scaling.
+- Replace Django's development secret key, set `DEBUG=False`, and configure `ALLOWED_HOSTS`.
+- Terminate TLS at a trusted reverse proxy and restrict network access to the service.
+- Store API keys and OpenRouter credentials in a secrets manager; rotate and revoke keys routinely.
+- Use a durable worker system such as Celery for ingestion workloads that require retries, monitoring, or horizontal scale.
+- Move SQLite, uploaded files, and vector storage to managed, durable services appropriate to your deployment.
