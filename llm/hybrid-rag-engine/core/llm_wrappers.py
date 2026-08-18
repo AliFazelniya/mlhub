@@ -25,10 +25,10 @@ class LLMFactory:
         self.config = config or {}
         self.api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY")
         self.ordered_models = self.config.get("ordered_models", [
-            "google/gemma-4-31b-it:free",
-            "meta-llama/llama-3.1-8b-instruct:free",
-            "nvidia/nemotron-nano-9b-v2:free",
-            "qwen/qwen-2-7b-instruct:free",
+            "google/gemma-4-26b-a4b-it:free",
+            "openai/gpt-oss-20b:free",
+            "nvidia/nemotron-3-ultra-550b-a55b:free",
+            "dots-studio/dots-3-note-preview:free",
         ])
 
     def get_candidate_model_names(self):
