@@ -207,4 +207,25 @@ class DocumentIngestor:
         logger.info("Successfully ingested %d chunks for file %s", len(chunks), filename)
         return chunks
 
+    def delete_document(self, document_id: int):
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Clearing AI knowledge for document #{document_id}...")
+
+        try:
+            if hasattr(self.indexer, '_collection'):
+                self.indexer._collection.delete(where={"document_id": document_id})
+            elif hasattr(self.indexer, 'delete'):
+                self.indexer.delete(where={"document_id": document_id})
+            logger.info("Data cleared from ChromaDB.")
+        except Exception as e:
+            logger.error(f"Error deleting from ChromaDB: {e}")
+
+        try:
+            if hasattr(self.bm25_index, 'delete_by_metadata'):
+                self.bm25_index.delete_by_metadata(document_id=document_id)
+                logger.info("✅ Data cleared from BM25.")
+        except Exception as e:
+            logger.error(f"❌ Error deleting from BM25: {e}")
+
 default_ingestor = None

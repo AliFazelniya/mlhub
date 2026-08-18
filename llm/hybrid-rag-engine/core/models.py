@@ -74,9 +74,20 @@ class Document(models.Model):
 
     def delete(self, *args, **kwargs):
         if self.file:
+            import os
             if os.path.isfile(self.file.path):
                 os.remove(self.file.path)
                 
+        try:
+            from .document_pipeline import default_ingestor
+            if default_ingestor:
+                default_ingestor.delete_document(document_id=self.pk)
+                
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error("Failed to delete AI knowledge for document %s: %s", self.pk, e)
+
         super().delete(*args, **kwargs)
 
     def __str__(self):
