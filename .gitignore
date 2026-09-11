@@ -2,4 +2,4 @@
 .env
 __init__.py
 __pycache__
-neural_networks/rnn/toxic_comment/train.csv
+kaggle/toxic_comment/train.csv
