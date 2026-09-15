@@ -1,67 +1,82 @@
-"""Refactored entry point for the TicTacToe game."""
-import pygame
+"""
+Main Application Entry Point.
+Integrates Board, Minimax AI, and the Modern Pygame GUI.
+"""
+
 import sys
-import time
-
-from game import environment, board as board_ui, rules
-from gui.pygame_ui import settings_menu
-from agents import minimax_agent, random_agent
-
-
-def main():
-    board_size, user_choice, agent_mode = settings_menu()
-    environment.USER_MARKER = user_choice
-    environment.AGENT_MARKER = "O" if user_choice == "X" else "X"
-    rules.user_points = 0
-    rules.agent_points = 0
-    rules.live_user_points = 0
-    rules.live_agent_points = 0
-    environment.init_game(board_size)
-
-    current_player = environment.USER_MARKER if environment.USER_MARKER == "X" else environment.AGENT_MARKER
-    running = True
-
-    while running:
-        status_text = "Your turn" if current_player == environment.USER_MARKER else "Computer is thinking..."
-        mode_text = f"Mode: {agent_mode.title()} | You: {environment.USER_MARKER} | Agent: {environment.AGENT_MARKER}"
-        board_ui.draw_board(status_text, mode_text)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-            if event.type == pygame.MOUSEBUTTONDOWN and current_player == environment.USER_MARKER:
-                x, y = event.pos
-                row, col = board_ui.get_cell(x, y)
-                if row is None or col is None:
-                    continue
-                if 0 <= row < environment.board_size and 0 <= col < environment.board_size:
-                    if environment.Main_board.loc[environment.row_labels[row], str(col + 1)] == "_":
-                        environment.Main_board.loc[environment.row_labels[row], str(col + 1)] = environment.USER_MARKER
-                        current_player = environment.AGENT_MARKER
-
-        if current_player == environment.AGENT_MARKER and rules.check_game_over(environment.Main_board) != 1:
-            if agent_mode == "minimax":
-                minimax_agent.com_choice(environment.Main_board)
-            else:
-                random_agent.com_choice(environment.Main_board)
-            current_player = environment.USER_MARKER
-
-        if rules.check_game_over(environment.Main_board) == 1:
-            running = False
-
-        board_ui.draw_board(status_text, mode_text)
-        pygame.display.flip()
-        time.sleep(0.05)
-
-    winner = rules.check_winner()
-    if winner == "Draw":
-        result_message = "Draw!"
-    else:
-        result_message = "You won!" if winner == "User" else "Computer won!"
-    board_ui.show_game_result(result_message, rules.user_points, rules.agent_points, environment.Main_board)
+import pygame
+from board import Board
+from ai import MinimaxAI
+from gui import GameGUI, prompt_setup, show_game_over
 
 
-if __name__ == '__main__':
-    main()
+class GameController:
+    def __init__(self):
+        # 1. Ask for board size and human role via graphical prompt
+        size, self.human_mark = prompt_setup()
+        self.ai_mark = 'O' if self.human_mark == 'X' else 'X'
+        
+        # 2. Initialize Core Logic and AI with selected roles
+        self.board = Board(size)
+        self.ai_agent = MinimaxAI(ai_player=self.ai_mark, human_player=self.human_mark)
+        
+        # 3. Initialize Pygame GUI Window
+        self.view = GameGUI(self.board)
+        
+        # In Tic-Tac-Toe, 'X' always goes first
+        self.current_turn = 'X'
+
+    def format_move(self, row: int, col: int) -> str:
+        """Helper to print moves in the standard a1, b3 format for logs."""
+        row_char = chr(ord('a') + row)
+        col_num = col + 1
+        return f"{row_char}{col_num}"
+
+    def update_display(self):
+        """Helper to fetch scores and draw the board with hover state."""
+        score_x, score_o = self.board.calculate_scores()
+        mouse_pos = pygame.mouse.get_pos()
+        self.view.draw_board(score_x, score_o, self.human_mark, mouse_pos)
+
+    def run(self) -> None:
+        """Main game loop for event handling and turn management."""
+        running = True
+        
+        while running and not self.board.is_full():
+            self.update_display()
+            
+            # --- HUMAN TURN ---
+            if self.current_turn == self.human_mark:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+                        
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        move = self.view.get_move_from_mouse(event.pos)
+                        if move is not None:
+                            row, col = move
+                            if self.board.make_move(row, col, self.human_mark):
+                                self.current_turn = self.ai_mark  # Switch turn
+
+            # --- AI TURN ---
+            elif self.current_turn == self.ai_mark:
+                # Keep checking for QUIT event while AI is 'thinking' (prevent OS from saying "Not Responding")
+                pygame.event.pump()
+                
+                ai_move = self.ai_agent.get_best_move(self.board)
+                if ai_move:
+                    row, col = ai_move
+                    self.board.make_move(row, col, self.ai_mark)
+                    
+                self.current_turn = self.human_mark  # Switch turn
+
+        # --- GAME OVER ---
+        self.update_display() # One final draw
+        score_x, score_o = self.board.calculate_scores()
+        show_game_over(score_x, score_o, self.human_mark)
+
+
+if __name__ == "__main__":
+    game = GameController()
+    game.run()
