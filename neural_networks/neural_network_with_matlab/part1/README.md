@@ -1,1 +1,0 @@
-![SGDvsBatch](SGDvsBatch.jpg)
