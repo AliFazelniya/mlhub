@@ -6,18 +6,28 @@ import random
 from collections import deque
 
 class DQN(nn.Module):
-    def __init__(self, input_size, output_size):
+    def __init__(self, board_size, output_size):
         super(DQN, self).__init__()
-        self.network = nn.Sequential(
-            nn.Linear(input_size, 128),
+        self.board_size = board_size
+        
+        self.conv_layers = nn.Sequential(
+            nn.Conv2d(1, 64, kernel_size=3, padding=1),
             nn.ReLU(),
-            nn.Linear(128, 128),
+            nn.Conv2d(64, 128, kernel_size=3, padding=1),
+            nn.ReLU()
+        )
+        
+        self.fc_layers = nn.Sequential(
+            nn.Linear(128 * board_size * board_size, 256),
             nn.ReLU(),
-            nn.Linear(128, output_size)
+            nn.Linear(256, output_size)
         )
 
     def forward(self, x):
-        return self.network(x)
+        x = x.view(-1, 1, self.board_size, self.board_size)
+        x = self.conv_layers(x)
+        x = x.view(x.size(0), -1)
+        return self.fc_layers(x)
 
 class DQNAgent:
     def __init__(self, board_size):

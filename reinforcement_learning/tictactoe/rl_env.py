@@ -3,6 +3,7 @@ from gymnasium import spaces
 import numpy as np
 import random
 from board import Board
+from minmax import MinimaxAI
 
 class DoozEnv(gym.Env):
     def __init__(self, board_size=5, ai_mark='O', human_mark='X'):
@@ -22,9 +23,9 @@ class DoozEnv(gym.Env):
         
         self.board = Board(self.board_size)
         self.prev_score_diff = 0
+        self.sparring_partner = MinimaxAI(ai_player=self.human_mark, human_player=self.ai_mark)
 
     def reset(self, seed=None, options=None):
-        """بازی را به حالت اولیه برمی‌گرداند"""
         super().reset(seed=seed)
         self.board = Board(self.board_size)
         self.prev_score_diff = 0
@@ -77,7 +78,12 @@ class DoozEnv(gym.Env):
         return float(reward)
 
     def _opponent_play(self):
-        legal_moves = self.board.get_legal_moves()
-        if legal_moves:
-            r, c = random.choice(legal_moves)
+            legal_moves = self.board.get_legal_moves()
+            if not legal_moves:
+                return
+
+            best_move = self.sparring_partner.get_best_move(self.board)
+            if best_move:
+                    r, c = best_move
+                    
             self.board.make_move(r, c, self.human_mark)
