@@ -1,36 +1,41 @@
 """
 Main Application Entry Point.
-Integrates Board, RL Agent (DQN), and the Modern Pygame GUI.
+Integrates Board, RL Agent (DQN), and the Pygame GUI.
 """
-
-import sys
 import os
+import sys
+import warnings
+warnings.filterwarnings("ignore")
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'hide'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' 
+
 import pygame
-import torch
 import numpy as np
 from board import Board
 from gui import GameGUI, prompt_setup, show_game_over
 from rl_agent import DQN
+from stable_baselines3 import DQN
+import random
 
 class RLAgent:
     def __init__(self, ai_player: str, human_player: str, board_size: int):
         self.ai = ai_player
         self.human = human_player
         self.board_size = board_size
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        
-        model_path = f"dooz_dqn_{board_size}x{board_size}.pth"
+
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        model_filename = f"dqn_model_{board_size}x{board_size}.zip"
+        model_path = os.path.join(base_dir, model_filename)
         
         if not os.path.exists(model_path):
             raise FileNotFoundError(
                 f"\n[Error] Model '{model_path}' not found!\n"
-                f"Please train the model for board size {board_size}x{board_size} first by running 'train.py'."
+                f"Please run the train.py file first."
             )
             
-        self.model = DQN(board_size * board_size, board_size * board_size).to(self.device)
-        self.model.load_state_dict(torch.load(model_path, map_location=self.device))
-        self.model.eval()
-        print(f"[RL] Model loaded successfully from {model_path}")
+        self.model = DQN.load(model_path)
+        print(f"Model loaded successfully from {model_path}")
 
     def get_best_move(self, board: Board):
         legal_moves = board.get_legal_moves()
@@ -45,20 +50,14 @@ class RLAgent:
                 elif board.grid[r][c] == self.human:
                     state[r, c] = -1.0
                     
-        state_tensor = torch.FloatTensor(state).flatten().unsqueeze(0).to(self.device)
+        action, _states = self.model.predict(state, deterministic=True)
         
-        with torch.no_grad():
-            q_values = self.model(state_tensor).cpu().numpy()[0]
+        row = action.item() // self.board_size
+        col = action.item() % self.board_size
+        if (row, col) not in legal_moves:
+            return random.choice(legal_moves)
             
-        best_val = -float('inf')
-        best_move = None
-        for (r, c) in legal_moves:
-            action_idx = r * self.board_size + c
-            if q_values[action_idx] > best_val:
-                best_val = q_values[action_idx]
-                best_move = (r, c)
-                
-        return best_move
+        return (row, col)
 
 
 class GameController:

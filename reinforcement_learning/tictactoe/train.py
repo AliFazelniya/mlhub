@@ -1,40 +1,41 @@
-import numpy as np
-from rl_env import DoozEnv
-from rl_agent import DQNAgent
-import torch
+from stable_baselines3 import DQN
+from rl_env import TicEnv
+import argparse
 
-def train_agent(episodes=1000, board_size=5):
-    env = DoozEnv(board_size=board_size)
-    agent = DQNAgent(board_size=board_size)
+def train_agent(board_size=3, total_steps=150000):
+    print(f"Starting training on a {board_size}x{board_size} board...")
     
-    print(f"Starting agent training on a {board_size}x{board_size} board for {episodes} episodes...")
+    env = TicEnv(board_size=board_size)
     
-    for e in range(episodes):
-        state, _ = env.reset()
-        total_reward = 0
-        done = False
-        
-        while not done:
-            legal_moves_2d = env.board.get_legal_moves()
-            legal_actions = [r * board_size + c for (r, c) in legal_moves_2d]
-
-            action = agent.act(state, legal_actions)
-            
-            next_state, reward, done, _, _ = env.step(action)
-            total_reward += reward
-            
-            agent.remember(state, action, reward, next_state, done)
-            agent.replay()
-            
-            state = next_state
-        if e % 10 == 0:
-            agent.update_target_model()
-            
-        if (e + 1) % 50 == 0:
-            print(f"Episode: {e+1}/{episodes} | Total Reward: {total_reward:.2f} | Epsilon: {agent.epsilon:.3f}")
-            
-    torch.save(agent.model.state_dict(), f"dooz_dqn_{board_size}x{board_size}.pth")
-    print("Training complete and model saved!")
+    model = DQN(
+        "MlpPolicy", 
+        env, 
+        verbose=1, 
+        learning_rate=1e-3, 
+        buffer_size=100000, 
+        learning_starts=1000, 
+        batch_size=64, 
+        tau=1.0, 
+        gamma=0.99, 
+        train_freq=4, 
+        gradient_steps=1,
+        exploration_fraction=0.5, 
+        exploration_initial_eps=1.0, 
+        exploration_final_eps=0.01
+    )
+    
+    model.learn(total_timesteps=total_steps, log_interval=100)
+    
+    model.save(f"dqn_model_{board_size}x{board_size}")
+    print("The model was successfully saved!")
 
 if __name__ == "__main__":
-    train_agent(episodes=500, board_size=10)
+    parser = argparse.ArgumentParser(description="Train RL Model for a particular board size")
+    parser.add_argument("-s", "--board_size", type=int, default=3, help="Particular board size (3 to 10)")
+    args = parser.parse_args()
+
+    if 3 <= args.board_size <= 10:
+        train_agent(board_size=args.board_size)
+    else:
+        print("Error: The board size is not valid. It must be between 3 and 10.")
+    

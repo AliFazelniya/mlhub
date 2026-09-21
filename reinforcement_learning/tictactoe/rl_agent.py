@@ -43,10 +43,9 @@ class DQNAgent:
         self.learning_rate = 0.001
         self.batch_size = 64
         
-        # ساخت شبکه اصلی و شبکه هدف (برای پایداری یادگیری)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = DQN(self.state_size, self.action_size).to(self.device)
-        self.target_model = DQN(self.state_size, self.action_size).to(self.device)
+        self.model = DQN(self.board_size, self.action_size).to(self.device)
+        self.target_model = DQN(self.board_size, self.action_size).to(self.device)
         self.update_target_model()
         
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)

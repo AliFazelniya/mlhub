@@ -1,23 +1,17 @@
-"""
-Modern Pygame GUI for Neicharan's Dooz.
-Features Dark Mode, hover effects, and an interactive setup menu.
-"""
-
 import pygame
 import sys
 from typing import Tuple, Optional
 from board import Board
 
-# Modern Dark Theme Palette (Catppuccin inspired)
-BG_COLOR = (30, 30, 46)        # Deep dark background
-GRID_COLOR = (69, 71, 90)      # Subtle grid lines
-TEXT_COLOR = (205, 214, 244)   # Soft white text
-X_COLOR = (243, 139, 168)      # Pastel Red/Pink for X
-O_COLOR = (137, 180, 250)      # Pastel Blue for O
-BTN_BG = (49, 50, 68)          # Button background
-BTN_HOVER = (88, 91, 112)      # Button hover state
-BTN_ACTIVE = (166, 227, 161)   # Green for active/selected buttons
-HOVER_CELL = (40, 40, 56)      # Highlight for cell hovering
+BG_COLOR = (30, 30, 46)
+GRID_COLOR = (69, 71, 90)
+TEXT_COLOR = (205, 214, 244)
+X_COLOR = (243, 139, 168)  
+O_COLOR = (137, 180, 250) 
+BTN_BG = (49, 50, 68)   
+BTN_HOVER = (88, 91, 112)  
+BTN_ACTIVE = (166, 227, 161)
+HOVER_CELL = (40, 40, 56)    
 
 
 class GameGUI:
@@ -25,7 +19,7 @@ class GameGUI:
         pygame.init()
         self.board = board
         
-        self.margin = 70  # Space for labels
+        self.margin = 70
         self.cell_size = min(600 // self.board.size, 100)
         self.board_width = self.board.size * self.cell_size
         self.width = self.board_width + self.margin + 30
@@ -34,21 +28,17 @@ class GameGUI:
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption("Tic-Tac-Toe")
         
-        # Modern Fonts
         self.font = pygame.font.SysFont("segoeui", 22, bold=True)
         self.score_font = pygame.font.SysFont("segoeui", 20)
 
     def draw_board(self, score_x: int, score_o: int, human_mark: str, mouse_pos: Tuple[int, int]) -> None:
         self.screen.fill(BG_COLOR)
         
-        # Draw Hover Effect
         hover_move = self.get_move_from_mouse(mouse_pos)
         if hover_move and self.board.grid[hover_move[0]][hover_move[1]] is None:
             r, c = hover_move
             rect = (self.margin + c * self.cell_size, self.margin + r * self.cell_size, self.cell_size, self.cell_size)
             pygame.draw.rect(self.screen, HOVER_CELL, rect)
-
-        # Draw Labels (1, 2, 3... and a, b, c...)
         for i in range(self.board.size):
             col_text = self.font.render(str(i + 1), True, GRID_COLOR)
             col_rect = col_text.get_rect(center=(self.margin + i * self.cell_size + self.cell_size // 2, self.margin // 2 + 10))
@@ -59,7 +49,6 @@ class GameGUI:
             row_rect = row_text.get_rect(center=(self.margin // 2 + 10, self.margin + i * self.cell_size + self.cell_size // 2))
             self.screen.blit(row_text, row_rect)
 
-        # Draw Grid (Rounded boundaries look modern)
         board_rect = (self.margin, self.margin, self.board_width, self.board_width)
         pygame.draw.rect(self.screen, GRID_COLOR, board_rect, 3, border_radius=8)
         
@@ -71,7 +60,6 @@ class GameGUI:
                              (self.margin, self.margin + x * self.cell_size), 
                              (self.margin + self.board_width, self.margin + x * self.cell_size), 2)
 
-        # Draw Marks
         for r in range(self.board.size):
             for c in range(self.board.size):
                 if self.board.grid[r][c] == 'X':
@@ -79,7 +67,6 @@ class GameGUI:
                 elif self.board.grid[r][c] == 'O':
                     self._draw_o(r, c)
                     
-        # Draw Scores with dynamic colors based on who the human is
         you_str = "You" if human_mark == 'X' else "AI"
         ai_str = "AI" if human_mark == 'X' else "You"
         
@@ -119,7 +106,6 @@ class GameGUI:
 
 
 def draw_button(screen, rect, text, font, base_color, hover_color, mouse_pos, is_active=False):
-    """Helper to draw modern buttons."""
     is_hovered = pygame.Rect(rect).collidepoint(mouse_pos)
     color = BTN_ACTIVE if is_active else (hover_color if is_hovered else base_color)
     pygame.draw.rect(screen, color, rect, border_radius=10)
@@ -131,7 +117,6 @@ def draw_button(screen, rect, text, font, base_color, hover_color, mouse_pos, is
 
 
 def prompt_setup() -> Tuple[int, str]:
-    """Interactive GUI setup menu to choose board size and player mark."""
     pygame.init()
     screen = pygame.display.set_mode((450, 400))
     pygame.display.set_caption("Game Setup")
@@ -142,7 +127,6 @@ def prompt_setup() -> Tuple[int, str]:
     board_size = 5
     human_mark = 'X'
     
-    # UI Elements Rects
     btn_minus = (130, 120, 50, 50)
     btn_plus = (270, 120, 50, 50)
     btn_x = (100, 230, 100, 50)
@@ -171,7 +155,6 @@ def prompt_setup() -> Tuple[int, str]:
 
         screen.fill(BG_COLOR)
         
-        # Titles
         title_surf = font_title.render("Game Setup", True, TEXT_COLOR)
         screen.blit(title_surf, title_surf.get_rect(center=(225, 40)))
         
@@ -181,7 +164,6 @@ def prompt_setup() -> Tuple[int, str]:
         role_lbl = font_main.render("Play As", True, TEXT_COLOR)
         screen.blit(role_lbl, role_lbl.get_rect(center=(225, 200)))
 
-        # Controls
         draw_button(screen, btn_minus, "-", font_title, BTN_BG, BTN_HOVER, mouse_pos)
         draw_button(screen, btn_plus, "+", font_title, BTN_BG, BTN_HOVER, mouse_pos)
         

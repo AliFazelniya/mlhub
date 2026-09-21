@@ -5,9 +5,9 @@ import random
 from board import Board
 from minmax import MinimaxAI
 
-class DoozEnv(gym.Env):
+class TicEnv(gym.Env):
     def __init__(self, board_size=5, ai_mark='O', human_mark='X'):
-        super(DoozEnv, self).__init__()
+        super(TicEnv, self).__init__()
         
         self.board_size = board_size
         self.ai_mark = ai_mark
@@ -36,6 +36,7 @@ class DoozEnv(gym.Env):
         return self._get_obs(), {}
 
     def step(self, action):
+
         row = action // self.board_size
         col = action % self.board_size
         
@@ -44,15 +45,25 @@ class DoozEnv(gym.Env):
             
         self.board.make_move(row, col, self.ai_mark)
         
-        done = self.board.is_full()
-   
-        if not done:
-            self._opponent_play()
-            done = self.board.is_full()
+        score_x, score_o = self.board.calculate_scores()
+        ai_score = score_o if self.ai_mark == 'O' else score_x
+        if ai_score > 0:
+            return self._get_obs(), 1.0, True, False, {}
             
-        reward = self._calculate_reward()
+        if self.board.is_full():
+            return self._get_obs(), 0.5, True, False, {}
+            
+        self._opponent_play()
         
-        return self._get_obs(), reward, done, False, {}
+        score_x, score_o = self.board.calculate_scores()
+        human_score = score_x if self.human_mark == 'X' else score_o
+        if human_score > 0:
+            return self._get_obs(), -1.0, True, False, {}
+            
+        if self.board.is_full():
+            return self._get_obs(), 0.5, True, False, {}
+            
+        return self._get_obs(), 0.0, False, False, {}
 
     def _get_obs(self):
         obs = np.zeros((self.board_size, self.board_size), dtype=np.float32)
@@ -78,12 +89,18 @@ class DoozEnv(gym.Env):
         return float(reward)
 
     def _opponent_play(self):
-            legal_moves = self.board.get_legal_moves()
-            if not legal_moves:
-                return
+        legal_moves = self.board.get_legal_moves()
 
+        if not legal_moves:
+            return
+            
+        if random.random() < 0.5:
+            r, c = random.choice(legal_moves)
+        else:
             best_move = self.sparring_partner.get_best_move(self.board)
             if best_move:
-                    r, c = best_move
-                    
-            self.board.make_move(r, c, self.human_mark)
+                r, c = best_move
+            else:
+                r, c = random.choice(legal_moves)
+                
+        self.board.make_move(r, c, self.human_mark)
