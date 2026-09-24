@@ -1,1 +1,5 @@
-question link : https://quera.org/problemset/307573
+# Haratyar
+
+This project is for the Quera problem linked below:
+
+https://quera.org/problemset/307573

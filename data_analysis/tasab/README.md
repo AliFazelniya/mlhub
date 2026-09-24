@@ -1,1 +1,5 @@
-question link : https://quera.org/problemset/307572
+# Tasab
+
+This project is for the Quera problem linked below:
+
+https://quera.org/problemset/307572
