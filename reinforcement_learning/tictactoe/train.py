@@ -1,15 +1,17 @@
-from stable_baselines3 import DQN
-from rl_env import TicEnv
 import argparse
+from stable_baselines3 import DQN
+from stable_baselines3.common.env_util import make_vec_env
+from rl_env import TicEnv
 
 def train_agent(board_size=3, total_steps=150000):
     print(f"Starting training on a {board_size}x{board_size} board...")
     
-    env = TicEnv(board_size=board_size)
+    env_kwargs = {'board_size': board_size}
+    vec_env = make_vec_env(TicEnv, n_envs=8, env_kwargs=env_kwargs)
     
     model = DQN(
         "MlpPolicy", 
-        env, 
+        vec_env, 
         verbose=1, 
         learning_rate=1e-3, 
         buffer_size=100000, 
@@ -25,7 +27,6 @@ def train_agent(board_size=3, total_steps=150000):
     )
     
     model.learn(total_timesteps=total_steps, log_interval=100)
-    
     model.save(f"dqn_model_{board_size}x{board_size}")
     print("The model was successfully saved!")
 
@@ -38,4 +39,3 @@ if __name__ == "__main__":
         train_agent(board_size=args.board_size)
     else:
         print("Error: The board size is not valid. It must be between 3 and 10.")
-    

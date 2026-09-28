@@ -1,7 +1,3 @@
-"""
-Main Application Entry Point.
-Integrates Board, RL Agent (DQN), and the Pygame GUI.
-"""
 import os
 import sys
 import warnings
@@ -14,7 +10,6 @@ import pygame
 import numpy as np
 from board import Board
 from gui import GameGUI, prompt_setup, show_game_over
-from rl_agent import DQN
 from stable_baselines3 import DQN
 import random
 
