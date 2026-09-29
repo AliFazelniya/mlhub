@@ -51,14 +51,12 @@ class TicEnv(gym.Env):
         row = action // self.board_size
         col = action - row * self.board_size
 
+        step_reward = 0.0
+
         if self.board.grid[row][col] is not None:
-            return (
-                self._get_obs(),
-                -10.0,
-                True,
-                False,
-                {"reason": "illegal_move"},
-            )
+            step_reward = -2.0
+            legal_moves = self.board.get_legal_moves()
+            row, col = random.choice(legal_moves) 
 
         self.board.make_move(row, col, self.ai_mark)
 
@@ -66,24 +64,25 @@ class TicEnv(gym.Env):
         ai_score = score_o if self.ai_mark == 'O' else score_x
 
         if ai_score > 0:
-            return self._get_obs(), 1.0, True, False, {}
+            return self._get_obs(), step_reward + 1.0, True, False, {}
 
         if self.board.is_full():
-            return self._get_obs(), 0.5, True, False, {}
+            return self._get_obs(), step_reward + 0.5, True, False, {}
 
+        # ۳. حرکت حریف
         self._opponent_play()
 
         score_x, score_o = self.board.calculate_scores()
         human_score = score_x if self.human_mark == 'X' else score_o
 
         if human_score > 0:
-            return self._get_obs(), -1.0, True, False, {}
+            return self._get_obs(), step_reward - 1.0, True, False, {}
 
         if self.board.is_full():
-            return self._get_obs(), 0.5, True, False, {}
+            return self._get_obs(), step_reward + 0.5, True, False, {}
 
-        return self._get_obs(), 0.0, False, False, {}
-
+        return self._get_obs(), step_reward, False, False, {}
+    
     def _get_obs(self):
         grid = self.board.grid
         obs = self._obs_buffer
@@ -121,7 +120,7 @@ class TicEnv(gym.Env):
         if not legal_moves:
             return
 
-        if random.random() < 0.5:
+        if random.random() < 0.6:
             r, c = random.choice(legal_moves)
         else:
             best_move = self.sparring_partner.get_best_move(self.board)
