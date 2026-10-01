@@ -3,6 +3,7 @@ from ultralytics import YOLO
 
 model = YOLO("yolo26n.pt") 
 
+# results = model(source = 0, show = True)
 cap = cv2.VideoCapture(0)
 
 while cap.isOpened():
