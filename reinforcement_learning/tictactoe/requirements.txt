@@ -1,4 +1,0 @@
-django>=4.2
-stable-baselines3[extra]>=2.0
-numpy>=1.24
-shimmy>=1.0
