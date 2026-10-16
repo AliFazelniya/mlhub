@@ -1,109 +1,155 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Tic-Tac-Toe · Django + DQN &amp; Minimax</title>
-  <link rel="stylesheet" href="{% static 'game/css/style.css' %}" />
-  <meta name="csrf-token" content="{{ csrf_token }}" />
-</head>
-<body>
-  <header class="topbar">
-    <h1>AI Tic-Tac-Toe</h1>
-    <p class="subtitle">Django · Stable-Baselines3 DQN · Alpha-Beta Minimax</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Tic-Tac-Toe · Django + DQN &amp; Minimax</title>
+    <link rel="stylesheet" href="{% static 'game/css/style.css' %}" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Tic-Tac-Toe</h1>
+    </header>
 
-  <main class="layout">
-    <section class="panel setup-panel">
-      <h2>Game Setup</h2>
+    <main class="layout">
+      <section class="panel setup-panel">
+        <h2>Game Setup</h2>
 
-      <div class="control-group">
-        <label>Board Size</label>
-        <div class="stepper">
-          <button id="size-minus" class="btn small" type="button" aria-label="Decrease size">−</button>
-          <span id="size-value" class="stepper-value">5</span>
-          <button id="size-plus" class="btn small" type="button" aria-label="Increase size">+</button>
+        <div class="control-group">
+          <label>Board Size</label>
+          <div class="stepper">
+            <button
+              id="size-minus"
+              class="btn small"
+              type="button"
+              aria-label="Decrease size"
+            >
+              −
+            </button>
+            <span id="size-value" class="stepper-value">5</span>
+            <button
+              id="size-plus"
+              class="btn small"
+              type="button"
+              aria-label="Increase size"
+            >
+              +
+            </button>
+          </div>
+          <span id="size-badge" class="badge">DQN + Minimax</span>
         </div>
-        <span id="size-badge" class="badge">DQN + Minimax</span>
-      </div>
 
-      <div class="control-group">
-        <label>Play As</label>
-        <div class="segmented" id="role-select">
-          <button class="btn seg active" data-role="X" type="button">X (first)</button>
-          <button class="btn seg" data-role="O" type="button">O (second)</button>
+        <div class="control-group">
+          <label>Play As</label>
+          <div class="segmented" id="role-select">
+            <button class="btn seg active" data-role="X" type="button">
+              X (first)
+            </button>
+            <button class="btn seg" data-role="O" type="button">
+              O (second)
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="control-group">
-        <label>AI Engine</label>
-        <div class="segmented" id="engine-select">
-          <button class="btn seg active" data-engine="rl" type="button">RL Agent (DQN)</button>
-          <button class="btn seg" data-engine="minimax" type="button">Minimax AI</button>
+        <div class="control-group">
+          <label>AI Engine</label>
+          <div class="segmented" id="engine-select">
+            <button class="btn seg active" data-engine="rl" type="button">
+              RL Agent (DQN)
+            </button>
+            <button class="btn seg" data-engine="minimax" type="button">
+              Minimax AI
+            </button>
+          </div>
         </div>
-      </div>
 
-      <button id="start-btn" class="btn primary full" type="button">Start Game</button>
-      <p id="engine-note" class="note"></p>
-    </section>
+        <button id="start-btn" class="btn primary full" type="button">
+          Start Game
+        </button>
+        <p id="engine-note" class="note"></p>
+      </section>
 
-    <section class="panel board-panel">
-      <div class="statusbar">
-        <span id="status-text">Choose your options and press Start Game.</span>
-        <span id="engine-used" class="engine-chip" hidden></span>
-      </div>
-      <div class="board-wrap">
-        <div id="board" class="board"></div>
-      </div>
-      <div class="scoreboard">
-        <div class="score x-score">
-          <span class="score-label" id="label-x">X</span>
-          <span class="score-value" id="score-x">0</span>
+      <section class="panel board-panel">
+        <div class="statusbar">
+          <span id="status-text"
+            >Choose your options and press Start Game.</span
+          >
+          <span id="engine-used" class="engine-chip" hidden></span>
         </div>
-        <div class="score remaining">
-          <span class="score-label">Empty</span>
-          <span class="score-value" id="empty-cells">25</span>
+        <div class="board-wrap">
+          <div id="board" class="board"></div>
         </div>
-        <div class="score o-score">
-          <span class="score-label" id="label-o">O</span>
-          <span class="score-value" id="score-o">0</span>
+        <div class="scoreboard">
+          <div class="score x-score">
+            <span class="score-label" id="label-x">X</span>
+            <span class="score-value" id="score-x">0</span>
+          </div>
+          <div class="score remaining">
+            <span class="score-label">Empty</span>
+            <span class="score-value" id="empty-cells">25</span>
+          </div>
+          <div class="score o-score">
+            <span class="score-label" id="label-o">O</span>
+            <span class="score-value" id="score-o">0</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <aside class="panel stats-panel">
-      <h2>Match History</h2>
-      <div class="stats-grid">
-        <div class="stat"><span class="stat-value" id="stat-total">0</span><span class="stat-label">Games</span></div>
-        <div class="stat"><span class="stat-value win" id="stat-wins">0</span><span class="stat-label">Wins</span></div>
-        <div class="stat"><span class="stat-value loss" id="stat-losses">0</span><span class="stat-label">Losses</span></div>
-        <div class="stat"><span class="stat-value tie" id="stat-ties">0</span><span class="stat-label">Ties</span></div>
-        <div class="stat wide"><span class="stat-value" id="stat-winrate">0%</span><span class="stat-label">Win Rate</span></div>
-      </div>
-      <ul id="history-list" class="history-list"></ul>
-      <button id="clear-history" class="btn subtle full" type="button">Clear History</button>
-    </aside>
-  </main>
+      <aside class="panel stats-panel">
+        <h2>Match History</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-value" id="stat-total">0</span
+            ><span class="stat-label">Games</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value win" id="stat-wins">0</span
+            ><span class="stat-label">Wins</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value loss" id="stat-losses">0</span
+            ><span class="stat-label">Losses</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value tie" id="stat-ties">0</span
+            ><span class="stat-label">Ties</span>
+          </div>
+          <div class="stat wide">
+            <span class="stat-value" id="stat-winrate">0%</span
+            ><span class="stat-label">Win Rate</span>
+          </div>
+        </div>
+        <ul id="history-list" class="history-list"></ul>
+        <button id="clear-history" class="btn subtle full" type="button">
+          Clear History
+        </button>
+      </aside>
+    </main>
 
-  <div id="modal" class="modal" hidden>
-    <div class="modal-card">
-      <h2 id="modal-title">Victory!</h2>
-      <p id="modal-scores" class="modal-scores"></p>
-      <div class="modal-actions">
-        <button id="play-again" class="btn primary" type="button">Play Again</button>
-        <button id="change-setup" class="btn subtle" type="button">Change Setup</button>
+    <div id="modal" class="modal" hidden>
+      <div class="modal-card">
+        <h2 id="modal-title">Victory!</h2>
+        <p id="modal-scores" class="modal-scores"></p>
+        <div class="modal-actions">
+          <button id="play-again" class="btn primary" type="button">
+            Play Again
+          </button>
+          <button id="change-setup" class="btn subtle" type="button">
+            Change Setup
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    window.GAME_CONFIG = {
-      minSize: {{ min_size }},
-      maxSize: {{ max_size }},
-      rlSizes: {{ rl_sizes|safe }},
-    };
-  </script>
-  <script src="{% static 'game/js/app.js' %}"></script>
-</body>
+    <script>
+      window.GAME_CONFIG = {
+        minSize: {{ min_size }},
+        maxSize: {{ max_size }},
+        rlSizes: {{ rl_sizes|safe }},
+      };
+    </script>
+    <script src="{% static 'game/js/app.js' %}"></script>
+  </body>
 </html>

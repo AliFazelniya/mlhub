@@ -182,7 +182,7 @@
   }
 
   /* ------------------------------- API -------------------------------- */
-  async function apiMove(humanMove) {
+  async function apiMove(humanMove, gridOverride) {
     const res = await fetch("/api/move/", {
       method: "POST",
       headers: {
@@ -190,7 +190,7 @@
         "X-CSRFToken": csrfToken(),
       },
       body: JSON.stringify({
-        grid: state.grid,
+        grid: gridOverride || state.grid,
         board_size: state.boardSize,
         human_mark: state.humanMark,
         human_move: humanMove,
@@ -225,7 +225,14 @@
     if (!state.started || state.awaiting || state.gameOver) return;
     if (state.grid[r][c]) return;
 
-    // Optimistic human placement
+    // The server applies the human move itself from `human_move`, so it must
+    // receive the board state BEFORE this move. Keep a clean pre-move snapshot
+    // and send that (do not send the optimistically-updated grid, or the server
+    // will reject the already-occupied cell as an "Illegal human move").
+    const gridBeforeMove = state.grid.map((row) => row.slice());
+    const humanMove = [r, c];
+
+    // Optimistic human placement for immediate feedback
     state.grid[r][c] = state.humanMark;
     state.awaiting = true;
     state.lastAiMove = null;
@@ -233,10 +240,8 @@
     updateScores(scoreXGuess(), scoreOGuess());
     setStatus("AI is thinking…");
 
-    const humanMove = [r, c];
-
     try {
-      const data = await apiMove(humanMove);
+      const data = await apiMove(humanMove, gridBeforeMove);
       state.awaiting = false;
       applyServerResponse(data);
       if (!data.is_game_over) setStatus("Your turn.");
