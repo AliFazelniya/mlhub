@@ -97,8 +97,6 @@
   });
 
   /* ------------------------------ board ------------------------------- */
-  function rowLabel(i) { return String.fromCharCode("a".charCodeAt(0) + i); }
-
   function markSVG(mark) {
     if (mark === "X") {
       return '<div class="mark x"><svg viewBox="0 0 100 100">' +
@@ -115,30 +113,10 @@
   function renderBoard() {
     const board = $("board");
     const size = state.boardSize;
-    const n = size + 1; // +1 for coordinate row/column
-    board.style.gridTemplateColumns = "repeat(" + n + ", 1fr)";
+    board.style.gridTemplateColumns = "repeat(" + size + ", 1fr)";
     board.innerHTML = "";
 
-    // Top-left spacer
-    const spacer = document.createElement("div");
-    spacer.className = "coord";
-    board.appendChild(spacer);
-
-    // Column numbers
-    for (let c = 0; c < size; c += 1) {
-      const col = document.createElement("div");
-      col.className = "coord";
-      col.textContent = String(c + 1);
-      board.appendChild(col);
-    }
-
-    // Rows
     for (let r = 0; r < size; r += 1) {
-      const lab = document.createElement("div");
-      lab.className = "coord";
-      lab.textContent = rowLabel(r);
-      board.appendChild(lab);
-
       for (let c = 0; c < size; c += 1) {
         const cell = document.createElement("div");
         cell.className = "cell";
