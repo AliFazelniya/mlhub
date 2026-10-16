@@ -130,6 +130,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .statusbar {
@@ -152,7 +153,13 @@ body {
 }
 .engine-chip[hidden] { display: none; }
 
-.board-wrap { display: flex; justify-content: center; }
+.board-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 340px;
+}
 
 .board {
   display: grid;
@@ -299,5 +306,6 @@ body {
 
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; }
+  .board-wrap { min-height: 0; }
   .board { width: min(100%, 460px); }
 }
