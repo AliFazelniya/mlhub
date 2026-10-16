@@ -1,8 +1,12 @@
 import math
 from typing import Tuple, List, Optional
-from board import Board
+
+from .board import Board
+
 
 class MinimaxAI:
+    """Alpha-Beta pruned minimax with dynamic depth and move ordering."""
+
     def __init__(self, ai_player: str = 'O', human_player: str = 'X'):
         self.ai = ai_player
         self.human = human_player

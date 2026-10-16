@@ -2,6 +2,11 @@ from typing import List, Tuple, Optional
 
 
 class Board:
+    """Optimized Tic-Tac-Toe board with run-based scoring.
+
+    Game rule: play does NOT stop at the first 3-in-a-row. Play continues
+    until the entire grid is full (``is_full()``).
+    """
 
     def __init__(self, size: int):
         self.size = size
@@ -75,6 +80,11 @@ class Board:
         return new_board
 
     def calculate_scores(self) -> Tuple[int, int]:
+        """Scan all cached row/column/diagonal lines.
+
+        For every consecutive run of ``n >= 3`` identical marks a line awards
+        ``(n - 2) + (n - 3) * (n - 3)`` points.
+        """
         score_x = 0
         score_o = 0
         grid = self.grid

@@ -1,0 +1,6 @@
+Django>=5.0
+stable-baselines3>=2.3
+torch>=2.2
+gymnasium>=0.29
+numpy>=1.24
+pygame-ce>=2.4
